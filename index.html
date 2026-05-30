@@ -86,7 +86,24 @@ body.night .field-bg::after{content:'';position:absolute;bottom:0;left:0;right:0
 .screen.active{display:flex}
 
 /* ── SETUP ── */
-.setup-box{background:rgba(10,4,0,.88);border:4px solid var(--gold);border-radius:14px;padding:32px 30px;max-width:640px;width:100%;text-align:center;box-shadow:0 0 60px rgba(212,160,23,.35);max-height:96vh;overflow-y:auto}
+.setup-box{background:rgba(10,4,0,.88);border:4px solid var(--gold);border-radius:14px;padding:32px 30px;max-width:640px;width:100%;text-align:center;box-shadow:0 0 60px rgba(212,160,23,.35);max-height:96vh;overflow-y:auto;position:relative}
+#settings-btn{position:absolute;top:10px;right:12px;z-index:100;background:none;border:none;font-size:1.4rem;cursor:pointer;color:#777;transition:color .2s,transform .4s;line-height:1;padding:8px;pointer-events:auto}
+#settings-btn:hover{color:#aaa;transform:rotate(60deg)}
+.settings-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:300;align-items:center;justify-content:center;padding:20px}
+.settings-overlay.open{display:flex}
+.settings-modal{background:rgba(10,4,0,.96);border:3px solid rgba(140,140,140,.35);border-radius:14px;padding:28px 26px 24px;max-width:580px;width:100%;max-height:88vh;overflow-y:auto;position:relative}
+.settings-close{position:absolute;top:13px;right:15px;background:none;border:none;color:#666;font-size:1.2rem;cursor:pointer;line-height:1;transition:color .2s}
+.settings-close:hover{color:#aaa}
+.settings-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.5rem;color:#888;letter-spacing:4px;margin-bottom:20px;text-align:center}
+.settings-sport{margin-bottom:24px;border-bottom:1px solid rgba(140,140,140,.15);padding-bottom:18px}
+.settings-sport:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.settings-sport-header{display:flex;align-items:center;gap:9px;margin-bottom:5px}
+.settings-sport-emoji{font-size:1.2rem}
+.settings-sport-name{font-family:'Bebas Neue',Impact,sans-serif;font-size:1rem;color:#999;letter-spacing:2px}
+.settings-sport-desc{font-family:'Special Elite',serif;color:rgba(245,230,200,.55);font-size:.8rem;line-height:1.55;margin-bottom:10px}
+.settings-cat{display:flex;gap:10px;margin-bottom:5px;align-items:baseline}
+.settings-cat-name{font-family:'Oswald',sans-serif;color:#777;font-size:.68rem;text-transform:uppercase;letter-spacing:1px;min-width:148px;flex-shrink:0}
+.settings-cat-desc{font-family:'Special Elite',serif;color:rgba(245,230,200,.38);font-size:.74rem;line-height:1.4}
 .game-logo{font-family:'Bebas Neue',Impact,sans-serif;font-size:clamp(2.2rem,6vw,3.6rem);color:var(--gold);letter-spacing:5px;line-height:1.05;text-shadow:3px 3px 0 #4a2e00,0 0 30px rgba(212,160,23,.5);text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px}
 .logo-ball{font-size:clamp(1.6rem,4vw,2.4rem);line-height:1;filter:drop-shadow(0 0 10px rgba(212,160,23,.55));letter-spacing:0}
 .game-sub{font-family:'Special Elite',serif;color:var(--cream);font-size:.85rem;letter-spacing:3px;opacity:.75;margin:6px 0 18px}
@@ -105,7 +122,7 @@ body.night .field-bg::after{content:'';position:absolute;bottom:0;left:0;right:0
 
 /* Difficulty selector */
 .diff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:14px}
-.diff-btn{background:rgba(255,255,255,.05);border:2px solid rgba(212,160,23,.28);border-radius:8px;padding:9px 4px;cursor:pointer;font-family:'Oswald',sans-serif;font-size:.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--cream);transition:all .2s}
+.diff-btn{background:rgba(255,255,255,.05);border:2px solid rgba(212,160,23,.28);border-radius:8px;padding:9px 4px;cursor:pointer;font-family:'Oswald',sans-serif;font-size:.82rem;text-transform:uppercase;letter-spacing:1px;color:var(--cream);transition:all .2s}
 .diff-btn:hover{border-color:rgba(212,160,23,.55)}
 .diff-btn.selected{border-color:var(--gold);background:rgba(212,160,23,.2);color:var(--gold);box-shadow:0 0 16px rgba(212,160,23,.4),inset 0 0 8px rgba(212,160,23,.08);transform:translateY(-2px)}
 .diff-btn .diff-icon{display:block;font-size:1.1rem;margin-bottom:3px}
@@ -115,10 +132,12 @@ body.night .field-bg::after{content:'';position:absolute;bottom:0;left:0;right:0
 .col-btn{background:rgba(255,255,255,.05);border:2px solid rgba(212,160,23,.28);border-radius:8px;padding:9px 4px;cursor:pointer;font-family:'Bebas Neue',Impact,sans-serif;font-size:1.4rem;color:var(--gold);transition:all .2s}
 .col-btn:hover{border-color:rgba(212,160,23,.55)}
 .col-btn.selected{border-color:var(--gold);background:rgba(212,160,23,.2);box-shadow:0 0 16px rgba(212,160,23,.4),inset 0 0 8px rgba(212,160,23,.08);transform:translateY(-2px)}
-.col-sub{display:block;font-family:'Oswald',sans-serif;font-size:.6rem;letter-spacing:.5px;color:var(--cream);opacity:.6;margin-top:2px}
+.col-sub{display:block;font-family:'Oswald',sans-serif;font-size:.7rem;letter-spacing:.5px;color:var(--cream);opacity:.6;margin-top:2px}
 
 .team-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
 .team-grid.is-solo{grid-template-columns:1fr;max-width:280px;margin-left:auto;margin-right:auto}
+.team-grid.is-solo .tg label{text-align:center}
+.team-grid.is-solo .tg input{text-align:center}
 .tg label{display:block;font-family:'Oswald',sans-serif;color:var(--cream);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;text-align:left}
 .tg input{width:100%;background:rgba(255,255,255,.07);border:2px solid rgba(212,160,23,.35);border-radius:7px;padding:9px 12px;color:var(--cream);font-family:'Special Elite',serif;font-size:.92rem;outline:none;transition:border-color .2s,box-shadow .2s}
 .tg input:focus{border-color:var(--gold);box-shadow:0 0 12px rgba(212,160,23,.3)}
@@ -130,7 +149,7 @@ body.night .field-bg::after{content:'';position:absolute;bottom:0;left:0;right:0
 .mode-card.selected{border-color:var(--gold);background:rgba(212,160,23,.2);box-shadow:0 0 20px rgba(212,160,23,.45),inset 0 0 10px rgba(212,160,23,.08);transform:translateY(-2px)}
 .mode-icon{font-size:1.6rem;display:block;margin-bottom:5px}
 .mode-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:1rem;letter-spacing:2px;color:var(--gold);display:block;margin-bottom:3px}
-.mode-desc{font-family:'Oswald',sans-serif;font-size:.58rem;text-transform:uppercase;letter-spacing:.8px;color:var(--cream);opacity:.6;line-height:1.35}
+.mode-desc{font-family:'Oswald',sans-serif;font-size:.68rem;text-transform:uppercase;letter-spacing:.8px;color:var(--cream);opacity:.6;line-height:1.35}
 
 .play-btn{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.7rem;letter-spacing:4px;color:var(--dark);background:linear-gradient(135deg,var(--gold),#b07010);border:none;border-radius:9px;padding:12px 48px;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:0 4px 0 var(--dark-gold),0 6px 20px rgba(212,160,23,.35)}
 .play-btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--dark-gold),0 10px 24px rgba(212,160,23,.45)}
@@ -151,7 +170,7 @@ body.night .field-bg::after{content:'';position:absolute;bottom:0;left:0;right:0
 .sc-pts.neg{color:var(--red)}
 .turn-banner{font-family:'Oswald',sans-serif;color:var(--gold);font-size:.78rem;text-transform:uppercase;letter-spacing:2px;text-align:center;margin-bottom:6px;height:20px}
 .board{width:100%;max-width:1200px;display:grid;gap:5px;padding:6px;background:rgba(8,3,0,.72);border:4px solid var(--gold);border-radius:10px;box-shadow:0 0 60px rgba(0,0,0,.7),inset 0 0 30px rgba(0,0,0,.4)}
-.cat-cell{background:linear-gradient(160deg,#0a2060,#162e80);border:2px solid rgba(80,120,255,.35);border-radius:6px;padding:9px 6px;text-align:center;font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(.55rem,1vw,.82rem);color:white;text-transform:uppercase;letter-spacing:.5px;text-shadow:1px 1px 2px rgba(0,0,0,.8);display:flex;align-items:center;justify-content:center;min-height:64px;line-height:1.25}
+.cat-cell{background:linear-gradient(160deg,#0a2060,#162e80);border:2px solid rgba(80,120,255,.35);border-radius:6px;padding:9px 6px;text-align:center;font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(.72rem,1.5vw,1rem);color:white;text-transform:uppercase;letter-spacing:.5px;text-shadow:1px 1px 2px rgba(0,0,0,.8);display:flex;align-items:center;justify-content:center;min-height:64px;line-height:1.25}
 .tile{background:linear-gradient(160deg,#0a2060,#152e8a);border:2px solid rgba(80,120,255,.28);border-radius:6px;padding:6px;text-align:center;cursor:pointer;transition:transform .15s,box-shadow .15s,background .15s;min-height:74px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:3px;user-select:none}
 .tile:hover:not(.used){background:linear-gradient(160deg,#183888,#2050c0);border-color:rgba(100,160,255,.65);transform:scale(1.04);box-shadow:0 4px 14px rgba(0,0,0,.45)}
 .tile:active:not(.used){transform:scale(.97)}
@@ -238,6 +257,7 @@ body.night .field-bg::after{content:'';position:absolute;bottom:0;left:0;right:0
 <!-- SETUP -->
 <div id="s-setup" class="screen active">
 <div class="setup-box">
+  <button id="settings-btn" onclick="openSettings()" title="Settings">⚙</button>
   <div class="game-logo"><span class="logo-ball" id="logo-emoji">🏆</span><span>HUDDLEUP</span><span>TRIVIA</span></div>
   <div class="game-sub" id="game-sub">Multi-Sport Trivia Challenge</div>
   <div class="divider"><span>✦ ✦ ✦</span></div>
@@ -293,6 +313,15 @@ body.night .field-bg::after{content:'';position:absolute;bottom:0;left:0;right:0
     </button>
   </div>
   <button class="play-btn" id="play-btn" onclick="startGame()">⚾ PLAY BALL!</button>
+</div>
+</div>
+
+<!-- SETTINGS -->
+<div class="settings-overlay" id="settings-overlay">
+<div class="settings-modal">
+  <button class="settings-close" onclick="closeSettings()">✕</button>
+  <div class="settings-title">⚙ SETTINGS</div>
+  <div id="settings-content"></div>
 </div>
 </div>
 
@@ -1454,7 +1483,11 @@ const SPORT_ALL_FINALS = {
 
 // ── GAME STATE VARIABLES ──────────────────────────────────────
 const PTS = [100, 200, 300, 400];
-const DD_POSITIONS = [[1, 2], [4, 3]]; // [catIndex, ptIndex]
+function getDDPositions(cols) {
+  if (cols <= 3) return [[0, 2], [2, 3]];
+  if (cols === 4) return [[1, 2], [3, 3]];
+  return [[1, 2], [4, 3]];
+}
 
 let selectedSport = 'baseball';
 let selectedDiff  = 1; // 1-4
@@ -1466,6 +1499,7 @@ let finalTimerRef = null;
 
 // ── SETUP UI FUNCTIONS ────────────────────────────────────────
 function setSport(sport) {
+  sndSetupClick();
   selectedSport = sport;
   const cfg = SPORT_CONFIG[sport];
 
@@ -1506,6 +1540,7 @@ function setSport(sport) {
 }
 
 function setDiff(d) {
+  sndSetupClick();
   selectedDiff = d;
   document.querySelectorAll('.diff-btn').forEach(btn => {
     btn.classList.toggle('selected', btn.id === 'diff-' + d);
@@ -1513,6 +1548,7 @@ function setDiff(d) {
 }
 
 function setCols(n) {
+  sndSetupClick();
   selectedCols = n;
   document.querySelectorAll('.col-btn').forEach(btn => {
     btn.classList.toggle('selected', btn.id === 'col-' + n);
@@ -1520,12 +1556,13 @@ function setCols(n) {
 }
 
 function setMode(m) {
+  sndSetupClick();
   selectedMode = m;
   document.querySelectorAll('.mode-card').forEach(card => {
     card.classList.toggle('selected', card.id === 'mode-' + m);
   });
 
-  const teamGrid = document.getElementById('team-grid');
+  const teamGrid = document.querySelector('.team-grid');
   const teamLabel = document.getElementById('team-label');
 
   if (m === 'solo') {
@@ -1641,7 +1678,7 @@ function buildBoard() {
   PTS.forEach((pts, pi) => {
     for (let ci = 0; ci < G.cols; ci++) {
       const key = `${ci}-${pts}`;
-      const isDD = DD_POSITIONS.some(d => d[0] === ci && d[1] === pi) && G.cols >= 4;
+      const isDD = getDDPositions(G.cols).some(d => d[0] === ci && d[1] === pi);
       const used = G.used.has(key);
       const el = document.createElement('div');
       el.className = 'tile' + (isDD ? ' dd' : '') + (used ? ' used' : '');
@@ -1683,7 +1720,7 @@ function renderMCGrid(choices) {
 
 function selectChoice(idx) {
   stopTimer(); stopThink();
-  const { q, pts } = G.cur, choices = G.cur.choices, isCorrect = choices[idx].isCorrect;
+  const q = G.cur.q, pts = G.cur.effectivePts, choices = G.cur.choices, isCorrect = choices[idx].isCorrect;
   choices.forEach((c, i) => {
     const btn = document.getElementById('mc-btn-' + i);
     if (btn) {
@@ -1711,7 +1748,7 @@ function selectChoice(idx) {
 }
 
 function timeOutMC() {
-  const { q, pts } = G.cur, choices = G.cur.choices || [];
+  const q = G.cur.q, pts = G.cur.effectivePts, choices = G.cur.choices || [];
   choices.forEach((c, i) => {
     const btn = document.getElementById('mc-btn-' + i);
     if (btn) { btn.disabled = true; if (c.isCorrect) btn.classList.add('correct'); }
@@ -1732,21 +1769,22 @@ function timeOutMC() {
 function openQ(ci, pts, pi, isDD) {
   if (G.used.has(`${ci}-${pts}`)) return;
   const q = G.questions[ci][pts];
-  G.cur = { ci, pts, pi, key: `${ci}-${pts}`, isDD, q };
+  G.cur = { ci, pts, pi, key: `${ci}-${pts}`, isDD, q, effectivePts: isDD ? pts * 2 : pts };
+  if (isDD) sndDD(); else sndTileSelect();
+  showQuestion();
+}
 
-  document.getElementById('m-cat').textContent = G.cats[ci];
-  document.getElementById('m-badge').textContent = G.cfg.bases[pi] + ' — ' + pts + ' pts';
+function showQuestion() {
+  const { q, isDD } = G.cur;
+  const pts = G.cur.effectivePts;
+  document.getElementById('m-cat').textContent = G.cats[G.cur.ci];
+  document.getElementById('m-badge').textContent = G.cfg.bases[G.cur.pi] + (isDD ? ' — 💎 ' + pts + ' wagered' : ' — ' + pts + ' pts');
   document.getElementById('m-clue').textContent = q.clue;
   document.getElementById('m-answer').style.display = 'none';
   document.getElementById('m-answer').textContent = '';
-  document.getElementById('m-dd').textContent = G.cfg.ddName;
   document.getElementById('m-dd').style.display = isDD ? 'block' : 'none';
-
   const res = document.getElementById('m-result');
-  res.style.display = 'none';
-  res.textContent = '';
-  res.className = 'm-result';
-
+  res.style.display = 'none'; res.textContent = ''; res.className = 'm-result';
   if (G.mode === 'typeanswer') {
     document.getElementById('m-input-row').style.display = 'none';
     G.cur.choices = buildChoices(q);
@@ -1756,8 +1794,6 @@ function openQ(ci, pts, pi, isDD) {
     document.getElementById('m-input-row').style.display = 'none';
     document.getElementById('m-btns').innerHTML = '<button class="btn btn-reveal" onclick="revealAns()">Reveal Answer</button>';
   }
-
-  if (isDD) sndDD(); else sndTileSelect();
   startTimer(G.mode === 'typeanswer' ? 20 : 30);
   startThink();
   document.getElementById('q-overlay').classList.add('open');
@@ -1765,7 +1801,7 @@ function openQ(ci, pts, pi, isDD) {
 
 function revealAns() {
   stopTimer(); stopThink(); sndReveal();
-  const { q, pts } = G.cur;
+  const { q } = G.cur, pts = G.cur.effectivePts;
   const ans = document.getElementById('m-answer');
   ans.textContent = '✓ ' + q.answer;
   ans.style.display = 'block';
@@ -1776,7 +1812,7 @@ function revealAns() {
 }
 
 function score(correct) {
-  const { key, pts } = G.cur, team = G.teams[G.turn];
+  const { key } = G.cur, pts = G.cur.effectivePts, team = G.teams[G.turn];
   if (correct === true) { G.scores[team] += pts; sndCorrect(); }
   if (correct === false) { G.scores[team] -= pts; sndWrong(); }
   G.used.add(key);
@@ -1789,7 +1825,7 @@ function score(correct) {
 }
 
 function autoScore() {
-  const { key, pts } = G.cur, team = G.teams[G.turn];
+  const { key } = G.cur, pts = G.cur.effectivePts, team = G.teams[G.turn];
   if (G.cur._autoCorrect) G.scores[team] += pts; else G.scores[team] -= pts;
   G.used.add(key);
   const tile = document.getElementById('tile-' + key);
@@ -2112,6 +2148,20 @@ function sndPlayBall() {
   n.forEach((f, i) => setTimeout(() => tone(f, 0.13, 'square', 0.18), i * 68));
 }
 
+function sndSetupClick() {
+  try {
+    const ctx = ac();
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.connect(g); g.connect(ctx.destination);
+    o.type = 'triangle';
+    o.frequency.setValueAtTime(784, ctx.currentTime);
+    g.gain.setValueAtTime(0.0, ctx.currentTime);
+    g.gain.linearRampToValueAtTime(0.38, ctx.currentTime + 0.004);
+    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.28);
+    o.start(); o.stop(ctx.currentTime + 0.3);
+  } catch(e) {}
+}
+
 function sndTileSelect() {
   try {
     const ctx = ac(), o = ctx.createOscillator(), g = ctx.createGain();
@@ -2178,6 +2228,77 @@ document.addEventListener('touchstart', function unlock() {
     if (toggle) toggle.textContent = '☀️';
   }
 })();
+
+// ── SETTINGS ─────────────────────────────────────────────────
+const SETTINGS_INFO = [
+  { emoji:'⚾', name:'Baseball', desc:'Classic American pastime trivia covering MLB history, legendary players, iconic moments, and the unique language of the game.', cats:[
+    ['WORLD SERIES WINS',   'Champions, memorable upsets, championship droughts, and the greatest Fall Classic moments.'],
+    ['HOME RUN LEGENDS',    'The greatest sluggers, record-breaking seasons, and the most iconic home run moments in history.'],
+    ['DIAMOND FIRSTS',      'Historic milestones, rule changes, and landmark moments that shaped the game of baseball.'],
+    ['RECORD BREAKERS',     'All-time statistical records for hits, strikeouts, stolen bases, consecutive games, and more.'],
+    ['BASEBALL LINGO',      'The unique terminology, rules, and slang that make baseball one of a kind.'],
+    ['HALL OF FAMERS',      'The legends enshrined in Cooperstown and the careers that earned them immortality.'],
+  ]},
+  { emoji:'🏈', name:'Football', desc:'NFL trivia spanning Super Bowl history, the greatest quarterbacks, all-time records, and the language of American football.', cats:[
+    ['SUPER BOWL HISTORY',  'Championship moments, upsets, iconic plays, and the MVPs who defined the biggest game of the year.'],
+    ['QB LEGENDS',          'The greatest quarterbacks in NFL history and the defining moments of their careers.'],
+    ['NFL RECORDS',         'All-time marks for passing yards, touchdowns, rushing yards, sacks, and receiving.'],
+    ['FOOTBALL LINGO',      'Formations, penalties, play types, and the unique terminology of the NFL.'],
+    ['HALL OF FAMERS',      'The legends enshrined in Canton and the careers that put them there.'],
+    ['TEAM DYNASTIES',      'The franchises that dominated their eras with sustained excellence and multiple championships.'],
+  ]},
+  { emoji:'🏀', name:'Basketball', desc:'NBA trivia covering championship dynasties, the greatest scorers, all-time records, and the modern era of basketball.', cats:[
+    ['NBA CHAMPIONSHIPS',   'Title runs, Finals MVPs, and the greatest moments in NBA championship history.'],
+    ['SCORING LEGENDS',     'The prolific scorers who pushed the boundaries of what is possible on a basketball court.'],
+    ['NBA RECORDS',         'All-time marks for points, assists, rebounds, blocks, and single-game performances.'],
+    ['BASKETBALL LINGO',    'Plays, positions, penalties, and the terminology unique to the game of basketball.'],
+    ['HALL OF FAMERS',      'The greats enshrined in Springfield and the legacies they built over their careers.'],
+    ['MODERN ERA',          'Today\'s stars, recent records, and the current state of the NBA.'],
+  ]},
+  { emoji:'🏒', name:'Hockey', desc:'NHL trivia from Stanley Cup dynasties to the greatest goal scorers and the fastest game on ice.', cats:[
+    ['STANLEY CUP HISTORY', 'Cup champions, dynasty teams, and the most iconic moments in playoff history.'],
+    ['SCORING LEGENDS',     'The greatest goal scorers and point producers to ever lace up skates in the NHL.'],
+    ['NHL RECORDS',         'All-time marks for goals, assists, wins, shutouts, and single-season performances.'],
+    ['HOCKEY LINGO',        'Penalties, positions, strategies, and the terminology unique to ice hockey.'],
+    ['HALL OF FAMERS',      'The legends enshrined in Toronto and the careers that defined the sport.'],
+    ['MODERN ERA',          'Today\'s stars, recent Cup winners, and the current state of the NHL.'],
+  ]},
+  { emoji:'⛳', name:'Golf', desc:'Golf trivia spanning the four Majors, the sport\'s greatest legends, and the unique language of the links.', cats:[
+    ['MAJOR CHAMPIONSHIPS', 'The Masters, US Open, The Open Championship, and PGA Championship history and champions.'],
+    ['GOLF LEGENDS',        'The greatest players to ever play the game and the careers that defined golf.'],
+    ['RECORDS & FIRSTS',    'Historic milestones, course records, and landmark moments in professional golf.'],
+    ['GOLF LINGO',          'Birdies, bogeys, eagles, and the unique terminology of the golf course.'],
+    ['MODERN ERA',          'Today\'s stars, recent Major winners, and the current state of professional golf.'],
+    ['RYDER CUP',           'The storied USA vs. Europe team competition and its greatest moments and matches.'],
+  ]},
+  { emoji:'⚽', name:'Soccer', desc:'World football trivia spanning FIFA World Cup history, global legends, record breakers, and modern club football.', cats:[
+    ['FIFA WORLD CUP',         'The greatest tournament in sports — champions, upsets, golden boots, and iconic moments.'],
+    ['GOAL SCORING LEGENDS',   'The greatest strikers and goal scorers in the history of the beautiful game.'],
+    ['RECORDS & FIRSTS',       'Historic milestones and landmark moments from across the world of football.'],
+    ['SOCCER LINGO',           'Rules, positions, tactics, and the terminology unique to the world\'s most popular sport.'],
+    ['MODERN ERA',             'Today\'s stars, recent champions, and the current state of world football.'],
+    ['CLUB FOOTBALL',          'The greatest clubs, leagues, and competitions from around the globe.'],
+  ]},
+];
+
+function openSettings() {
+  const content = document.getElementById('settings-content');
+  content.innerHTML = SETTINGS_INFO.map(sport => {
+    const catsHTML = sport.cats.map(([cat, desc]) =>
+      '<div class="settings-cat"><div class="settings-cat-name">' + cat + '</div><div class="settings-cat-desc">' + desc + '</div></div>'
+    ).join('');
+    return '<div class="settings-sport">'
+      + '<div class="settings-sport-header"><span class="settings-sport-emoji">' + sport.emoji + '</span><span class="settings-sport-name">' + sport.name + '</span></div>'
+      + '<div class="settings-sport-desc">' + sport.desc + '</div>'
+      + catsHTML
+      + '</div>';
+  }).join('');
+  document.getElementById('settings-overlay').classList.add('open');
+}
+
+function closeSettings() {
+  document.getElementById('settings-overlay').classList.remove('open');
+}
 
 // ── INITIALIZATION ────────────────────────────────────────────
 setSport('baseball');
