@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="96" fill="#120800"/>
+  <rect x="14" y="14" width="484" height="484" rx="84" fill="none" stroke="#d4a017" stroke-width="10" opacity="0.55"/>
+  <!-- handles -->
+  <path d="M176 150 C104 150 104 250 188 256" fill="none" stroke="#d4a017" stroke-width="20" stroke-linecap="round"/>
+  <path d="M336 150 C408 150 408 250 324 256" fill="none" stroke="#d4a017" stroke-width="20" stroke-linecap="round"/>
+  <!-- cup -->
+  <path d="M168 132 L344 132 L344 176 C344 256 304 312 256 312 C208 312 168 256 168 176 Z" fill="#d4a017"/>
+  <path d="M168 132 L344 132 L344 176 C344 256 304 312 256 312 C208 312 168 256 168 176 Z" fill="#f5d76e" opacity="0.25"/>
+  <!-- stem -->
+  <rect x="240" y="310" width="32" height="46" fill="#d4a017"/>
+  <!-- base -->
+  <rect x="206" y="352" width="100" height="20" rx="6" fill="#d4a017"/>
+  <rect x="180" y="372" width="152" height="30" rx="8" fill="#d4a017"/>
+  <!-- star -->
+  <path d="M256 170 l14 28 31 4 -22 22 5 31 -28 -15 -28 15 5 -31 -22 -22 31 -4 z" fill="#120800" opacity="0.85"/>
+</svg>

@@ -1,0 +1,19 @@
+{
+  "name": "HuddleUp Trivia",
+  "short_name": "HuddleUp",
+  "description": "A multi-sport trivia game — baseball, football, basketball, hockey, golf & soccer.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#120800",
+  "theme_color": "#d4a017",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

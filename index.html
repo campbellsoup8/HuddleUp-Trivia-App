@@ -6,6 +6,10 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="HuddleUp Trivia">
+<meta name="theme-color" content="#d4a017">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
 <title>HuddleUp Trivia</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;600;700&family=Special+Elite&display=swap" rel="stylesheet">
 <style>
@@ -89,6 +93,14 @@ body.night .field-bg::after{content:'';position:absolute;bottom:0;left:0;right:0
 .setup-box{background:rgba(10,4,0,.88);border:4px solid var(--gold);border-radius:14px;padding:32px 30px;max-width:640px;width:100%;text-align:center;box-shadow:0 0 60px rgba(212,160,23,.35);max-height:96vh;overflow-y:auto;position:relative}
 #settings-btn{position:absolute;top:10px;right:12px;z-index:100;background:none;border:none;font-size:1.4rem;cursor:pointer;color:#777;transition:color .2s,transform .4s;line-height:1;padding:8px;pointer-events:auto}
 #settings-btn:hover{color:#aaa;transform:rotate(60deg)}
+#help-btn{position:absolute;top:11px;left:13px;z-index:100;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.05);border:1.5px solid #777;color:#999;font-family:'Oswald',sans-serif;font-weight:700;font-size:1.05rem;cursor:pointer;transition:all .2s;line-height:1;padding:0}
+#help-btn:hover{border-color:var(--gold);color:var(--gold)}
+.howto-sec{margin-bottom:20px;text-align:left}
+.howto-sec:last-child{margin-bottom:0}
+.howto-h{font-family:'Bebas Neue',Impact,sans-serif;color:var(--gold);font-size:1.18rem;letter-spacing:2px;margin-bottom:6px;display:flex;align-items:center;gap:9px}
+.howto-p{font-family:'Special Elite',serif;color:var(--cream);font-size:.9rem;line-height:1.6;opacity:.85}
+.howto-p strong{color:var(--gold);opacity:1}
+.howto-p .mode-name{color:var(--gold);font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.5px;font-size:.84rem}
 .settings-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:300;align-items:center;justify-content:center;padding:20px}
 .settings-overlay.open{display:flex}
 .settings-modal{background:rgba(10,4,0,.96);border:3px solid rgba(140,140,140,.35);border-radius:14px;padding:28px 26px 24px;max-width:580px;width:100%;max-height:88vh;overflow-y:auto;position:relative}
@@ -257,6 +269,7 @@ body.night .field-bg::after{content:'';position:absolute;bottom:0;left:0;right:0
 <!-- SETUP -->
 <div id="s-setup" class="screen active">
 <div class="setup-box">
+  <button id="help-btn" onclick="openHowTo()" title="How to Play">?</button>
   <button id="settings-btn" onclick="openSettings()" title="Settings">⚙</button>
   <div class="game-logo"><span class="logo-ball" id="logo-emoji">🏆</span><span>HUDDLEUP</span><span>TRIVIA</span></div>
   <div class="game-sub" id="game-sub">Multi-Sport Trivia Challenge</div>
@@ -325,10 +338,46 @@ body.night .field-bg::after{content:'';position:absolute;bottom:0;left:0;right:0
 </div>
 </div>
 
+<!-- HOW TO PLAY -->
+<div class="settings-overlay" id="howto-overlay" onclick="if(event.target===this)closeHowTo()">
+<div class="settings-modal">
+  <button class="settings-close" onclick="closeHowTo()">✕</button>
+  <div class="settings-title" style="color:var(--gold)">📖 HOW TO PLAY</div>
+  <div class="howto-sec">
+    <div class="howto-h">🎯 The Goal</div>
+    <div class="howto-p">Score the most points by answering sports trivia. Pick a sport, dial in your settings, then tap tiles on the board to reveal questions.</div>
+  </div>
+  <div class="howto-sec">
+    <div class="howto-h">🎮 Game Modes</div>
+    <div class="howto-p">
+      <span class="mode-name">In Person</span> — A host reads each clue aloud and marks answers right or wrong. Best for a group around one screen or TV.<br><br>
+      <span class="mode-name">Solo</span> — Play on your own. Every question is multiple choice and graded automatically.<br><br>
+      <span class="mode-name">Multiplayer</span> — Teams share one device and pass it around. Each team answers multiple-choice questions on their turn.
+    </div>
+  </div>
+  <div class="howto-sec">
+    <div class="howto-h">🟦 The Board</div>
+    <div class="howto-p">Categories run across the top; point values (<strong>100–400</strong>) down the side. The higher the points, the tougher the question. Tap any tile to play it.</div>
+  </div>
+  <div class="howto-sec">
+    <div class="howto-h">💎 Diamond Double</div>
+    <div class="howto-p">The <strong>light-blue tiles</strong> are Diamond Doubles. Answer correctly and you earn <strong>double the points</strong> — but a wrong answer costs you double too. Risk and reward!</div>
+  </div>
+  <div class="howto-sec">
+    <div class="howto-h">🏆 Final Round</div>
+    <div class="howto-p">Once the board is cleared, every team <strong>wagers</strong> points on one last question. Bet wisely — the lead can change in an instant.</div>
+  </div>
+  <div class="howto-sec">
+    <div class="howto-h">⏱️ Timer &amp; Difficulty</div>
+    <div class="howto-p">Each question runs on a countdown clock. Choose from four difficulty levels — <strong>Beginner</strong> to <strong>Expert</strong> — to match your crew.</div>
+  </div>
+</div>
+</div>
+
 <!-- BOARD -->
 <div id="s-board" class="screen">
   <div class="board-header">
-    <div class="board-title" id="board-title">⚾ Big League Trivia</div>
+    <div class="board-title" id="board-title">🏆 HuddleUp Trivia</div>
     <button class="skip-btn" id="skip-btn" onclick="goFinal()">Final Round →</button>
   </div>
   <div class="scores-bar" id="scores-bar"></div>
@@ -386,7 +435,7 @@ const BASEBALL_Q = {
       { clue: "This franchise has won the most World Series titles in MLB history with 27 championships.", answer: "New York Yankees", accept: ["new york yankees", "yankees", "ny yankees"], choices: ["Boston Red Sox", "St. Louis Cardinals", "Los Angeles Dodgers"], diff: 1 },
       { clue: "These 'Amazin'' underdogs shocked the baseball world by winning the 1969 World Series.", answer: "New York Mets", accept: ["new york mets", "mets", "ny mets"], choices: ["Chicago Cubs", "Baltimore Orioles", "Cincinnati Reds"], diff: 2 },
       { clue: "This Canadian franchise won back-to-back World Series titles in 1992 and 1993.", answer: "Toronto Blue Jays", accept: ["toronto blue jays", "blue jays"], choices: ["Montreal Expos", "Minnesota Twins", "Oakland Athletics"], diff: 3 },
-      { clue: "This team ended a 32-year championship drought by winning the 2020 World Series in a neutral-site bubble format.", answer: "Los Angeles Dodgers", accept: ["los angeles dodgers", "dodgers", "la dodgers"], choices: ["Tampa Bay Rays", "Houston Astros", "Chicago Cubs"], diff: 4 },
+      { clue: "This team ended a 32-year championship drought by winning the 2020 World Series in a neutral-site bubble format.", answer: "Los Angeles Dodgers", accept: ["los angeles dodgers", "dodgers", "la dodgers"], choices: ["Tampa Bay Rays", "Houston Astros", "Chicago Cubs"], diff: 2 },
     ],
     200: [
       { clue: "The 2004 World Series champions who overcame an 0-3 ALCS deficit to end their famous 86-year championship drought.", answer: "Boston Red Sox", accept: ["boston red sox", "red sox"], choices: ["New York Yankees", "St. Louis Cardinals", "Chicago Cubs"], diff: 1 },
@@ -401,7 +450,7 @@ const BASEBALL_Q = {
       { clue: "The 2023 World Series was won by this franchise for the first time in their history, defeating the Diamondbacks.", answer: "Texas Rangers", accept: ["texas rangers", "rangers"], choices: ["Arizona Diamondbacks", "Houston Astros", "Atlanta Braves"], diff: 4 },
     ],
     400: [
-      { clue: "This Pittsburgh Pirates second baseman hit a walk-off home run in the bottom of the 9th of Game 7 to win the 1960 World Series.", answer: "Bill Mazeroski", accept: ["bill mazeroski", "mazeroski"], choices: ["Roberto Clemente", "Dick Groat", "Roy Face"], diff: 1 },
+      { clue: "This Pittsburgh Pirates second baseman hit a walk-off home run in the bottom of the 9th of Game 7 to win the 1960 World Series.", answer: "Bill Mazeroski", accept: ["bill mazeroski", "mazeroski"], choices: ["Roberto Clemente", "Dick Groat", "Roy Face"], diff: 3 },
       { clue: "Injured and barely able to walk, this Dodger hit a pinch-hit two-run walk-off homer in Game 1 of the 1988 World Series.", answer: "Kirk Gibson", accept: ["kirk gibson", "gibson"], choices: ["Steve Sax", "Mike Scioscia", "Mickey Hatcher"], diff: 2 },
       { clue: "This Red Sox catcher waved his iconic home run fair with his arm in Game 6 of the 1975 World Series.", answer: "Carlton Fisk", accept: ["carlton fisk", "fisk"], choices: ["Johnny Bench", "Thurman Munson", "Ted Simmons"], diff: 3 },
       { clue: "Freddie Freeman hit a walk-off grand slam in Game 1 of the 2024 World Series for this team.", answer: "Los Angeles Dodgers", accept: ["los angeles dodgers", "dodgers", "la dodgers"], choices: ["New York Yankees", "San Francisco Giants", "Atlanta Braves"], diff: 4 },
@@ -430,7 +479,7 @@ const BASEBALL_Q = {
       { clue: "Barry Bonds set the single-season home run record in 2001 with this many home runs.", answer: "73", accept: ["73", "seventy-three", "seventy three"], choices: ["70", "72", "71"], diff: 1 },
       { clue: "Sammy Sosa hit 66 home runs in 1998 for the Cubs, finishing second to Mark McGwire. What was McGwire's total?", answer: "70", accept: ["70", "seventy"], choices: ["68", "72", "69"], diff: 2 },
       { clue: "Ken Griffey Jr. hit a career-high 56 home runs in 1997 and 1998 while playing for this team.", answer: "Seattle Mariners", accept: ["seattle mariners", "mariners"], choices: ["Cincinnati Reds", "New York Yankees", "Atlanta Braves"], diff: 3 },
-      { clue: "After 17 seasons with the Los Angeles Angels, Shohei Ohtani signed a record-breaking $700 million deal with this team before the 2024 season.", answer: "Los Angeles Dodgers", accept: ["los angeles dodgers", "dodgers", "la dodgers"], choices: ["New York Yankees", "San Francisco Giants", "Chicago Cubs"], diff: 4 },
+      { clue: "After 17 seasons with the Los Angeles Angels, Shohei Ohtani signed a record-breaking $700 million deal with this team before the 2024 season.", answer: "Los Angeles Dodgers", accept: ["los angeles dodgers", "dodgers", "la dodgers"], choices: ["New York Yankees", "San Francisco Giants", "Chicago Cubs"], diff: 1 },
     ],
   },
   2: {
@@ -444,7 +493,7 @@ const BASEBALL_Q = {
       { clue: "Don Larsen threw the only perfect game in World Series history in 1956, playing for this team.", answer: "New York Yankees", accept: ["new york yankees", "yankees", "ny yankees"], choices: ["Brooklyn Dodgers", "Milwaukee Braves", "Chicago White Sox"], diff: 1 },
       { clue: "Hank Aaron broke Babe Ruth's all-time home run record with his 715th homer in this year.", answer: "1974", accept: ["1974"], choices: ["1972", "1973", "1975"], diff: 2 },
       { clue: "Joe DiMaggio's 56-game hitting streak ended when it was stopped by pitchers from this team.", answer: "Cleveland Indians", accept: ["cleveland indians", "indians", "cleveland"], choices: ["Boston Red Sox", "Chicago White Sox", "St. Louis Browns"], diff: 3 },
-      { clue: "The National League officially adopted the universal designated hitter rule permanently starting in this year.", answer: "2022", accept: ["2022"], choices: ["2020", "2021", "2023"], diff: 4 },
+      { clue: "The National League officially adopted the universal designated hitter rule permanently starting in this year.", answer: "2022", accept: ["2022"], choices: ["2020", "2021", "2023"], diff: 2 },
     ],
     300: [
       { clue: "Fenway Park, the oldest active MLB stadium, was built in this year.", answer: "1912", accept: ["1912"], choices: ["1910", "1914", "1916"], diff: 1 },
@@ -516,7 +565,7 @@ const BASEBALL_Q = {
       { clue: "Mariano Rivera became the first player elected unanimously to the Hall of Fame in this year.", answer: "2019", accept: ["2019"], choices: ["2017", "2018", "2020"], diff: 4 },
     ],
     200: [
-      { clue: "Lou Gehrig earned the nickname 'Iron Horse' by playing this many consecutive games, a record at the time.", answer: "2,130", accept: ["2130", "2,130", "two thousand one hundred thirty"], choices: ["1,897", "2,009", "1,999"], diff: 1 },
+      { clue: "Lou Gehrig earned the nickname 'Iron Horse' by playing this many consecutive games, a record at the time.", answer: "2,130", accept: ["2130", "2,130", "two thousand one hundred thirty"], choices: ["1,897", "2,009", "1,999"], diff: 2 },
       { clue: "Reggie Jackson earned the nickname 'Mr. October' by hitting three home runs on three consecutive pitches in Game 6 of the 1977 World Series for this team.", answer: "New York Yankees", accept: ["new york yankees", "yankees", "ny yankees"], choices: ["Oakland Athletics", "California Angels", "Baltimore Orioles"], diff: 2 },
       { clue: "Nolan Ryan, known as 'The Ryan Express,' pitched in the majors until he was this age, a record for a starting pitcher.", answer: "46", accept: ["46", "forty-six", "forty six"], choices: ["44", "45", "47"], diff: 3 },
       { clue: "David Ortiz, known as 'Big Papi,' was inducted into the Baseball Hall of Fame in this year.", answer: "2022", accept: ["2022"], choices: ["2020", "2021", "2023"], diff: 4 },
@@ -528,7 +577,7 @@ const BASEBALL_Q = {
       { clue: "Ichiro Suzuki made history in 2001 by winning both the AL MVP and this other award in the same season.", answer: "Rookie of the Year", accept: ["rookie of the year", "al rookie of the year", "american league rookie of the year"], choices: ["Gold Glove", "Silver Slugger", "Batting Title"], diff: 4 },
     ],
     400: [
-      { clue: "Ty Cobb, known as the 'Georgia Peach,' holds the MLB all-time career batting average record at .366.", answer: "Ty Cobb", accept: ["ty cobb", "cobb"], choices: ["Rogers Hornsby", "Ted Williams", "Joe Jackson"], diff: 1 },
+      { clue: "Ty Cobb, known as the 'Georgia Peach,' holds the MLB all-time career batting average record at .366.", answer: "Ty Cobb", accept: ["ty cobb", "cobb"], choices: ["Rogers Hornsby", "Ted Williams", "Joe Jackson"], diff: 2 },
       { clue: "Sandy Koufax won three Cy Young Awards and abruptly retired at just 30 years old due to this medical condition.", answer: "arthritis", accept: ["arthritis", "elbow arthritis", "traumatic arthritis"], choices: ["torn rotator cuff", "bone spurs", "elbow ligament damage"], diff: 2 },
       { clue: "Roberto Clemente became the first Latin American player inducted into the Baseball Hall of Fame in 1973. He died in a plane crash while delivering aid to this country.", answer: "Nicaragua", accept: ["nicaragua"], choices: ["Puerto Rico", "Dominican Republic", "Panama"], diff: 3 },
       { clue: "Mike Piazza holds the record for most career home runs by a catcher with 427. For which team did he spend most of his career?", answer: "New York Mets", accept: ["new york mets", "mets", "ny mets"], choices: ["Los Angeles Dodgers", "San Diego Padres", "Florida Marlins"], diff: 4 },
@@ -549,8 +598,8 @@ const FOOTBALL_Q = {
     100: [
       { clue: "The Kansas City Chiefs won Super Bowl LVII in February 2023, defeating this team 38-35.", answer: "Philadelphia Eagles", accept: ["philadelphia eagles", "eagles"], choices: ["San Francisco 49ers", "Cincinnati Bengals", "Buffalo Bills"], diff: 1 },
       { clue: "The New England Patriots have the most Super Bowl appearances in NFL history. How many times have they appeared?", answer: "11", accept: ["11", "eleven"], choices: ["9", "10", "8"], diff: 2 },
-      { clue: "The Pittsburgh Steelers are tied for the most Super Bowl wins in NFL history with this many championships.", answer: "6", accept: ["6", "six"], choices: ["5", "7", "4"], diff: 3 },
-      { clue: "The 1972 Miami Dolphins completed the only perfect season in NFL history, finishing with this record.", answer: "17-0", accept: ["17-0", "17 and 0", "seventeen and zero"], choices: ["16-0", "15-0", "18-0"], diff: 4 },
+      { clue: "The Pittsburgh Steelers are tied for the most Super Bowl wins in NFL history with this many championships.", answer: "6", accept: ["6", "six"], choices: ["5", "7", "4"], diff: 2 },
+      { clue: "The 1972 Miami Dolphins completed the only perfect season in NFL history, finishing with this record.", answer: "17-0", accept: ["17-0", "17 and 0", "seventeen and zero"], choices: ["16-0", "15-0", "18-0"], diff: 1 },
     ],
     200: [
       { clue: "In Super Bowl LI, the New England Patriots overcame a 28-3 deficit to defeat this team in overtime.", answer: "Atlanta Falcons", accept: ["atlanta falcons", "falcons"], choices: ["Seattle Seahawks", "Carolina Panthers", "Los Angeles Rams"], diff: 1 },
@@ -576,7 +625,7 @@ const FOOTBALL_Q = {
       { clue: "Tom Brady won 7 Super Bowls, including one with the Tampa Bay Buccaneers in Super Bowl LV. For which team did he win his first 6 championships?", answer: "New England Patriots", accept: ["new england patriots", "patriots", "new england"], choices: ["Tampa Bay Buccaneers", "Indianapolis Colts", "Green Bay Packers"], diff: 1 },
       { clue: "Patrick Mahomes became the youngest Super Bowl MVP at 23 years old when his Kansas City Chiefs won Super Bowl this number.", answer: "LIV", accept: ["liv", "54", "super bowl liv", "super bowl 54"], choices: ["LV", "LIII", "LVI"], diff: 2 },
       { clue: "Peyton Manning holds the record for most NFL MVP awards. How many times did he win the award?", answer: "5", accept: ["5", "five"], choices: ["4", "3", "6"], diff: 3 },
-      { clue: "Joe Montana threw zero interceptions in his four Super Bowl appearances. How many Super Bowls did he win?", answer: "4", accept: ["4", "four"], choices: ["3", "5", "2"], diff: 4 },
+      { clue: "Joe Montana threw zero interceptions in his four Super Bowl appearances. How many Super Bowls did he win?", answer: "4", accept: ["4", "four"], choices: ["3", "5", "2"], diff: 2 },
     ],
     200: [
       { clue: "Lamar Jackson became the first player in NFL history to win the MVP award unanimously twice. He plays for this team.", answer: "Baltimore Ravens", accept: ["baltimore ravens", "ravens"], choices: ["Kansas City Chiefs", "Cincinnati Bengals", "Buffalo Bills"], diff: 1 },
@@ -585,7 +634,7 @@ const FOOTBALL_Q = {
       { clue: "Dan Marino set the NFL record for passing yards in a season in 1984 with 5,084 yards and this many touchdown passes, both records at the time.", answer: "48", accept: ["48", "forty-eight", "forty eight"], choices: ["45", "50", "55"], diff: 4 },
     ],
     300: [
-      { clue: "Brett Favre holds the NFL record for consecutive starts at quarterback. How many consecutive starts did he make?", answer: "297", accept: ["297", "two hundred ninety-seven", "two hundred ninety seven"], choices: ["240", "271", "321"], diff: 1 },
+      { clue: "Brett Favre holds the NFL record for consecutive starts at quarterback. How many consecutive starts did he make?", answer: "297", accept: ["297", "two hundred ninety-seven", "two hundred ninety seven"], choices: ["240", "271", "321"], diff: 3 },
       { clue: "Brett Favre won the NFL MVP award three consecutive times from 1995 to 1997 while playing for this team.", answer: "Green Bay Packers", accept: ["green bay packers", "packers", "green bay"], choices: ["Minnesota Vikings", "New York Jets", "New England Patriots"], diff: 2 },
       { clue: "Joe Burrow was the #1 overall pick in the 2020 NFL Draft out of LSU. In just his second season, he led the Bengals to the Super Bowl against this team.", answer: "Los Angeles Rams", accept: ["los angeles rams", "rams", "la rams"], choices: ["San Francisco 49ers", "Kansas City Chiefs", "New England Patriots"], diff: 3 },
       { clue: "Peyton Manning set the single-season records for passing yards (5,477) and touchdown passes (55) in this year.", answer: "2013", accept: ["2013"], choices: ["2004", "2012", "2014"], diff: 4 },
@@ -599,8 +648,8 @@ const FOOTBALL_Q = {
   },
   2: {
     100: [
-      { clue: "Emmitt Smith holds the NFL all-time rushing yards record. How many career rushing yards did he accumulate?", answer: "18,355", accept: ["18355", "18,355"], choices: ["16,726", "15,269", "17,162"], diff: 1 },
-      { clue: "Jerry Rice holds the NFL records for career receiving yards (22,895) and receiving touchdowns. How many career receiving TDs did he score?", answer: "197", accept: ["197", "one hundred ninety-seven"], choices: ["178", "208", "156"], diff: 2 },
+      { clue: "Emmitt Smith holds the NFL all-time rushing yards record. How many career rushing yards did he accumulate?", answer: "18,355", accept: ["18355", "18,355"], choices: ["16,726", "15,269", "17,162"], diff: 3 },
+      { clue: "Jerry Rice holds the NFL records for career receiving yards (22,895) and receiving touchdowns. How many career receiving TDs did he score?", answer: "197", accept: ["197", "one hundred ninety-seven"], choices: ["178", "208", "156"], diff: 3 },
       { clue: "Eric Dickerson set the single-season rushing record in 1984 with this many yards, playing for the LA Rams.", answer: "2,105", accept: ["2105", "2,105", "two thousand one hundred five"], choices: ["1,966", "2,003", "1,884"], diff: 3 },
       { clue: "Justin Tucker set the longest field goal in NFL history in 2021. How long was the kick?", answer: "66 yards", accept: ["66", "66 yards", "sixty-six yards"], choices: ["64 yards", "63 yards", "68 yards"], diff: 4 },
     ],
@@ -628,7 +677,7 @@ const FOOTBALL_Q = {
       { clue: "A 'Hail Mary' in football refers to this type of desperate pass.", answer: "long pass at the end of the game", accept: ["hail mary", "long pass", "desperation pass", "long last-second pass"], choices: ["short screen pass", "fake punt pass", "draw play"], diff: 1 },
       { clue: "The 'red zone' in football refers to the area inside the opponent's how many yard line?", answer: "20-yard line", accept: ["20", "twenty", "20 yard line", "twenty yard line"], choices: ["30-yard line", "10-yard line", "25-yard line"], diff: 2 },
       { clue: "A 'blitz' in football occurs when the defense sends more than this many pass rushers.", answer: "4", accept: ["4", "four"], choices: ["3", "5", "6"], diff: 3 },
-      { clue: "A 'Pick-6' in football occurs when a defender intercepts a pass and does this.", answer: "returns it for a touchdown", accept: ["returns it for a touchdown", "scores a touchdown", "pick six", "pick-6"], choices: ["kicks a field goal", "returns it for a safety", "fumbles after the interception"], diff: 4 },
+      { clue: "A 'Pick-6' in football occurs when a defender intercepts a pass and does this.", answer: "returns it for a touchdown", accept: ["returns it for a touchdown", "scores a touchdown", "pick six", "pick-6"], choices: ["kicks a field goal", "returns it for a safety", "fumbles after the interception"], diff: 1 },
     ],
     200: [
       { clue: "The 'two-minute warning' in football is an automatic timeout called when how much time is left in each half?", answer: "2 minutes", accept: ["2 minutes", "two minutes", "2:00"], choices: ["5 minutes", "1 minute", "3 minutes"], diff: 1 },
@@ -654,7 +703,7 @@ const FOOTBALL_Q = {
       { clue: "Jerry Rice is widely considered the greatest wide receiver in NFL history. He spent most of his career with this team.", answer: "San Francisco 49ers", accept: ["san francisco 49ers", "49ers", "niners", "san francisco"], choices: ["Dallas Cowboys", "Denver Broncos", "Green Bay Packers"], diff: 1 },
       { clue: "Lawrence Taylor revolutionized the linebacker position and won two Super Bowls with this NFL franchise.", answer: "New York Giants", accept: ["new york giants", "giants", "ny giants"], choices: ["Pittsburgh Steelers", "Chicago Bears", "Dallas Cowboys"], diff: 2 },
       { clue: "Walter Payton, nicknamed 'Sweetness,' was a legendary Bears running back. He won his only Super Bowl championship in this year.", answer: "1985", accept: ["1985", "super bowl xx", "1986 season"], choices: ["1983", "1987", "1984"], diff: 3 },
-      { clue: "Reggie White, nicknamed 'The Minister of Defense,' held the NFL career sacks record before Bruce Smith. White won a Super Bowl with this team.", answer: "Green Bay Packers", accept: ["green bay packers", "packers", "green bay"], choices: ["Philadelphia Eagles", "Carolina Panthers", "San Francisco 49ers"], diff: 4 },
+      { clue: "Reggie White, nicknamed 'The Minister of Defense,' held the NFL career sacks record before Bruce Smith. White won a Super Bowl with this team.", answer: "Green Bay Packers", accept: ["green bay packers", "packers", "green bay"], choices: ["Philadelphia Eagles", "Carolina Panthers", "San Francisco 49ers"], diff: 2 },
     ],
     200: [
       { clue: "Emmitt Smith won three Super Bowls with the Dallas Cowboys and holds the NFL all-time rushing record. He was part of a trio called 'The Triplets' along with Michael Irvin and this quarterback.", answer: "Troy Aikman", accept: ["troy aikman", "aikman"], choices: ["Steve Young", "Drew Bledsoe", "Vinny Testaverde"], diff: 1 },
@@ -724,7 +773,7 @@ const BASKETBALL_Q = {
       { clue: "The San Antonio Spurs won 5 titles, all with Tim Duncan. Which year was their FIRST championship?", answer: "1999", accept: ["1999"], choices: ["1997", "2001", "2003"], diff: 4 }
     ],
     300: [
-      { clue: "LeBron James made an iconic block on this Golden State Warriors player in Game 7 of the 2016 Finals.", answer: "Andre Iguodala", accept: ["andre iguodala", "iguodala"], choices: ["Klay Thompson", "Draymond Green", "Stephen Curry"], diff: 1 },
+      { clue: "LeBron James made an iconic block on this Golden State Warriors player in Game 7 of the 2016 Finals.", answer: "Andre Iguodala", accept: ["andre iguodala", "iguodala"], choices: ["Klay Thompson", "Draymond Green", "Stephen Curry"], diff: 3 },
       { clue: "The Miami Heat's 'Big Three' of LeBron, Wade, and Bosh won back-to-back titles in what years?", answer: "2012 and 2013", accept: ["2012 and 2013", "2012 & 2013", "2012", "2013"], choices: ["2011 and 2012", "2013 and 2014", "2010 and 2011"], diff: 2 },
       { clue: "The Cleveland Cavaliers came back from a 3-1 deficit to beat which team in the 2016 NBA Finals?", answer: "Golden State Warriors", accept: ["golden state warriors", "warriors", "golden state"], choices: ["San Antonio Spurs", "Oklahoma City Thunder", "Houston Rockets"], diff: 3 },
       { clue: "Which player won NBA Finals MVP in 2024 when the Boston Celtics beat the Dallas Mavericks?", answer: "Jayson Tatum", accept: ["jayson tatum", "tatum"], choices: ["Jaylen Brown", "Kristaps Porzingis", "Al Horford"], diff: 4 }
@@ -777,7 +826,7 @@ const BASKETBALL_Q = {
     ],
     300: [
       { clue: "Stephen Curry set the all-time single-season record for 3-pointers made. How many did he hit in 2015-16?", answer: "402", accept: ["402", "four hundred and two"], choices: ["367", "387", "421"], diff: 1 },
-      { clue: "Martin Brodeur… wait, wrong sport. Which NBA player holds the record for most career points scored?", answer: "LeBron James", accept: ["lebron james", "lebron", "james"], choices: ["Kareem Abdul-Jabbar", "Karl Malone", "Kobe Bryant"], diff: 2 },
+      { clue: "LeBron James surpassed Kareem Abdul-Jabbar in 2023 to become the NBA's all-time leading scorer. Which franchise did LeBron play for when he broke the record?", answer: "Los Angeles Lakers", accept: ["los angeles lakers", "lakers", "la lakers"], choices: ["Miami Heat", "Cleveland Cavaliers", "Boston Celtics"], diff: 1 },
       { clue: "Klay Thompson scored 37 points in a single quarter in the same game he hit 14 three-pointers. Which quarter?", answer: "Third quarter", accept: ["third quarter", "third", "3rd quarter", "3rd"], choices: ["First quarter", "Second quarter", "Fourth quarter"], diff: 3 },
       { clue: "The career steals record holder John Stockton accumulated 3,265 steals. Who is second all-time in career steals?", answer: "Jason Kidd", accept: ["jason kidd", "kidd"], choices: ["Michael Jordan", "Gary Payton", "Scottie Pippen"], diff: 4 }
     ],
@@ -830,7 +879,7 @@ const BASKETBALL_Q = {
     300: [
       { clue: "Which Hall of Famer won 6 NBA titles with the Chicago Bulls and also won 2 Olympic gold medals?", answer: "Michael Jordan", accept: ["michael jordan", "jordan", "mj"], choices: ["Scottie Pippen", "Dennis Rodman", "Horace Grant"], diff: 1 },
       { clue: "Larry Bird won 3 consecutive MVP awards. In what years were those three MVPs awarded?", answer: "1984, 1985, 1986", accept: ["1984 1985 1986", "1984-1986", "84 85 86"], choices: ["1981, 1982, 1983", "1982, 1983, 1984", "1985, 1986, 1987"], diff: 2 },
-      { clue: "Magic Johnson is known for a remarkable ability to play all 5 positions. What was his listed position?", answer: "Point guard", accept: ["point guard", "pg"], choices: ["Shooting guard", "Power forward", "Small forward"], diff: 3 },
+      { clue: "Magic Johnson is known for a remarkable ability to play all 5 positions. What was his listed position?", answer: "Point guard", accept: ["point guard", "pg"], choices: ["Shooting guard", "Power forward", "Small forward"], diff: 1 },
       { clue: "Hakeem Olajuwon's Houston Rockets won back-to-back titles in 1994 and 1995. The 1994 win was notable because it was the year what famous player was temporarily retired?", answer: "Michael Jordan", accept: ["michael jordan", "jordan", "mj"], choices: ["Magic Johnson", "Larry Bird", "Shaquille O'Neal"], diff: 4 }
     ],
     400: [
@@ -905,7 +954,7 @@ const HOCKEY_Q = {
   1: { // SCORING LEGENDS
     100: [
       { clue: "Known as 'The Great One,' this player holds virtually every major NHL offensive record.", answer: "Wayne Gretzky", accept: ["wayne gretzky", "gretzky", "the great one"], choices: ["Mario Lemieux", "Gordie Howe", "Bobby Hull"], diff: 1 },
-      { clue: "Wayne Gretzky's career goals total is 894. Remarkably, his assists alone (1,963) exceed any other player's total what?", answer: "Points", accept: ["points", "total points", "career points"], choices: ["Goals", "Assists", "Games played"], diff: 2 },
+      { clue: "Wayne Gretzky's career goals total is 894. Remarkably, his assists alone (1,963) exceed any other player's total what?", answer: "Points", accept: ["points", "total points", "career points"], choices: ["Goals", "Assists", "Games played"], diff: 1 },
       { clue: "Mario Lemieux scored 199 points in a single season (1988-89), the second most ever. Who scored more in a single season?", answer: "Wayne Gretzky", accept: ["wayne gretzky", "gretzky", "the great one"], choices: ["Gordie Howe", "Mike Bossy", "Brett Hull"], diff: 3 },
       { clue: "Gordie Howe played professionally into his 50s and scored how many career NHL goals?", answer: "801", accept: ["801", "eight hundred one"], choices: ["741", "894", "731"], diff: 4 }
     ],
@@ -933,7 +982,7 @@ const HOCKEY_Q = {
       { clue: "Martin Brodeur of the New Jersey Devils holds the NHL record for most career wins by a goaltender with how many?", answer: "691", accept: ["691", "six hundred ninety one"], choices: ["543", "612", "724"], diff: 1 },
       { clue: "Wayne Gretzky won how many Hart Trophies (MVP awards), the most in NHL history?", answer: "9", accept: ["9", "nine"], choices: ["6", "7", "11"], diff: 2 },
       { clue: "Tiger Williams holds the all-time record for career penalty minutes. How many penalty minutes did he accumulate?", answer: "3,966", accept: ["3966", "3,966"], choices: ["2,819", "4,421", "3,212"], diff: 3 },
-      { clue: "Glenn Hall set the record for most consecutive goaltender starts (502 games) playing without what piece of equipment?", answer: "A mask", accept: ["a mask", "mask", "goalie mask", "face mask"], choices: ["Blocker", "Leg pads", "Chest protector"], diff: 4 }
+      { clue: "Glenn Hall set the record for most consecutive goaltender starts (502 games) playing without what piece of equipment?", answer: "A mask", accept: ["a mask", "mask", "goalie mask", "face mask"], choices: ["Blocker", "Leg pads", "Chest protector"], diff: 2 }
     ],
     200: [
       { clue: "Martin Brodeur also holds the record for most career shutouts with how many?", answer: "125", accept: ["125", "one hundred twenty five"], choices: ["98", "112", "141"], diff: 1 },
@@ -994,7 +1043,7 @@ const HOCKEY_Q = {
       { clue: "Patrick Roy won the Stanley Cup with two different franchises. The Montreal Canadiens was one — name the other.", answer: "Colorado Avalanche", accept: ["colorado avalanche", "avalanche", "colorado"], choices: ["Toronto Maple Leafs", "Boston Bruins", "Detroit Red Wings"], diff: 4 }
     ],
     300: [
-      { clue: "Mario Lemieux won 2 Stanley Cups and 3 Hart Trophies. He overcame which serious illness during his playing career?", answer: "Hodgkin's lymphoma", accept: ["hodgkin's lymphoma", "hodgkins lymphoma", "lymphoma", "cancer"], choices: ["Leukemia", "Diabetes", "Heart disease"], diff: 1 },
+      { clue: "Mario Lemieux won 2 Stanley Cups and 3 Hart Trophies. He overcame which serious illness during his playing career?", answer: "Hodgkin's lymphoma", accept: ["hodgkin's lymphoma", "hodgkins lymphoma", "lymphoma", "cancer"], choices: ["Leukemia", "Diabetes", "Heart disease"], diff: 3 },
       { clue: "Gordie Howe was known for his toughness and played in 5 decades. What was unique about his final professional season?", answer: "He was 52 years old", accept: ["he was 52", "played at 52", "played into his 50s", "played in his 50s"], choices: ["He played with his son", "He was the oldest player ever at 65", "He came back after a 10-year retirement"], diff: 2 },
       { clue: "Bobby Orr won 2 Stanley Cups with the Boston Bruins. How many consecutive Norris Trophies (best defenseman) did he win?", answer: "8", accept: ["8", "eight"], choices: ["5", "6", "10"], diff: 3 },
       { clue: "Wayne Gretzky won 4 Stanley Cups, all with which team?", answer: "Edmonton Oilers", accept: ["edmonton oilers", "oilers", "edmonton"], choices: ["Los Angeles Kings", "New York Rangers", "Calgary Flames"], diff: 4 }
@@ -1008,7 +1057,7 @@ const HOCKEY_Q = {
   },
   5: { // MODERN ERA
     100: [
-      { clue: "Alex Ovechkin surpassed Wayne Gretzky's all-time goals record in 2024. What goal number broke the record?", answer: "895", accept: ["895", "goal 895", "eight hundred ninety five"], choices: ["881", "900", "910"], diff: 1 },
+      { clue: "Alex Ovechkin surpassed Wayne Gretzky's all-time goals record in 2024. What goal number broke the record?", answer: "895", accept: ["895", "goal 895", "eight hundred ninety five"], choices: ["881", "900", "910"], diff: 3 },
       { clue: "Sidney Crosby has won 3 Stanley Cups, all with which team?", answer: "Pittsburgh Penguins", accept: ["pittsburgh penguins", "penguins", "pittsburgh"], choices: ["Washington Capitals", "Boston Bruins", "Tampa Bay Lightning"], diff: 2 },
       { clue: "Connor McDavid is known as the fastest skater in the NHL. He plays for which team?", answer: "Edmonton Oilers", accept: ["edmonton oilers", "oilers", "edmonton"], choices: ["Colorado Avalanche", "Toronto Maple Leafs", "Vegas Golden Knights"], diff: 3 },
       { clue: "Auston Matthews scored 60 goals in 2021-22, the first player to do so since Mario Lemieux in 1995-96. Matthews plays for which team?", answer: "Toronto Maple Leafs", accept: ["toronto maple leafs", "maple leafs", "toronto", "leafs"], choices: ["Montreal Canadiens", "Ottawa Senators", "Buffalo Sabres"], diff: 4 }
@@ -1045,7 +1094,7 @@ const GOLF_Q = {
     100: [
       { clue: "This tournament is held every April at Augusta National Golf Club.", answer: "The Masters", accept: ["the masters", "masters", "masters tournament"], choices: ["The US Open", "The Open Championship", "PGA Championship"], diff: 1 },
       { clue: "How many major championships did Tiger Woods win in his career?", answer: "15", accept: ["15", "fifteen"], choices: ["14", "18", "12"], diff: 2 },
-      { clue: "Jack Nicklaus holds the all-time record for most major championships. How many did he win?", answer: "18", accept: ["18", "eighteen"], choices: ["20", "15", "16"], diff: 3 },
+      { clue: "Jack Nicklaus holds the all-time record for most major championships. How many did he win?", answer: "18", accept: ["18", "eighteen"], choices: ["20", "15", "16"], diff: 2 },
       { clue: "Gene Sarazen's double eagle on the par-5 15th hole at Augusta in 1935 is known as the 'shot heard round the world.' What tournament was he playing?", answer: "The Masters", accept: ["the masters", "masters"], choices: ["US Open", "The Open Championship", "PGA Championship"], diff: 4 }
     ],
     200: [
@@ -1123,8 +1172,8 @@ const GOLF_Q = {
     100: [
       { clue: "In golf, scoring one stroke under par on a hole is called a what?", answer: "Birdie", accept: ["birdie"], choices: ["Eagle", "Bogey", "Par"], diff: 1 },
       { clue: "A score of two strokes under par on a single hole is called an what?", answer: "Eagle", accept: ["eagle"], choices: ["Birdie", "Albatross", "Condor"], diff: 2 },
-      { clue: "A score of one stroke over par on a hole is called a what?", answer: "Bogey", accept: ["bogey"], choices: ["Birdie", "Double bogey", "Par"], diff: 3 },
-      { clue: "In golf, a 'links' course refers to what type of terrain?", answer: "Coastal/sandy terrain", accept: ["coastal", "sandy", "coastal sandy terrain", "seaside", "links land", "ocean", "seaside terrain"], choices: ["Mountain terrain", "Parkland/tree-lined", "Desert terrain"], diff: 4 }
+      { clue: "A score of one stroke over par on a hole is called a what?", answer: "Bogey", accept: ["bogey"], choices: ["Birdie", "Double bogey", "Par"], diff: 1 },
+      { clue: "In golf, a 'links' course refers to what type of terrain?", answer: "Coastal/sandy terrain", accept: ["coastal", "sandy", "coastal sandy terrain", "seaside", "links land", "ocean", "seaside terrain"], choices: ["Mountain terrain", "Parkland/tree-lined", "Desert terrain"], diff: 2 }
     ],
     200: [
       { clue: "What golf term describes completing a hole with a single stroke?", answer: "Hole-in-one", accept: ["hole-in-one", "hole in one", "ace"], choices: ["Condor", "Eagle", "Albatross"], diff: 1 },
@@ -1212,7 +1261,7 @@ const SOCCER_Q = {
       { clue: "Which country has won the most FIFA World Cups with 5 titles?", answer: "Brazil", accept: ["brazil", "brasil"], choices: ["Germany", "Italy", "Argentina"], diff: 1 },
       { clue: "England's only World Cup victory came in 1966 on home soil. Who did they beat in the final?", answer: "West Germany", accept: ["west germany", "germany", "west german"], choices: ["Argentina", "Brazil", "France"], diff: 2 },
       { clue: "Pelé is the only player to win three World Cup titles. In which years did Brazil win those cups?", answer: "1958, 1962, and 1970", accept: ["1958 1962 1970", "1958, 1962, 1970", "58 62 70"], choices: ["1950, 1962, 1970", "1954, 1958, 1962", "1958, 1970, 1994"], diff: 3 },
-      { clue: "The very first FIFA World Cup was held in 1930. Which country hosted AND won the inaugural tournament?", answer: "Uruguay", accept: ["uruguay"], choices: ["Brazil", "Argentina", "France"], diff: 4 }
+      { clue: "The very first FIFA World Cup was held in 1930. Which country hosted AND won the inaugural tournament?", answer: "Uruguay", accept: ["uruguay"], choices: ["Brazil", "Argentina", "France"], diff: 2 }
     ],
     200: [
       { clue: "Messi finally won his first World Cup in 2022. Which country did Argentina beat in the final?", answer: "France", accept: ["france"], choices: ["Brazil", "Croatia", "Morocco"], diff: 1 },
@@ -1299,7 +1348,7 @@ const SOCCER_Q = {
       { clue: "In a two-legged cup tie, the 'aggregate' score is what?", answer: "Combined total score over both matches", accept: ["combined total score", "total goals over both legs", "sum of both games", "total from both matches"], choices: ["The score in the second leg only", "The score by the home team only", "The score after extra time"], diff: 4 }
     ],
     300: [
-      { clue: "When a player is in an offside position, they must be closer to the opponent's goal than both the ball and who else?", answer: "The second-to-last defender", accept: ["second to last defender", "second-to-last defender", "the last outfield defender", "second defender"], choices: ["The goalkeeper", "The last two defenders", "The halfway line"], diff: 1 },
+      { clue: "When a player is in an offside position, they must be closer to the opponent's goal than both the ball and who else?", answer: "The second-to-last defender", accept: ["second to last defender", "second-to-last defender", "the last outfield defender", "second defender"], choices: ["The goalkeeper", "The last two defenders", "The halfway line"], diff: 2 },
       { clue: "A match between two local rival clubs is called a what?", answer: "Derby", accept: ["derby", "local derby"], choices: ["Showdown", "Grudge match", "Clasico"], diff: 2 },
       { clue: "When a match is tied after 90 minutes in a knockout competition, what happens next?", answer: "Extra time", accept: ["extra time", "overtime"], choices: ["Penalty shootout immediately", "Replay the game", "Away goals rule"], diff: 3 },
       { clue: "An 'overhead kick' or 'bicycle kick' describes what type of acrobatic shot?", answer: "Kicking the ball backwards over your own head while airborne", accept: ["kicking backwards over head", "overhead kick", "bicycle kick", "kicking ball over own head"], choices: ["Spinning shot hit with the heel", "A diving header", "A volley struck with the chest"], diff: 4 }
@@ -1481,6 +1530,239 @@ const SPORT_ALL_FINALS = {
   soccer:     SOCCER_FINALS,
 };
 
+// ── EXTRA QUESTIONS (merged at runtime for variety) ───────────
+(function(){
+const X = {
+  baseball: {
+    0: { // WORLD SERIES WINS
+      100: [
+        {clue:"The 2016 World Series ended this franchise's 108-year championship drought in a Game 7 for the ages.",answer:"Chicago Cubs",accept:["chicago cubs","cubs"],choices:["Cleveland Indians","Boston Red Sox","San Francisco Giants"],diff:1},
+        {clue:"Back-to-back champions in 1992 and 1993, this is the only non-American franchise to win the World Series.",answer:"Toronto Blue Jays",accept:["toronto blue jays","blue jays"],choices:["Montreal Expos","Minnesota Twins","Oakland Athletics"],diff:1},
+        {clue:"The Arizona Diamondbacks won the 2001 World Series in a dramatic Game 7, defeating this storied franchise.",answer:"New York Yankees",accept:["new york yankees","yankees","ny yankees"],choices:["Oakland Athletics","Atlanta Braves","Seattle Mariners"],diff:2},
+        {clue:"The 2021 World Series champions who defeated the Houston Astros in six games.",answer:"Atlanta Braves",accept:["atlanta braves","braves","atlanta"],choices:["Los Angeles Dodgers","Boston Red Sox","New York Mets"],diff:2},
+        {clue:"The 2022 World Series was won by the Houston Astros over this team in six games.",answer:"Philadelphia Phillies",accept:["philadelphia phillies","phillies","philly"],choices:["New York Mets","Atlanta Braves","San Diego Padres"],diff:3},
+        {clue:"The Kansas City Royals won the 2015 World Series by defeating this team in five games.",answer:"New York Mets",accept:["new york mets","mets","ny mets"],choices:["Chicago Cubs","Toronto Blue Jays","Houston Astros"],diff:3},
+        {clue:"The Chicago White Sox ended their 88-year title drought by sweeping the 2005 World Series against this team.",answer:"Houston Astros",accept:["houston astros","astros"],choices:["San Francisco Giants","Los Angeles Dodgers","New York Yankees"],diff:4},
+        {clue:"The 2018 World Series champions who defeated the Los Angeles Dodgers in five games.",answer:"Boston Red Sox",accept:["boston red sox","red sox"],choices:["Houston Astros","New York Yankees","Cleveland Indians"],diff:4},
+      ],
+      200: [
+        {clue:"The 1969 'Miracle Mets' won the World Series over this heavily favored team.",answer:"Baltimore Orioles",accept:["baltimore orioles","orioles","baltimore"],choices:["New York Yankees","Oakland Athletics","Minnesota Twins"],diff:1},
+        {clue:"The Cincinnati Reds' 'Big Red Machine' won back-to-back titles in 1975 and 1976 under this Hall of Fame manager.",answer:"Sparky Anderson",accept:["sparky anderson","anderson"],choices:["Billy Martin","Tommy Lasorda","Dick Williams"],diff:2},
+        {clue:"Bill Buckner's infamous error in the 1986 World Series Game 6 helped this team avoid elimination.",answer:"New York Mets",accept:["new york mets","mets","ny mets"],choices:["Boston Red Sox","Cincinnati Reds","St. Louis Cardinals"],diff:2},
+        {clue:"The 2002 World Series saw the Angels rally from a 3-2 deficit to defeat this team in seven games.",answer:"San Francisco Giants",accept:["san francisco giants","giants","sf giants"],choices:["New York Yankees","St. Louis Cardinals","Atlanta Braves"],diff:3},
+        {clue:"The 1979 World Series MVP Willie Stargell led this team to the championship from a 3-1 deficit.",answer:"Pittsburgh Pirates",accept:["pittsburgh pirates","pirates"],choices:["Cincinnati Reds","Baltimore Orioles","Philadelphia Phillies"],diff:3},
+        {clue:"In 2003, this pitcher earned Series MVP by shutting down the Yankees in Games 2 and 6 for the Marlins.",answer:"Josh Beckett",accept:["josh beckett","beckett"],choices:["Brad Penny","A.J. Burnett","Carl Pavano"],diff:4},
+        {clue:"The 1954 World Series sweep featured Willie Mays's famous over-the-shoulder catch in Game 1, helping this franchise sweep a 111-win team.",answer:"New York Giants",accept:["new york giants","giants","ny giants"],choices:["Brooklyn Dodgers","Chicago Cubs","Milwaukee Braves"],diff:4},
+      ],
+      300: [
+        {clue:"The New York Yankees' most recent World Series championship came in this year.",answer:"2009",accept:["2009"],choices:["2007","2000","2003"],diff:1},
+        {clue:"The 2000 World Series was an all-New York 'Subway Series' between the Yankees and this team.",answer:"New York Mets",accept:["new york mets","mets","ny mets"],choices:["Brooklyn Dodgers","New York Giants","New York Islanders"],diff:2},
+        {clue:"The Oakland Athletics won three consecutive World Series titles from 1972 to 1974 under manager Dick Williams and then this manager in 1974.",answer:"Alvin Dark",accept:["alvin dark","dark"],choices:["Billy Martin","Chuck Tanner","Whitey Herzog"],diff:3},
+        {clue:"The Yankees won three consecutive World Series from 1998 to 2000. Their manager for all three championships was this Hall of Famer.",answer:"Joe Torre",accept:["joe torre","torre"],choices:["Buck Showalter","Billy Martin","Dallas Green"],diff:3},
+        {clue:"In the 1960 World Series, the Yankees outscored the Pirates by this many total runs but still lost the series in seven games.",answer:"28",accept:["28","twenty-eight","twenty eight"],choices:["18","34","22"],diff:4},
+        {clue:"The longest World Series game (18 innings) was Game 3 of the 2018 series. The walk-off home run was hit by this Dodger.",answer:"Max Muncy",accept:["max muncy","muncy"],choices:["Cody Bellinger","Justin Turner","David Freese"],diff:4},
+      ],
+      400: [
+        {clue:"The 2004 Red Sox swept the World Series in four games over this National League team.",answer:"St. Louis Cardinals",accept:["st. louis cardinals","st louis cardinals","cardinals"],choices:["Houston Astros","New York Yankees","Chicago Cubs"],diff:1},
+        {clue:"Curt Schilling famously pitched with a bloody sock in the 2004 ALCS and Series for this team.",answer:"Boston Red Sox",accept:["boston red sox","red sox"],choices:["New York Yankees","Arizona Diamondbacks","Philadelphia Phillies"],diff:2},
+        {clue:"Jack Morris pitched a 10-inning complete game shutout in Game 7 of the 1991 World Series for this team.",answer:"Minnesota Twins",accept:["minnesota twins","twins","minnesota"],choices:["Atlanta Braves","Pittsburgh Pirates","Toronto Blue Jays"],diff:3},
+        {clue:"The Pittsburgh Pirates are one of only two teams to win the World Series after trailing 3-1 in games, doing so in 1925 and 1979. Their 1925 opponents were these Cardinals rivals.",answer:"Washington Senators",accept:["washington senators","senators","washington"],choices:["Philadelphia Athletics","New York Giants","St. Louis Cardinals"],diff:4},
+      ],
+    },
+    1: { // HOME RUN LEGENDS
+      100: [
+        {clue:"Aaron Judge hit his record-breaking 62nd home run in 2022 to set the American League single-season record.",answer:"62",accept:["62","sixty-two","sixty two"],choices:["61","60","63"],diff:1},
+        {clue:"Babe Ruth hit 714 career home runs, a record that stood until this player broke it in 1974.",answer:"Hank Aaron",accept:["hank aaron","aaron","hammerin hank"],choices:["Willie Mays","Barry Bonds","Roger Maris"],diff:1},
+        {clue:"Shohei Ohtani became the first player in MLB history to reach 50 home runs and 50 stolen bases in a single season in 2024, playing for this team.",answer:"Los Angeles Dodgers",accept:["los angeles dodgers","dodgers","la dodgers"],choices:["Los Angeles Angels","New York Yankees","San Francisco Giants"],diff:2},
+        {clue:"Ken Griffey Jr. won 10 consecutive Gold Gloves and hit 630 career home runs, spending most of his career with this team.",answer:"Seattle Mariners",accept:["seattle mariners","mariners","seattle"],choices:["Cincinnati Reds","New York Yankees","Oakland Athletics"],diff:2},
+        {clue:"This player hit 58 home runs in 1998 for the Cardinals, finishing second to Mark McGwire's 70.",answer:"Sammy Sosa",accept:["sammy sosa","sosa"],choices:["Ken Griffey Jr.","Manny Ramirez","Jim Thome"],diff:3},
+        {clue:"David Ortiz hit this many career home runs, all of them as a designated hitter.",answer:"541",accept:["541","five hundred forty-one","five hundred forty one"],choices:["500","509","523"],diff:3},
+        {clue:"This player holds the NL record for home runs in a season with 49, set in 2019 for the Brewers.",answer:"Christian Yelich",accept:["christian yelich","yelich"],choices:["Cody Bellinger","Pete Alonso","Anthony Rendon"],diff:4},
+        {clue:"Josh Gibson is widely considered the greatest power hitter in Negro Leagues history, estimated to have hit close to this many home runs.",answer:"800",accept:["800","approximately 800","~800"],choices:["500","600","700"],diff:4},
+      ],
+      200: [
+        {clue:"Roger Maris broke Babe Ruth's single-season home run record in 1961 by hitting this many home runs.",answer:"61",accept:["61","sixty-one","sixty one"],choices:["60","62","58"],diff:1},
+        {clue:"This player hit 70 home runs in 1998 for the St. Louis Cardinals, breaking Roger Maris's record at the time.",answer:"Mark McGwire",accept:["mark mcgwire","mcgwire"],choices:["Barry Bonds","Sammy Sosa","Ken Griffey Jr."],diff:1},
+        {clue:"Manny Ramirez hit 555 career home runs. He is best known for his time with the Boston Red Sox and this Los Angeles team.",answer:"Los Angeles Dodgers",accept:["los angeles dodgers","dodgers","la dodgers"],choices:["Los Angeles Angels","Cincinnati Reds","Cleveland Indians"],diff:2},
+        {clue:"Jim Thome hit 612 career home runs and is the only player in that 600-HR club who spent the majority of his career with this franchise.",answer:"Cleveland Indians",accept:["cleveland indians","indians","cleveland","cleveland guardians"],choices:["Minnesota Twins","Philadelphia Phillies","Chicago White Sox"],diff:2},
+        {clue:"This player hit 49 home runs in his rookie season of 2019 for the New York Mets, setting the MLB rookie record.",answer:"Pete Alonso",accept:["pete alonso","alonso"],choices:["Ronald Acuña Jr.","Cody Bellinger","Aaron Judge"],diff:3},
+        {clue:"Willie McCovey, who hit 521 career home runs, played the majority of his career with this franchise.",answer:"San Francisco Giants",accept:["san francisco giants","giants","sf giants"],choices:["Oakland Athletics","Pittsburgh Pirates","Los Angeles Dodgers"],diff:3},
+        {clue:"Ralph Kiner led the National League in home runs for seven consecutive seasons from 1946-1952, a record that still stands, while playing for this team.",answer:"Pittsburgh Pirates",accept:["pittsburgh pirates","pirates"],choices:["Cincinnati Reds","New York Giants","Chicago Cubs"],diff:4},
+        {clue:"The first player to hit a home run in an All-Star Game was this Yankees legend, doing so in the inaugural game in 1933.",answer:"Babe Ruth",accept:["babe ruth","ruth","the babe"],choices:["Lou Gehrig","Frankie Frisch","Carl Hubbell"],diff:4},
+      ],
+      300: [
+        {clue:"Barry Bonds set the single-season home run record in 2001 with this many home runs.",answer:"73",accept:["73","seventy-three","seventy three"],choices:["70","72","71"],diff:1},
+        {clue:"Alex Rodriguez hit 696 career home runs, making him this rank on the all-time home run list.",answer:"4th",accept:["4th","fourth","4"],choices:["3rd","5th","6th"],diff:2},
+        {clue:"Frank Robinson hit 586 career home runs and is the only player to win the MVP award in both leagues — with the Reds and this AL team.",answer:"Baltimore Orioles",accept:["baltimore orioles","orioles","baltimore"],choices:["Cleveland Indians","New York Yankees","Detroit Tigers"],diff:3},
+        {clue:"Eddie Mathews hit 512 career home runs as a third baseman, spending most of his career with this franchise that moved from Boston to Milwaukee to Atlanta.",answer:"Braves",accept:["braves","atlanta braves","milwaukee braves","boston braves"],choices:["Cardinals","Phillies","Pirates"],diff:3},
+        {clue:"Harmon Killebrew hit 573 career home runs, nearly all while playing for the Twins franchise. In what state was this franchise originally based before moving to Minnesota?",answer:"Washington",accept:["washington","washington dc","washington d.c."],choices:["Missouri","Kansas","Wisconsin"],diff:4},
+        {clue:"Mickey Mantle hit 536 career home runs despite missing significant time to injuries. He is one of the few players to hit home runs from both sides of the plate in a single World Series game. He accomplished this feat in this year.",answer:"1964",accept:["1964"],choices:["1956","1960","1962"],diff:4},
+      ],
+      400: [
+        {clue:"Reggie Jackson earned the nickname 'Mr. October' for his 3 consecutive home runs in Game 6 of the 1977 World Series. He finished his career with this many home runs.",answer:"563",accept:["563","five hundred sixty-three"],choices:["548","573","536"],diff:1},
+        {clue:"Mel Ott hit 511 career home runs, all while playing for this New York franchise in the National League.",answer:"New York Giants",accept:["new york giants","giants","ny giants"],choices:["Brooklyn Dodgers","New York Yankees","New York Mets"],diff:2},
+        {clue:"Ernie Banks hit 512 career home runs, all with the Chicago Cubs. He won back-to-back NL MVP awards in these two consecutive seasons.",answer:"1958 and 1959",accept:["1958 and 1959","1958-1959","58 and 59"],choices:["1955 and 1956","1960 and 1961","1957 and 1958"],diff:3},
+        {clue:"Willie Stargell hit 475 career home runs for the Pirates and is known for hitting the longest home run in the history of this stadium, measured at 535 feet.",answer:"Olympic Stadium",accept:["olympic stadium","stade olympique","montreal olympic stadium"],choices:["Busch Stadium","Riverfront Stadium","Veterans Stadium"],diff:4},
+      ],
+    },
+    2: { // DIAMOND FIRSTS
+      100: [
+        {clue:"Jackie Robinson broke Major League Baseball's color barrier in 1947, playing for this team.",answer:"Brooklyn Dodgers",accept:["brooklyn dodgers","dodgers"],choices:["New York Yankees","Cleveland Indians","New York Giants"],diff:1},
+        {clue:"The first World Series was played in 1903, won by this American League team over the Pittsburgh Pirates.",answer:"Boston Americans",accept:["boston americans","boston","boston red sox","boston pilgrims"],choices:["New York Yankees","Chicago White Sox","Philadelphia Athletics"],diff:1},
+        {clue:"Mariano Rivera was the first player elected unanimously to the Baseball Hall of Fame. He played his entire career with this team.",answer:"New York Yankees",accept:["new york yankees","yankees","ny yankees"],choices:["Boston Red Sox","Oakland Athletics","San Diego Padres"],diff:2},
+        {clue:"The first night game in Major League Baseball history was played at Crosley Field in Cincinnati in this year.",answer:"1935",accept:["1935"],choices:["1930","1939","1941"],diff:2},
+        {clue:"The first American League franchise to win 100 games in a season was this team, which did so in 1902.",answer:"Philadelphia Athletics",accept:["philadelphia athletics","athletics","a's","philadelphia a's"],choices:["Boston Americans","New York Yankees","Chicago White Sox"],diff:3},
+        {clue:"The designated hitter rule was adopted by the American League in 1973, with this player being the first official DH in AL history.",answer:"Ron Blomberg",accept:["ron blomberg","blomberg"],choices:["Orlando Cepeda","Tommy Davis","Frank Robinson"],diff:3},
+        {clue:"The first MLB player to earn $1 million per year was this Hall of Fame outfielder, who signed with the Yankees in 1975.",answer:"Catfish Hunter",accept:["catfish hunter","hunter","jim hunter"],choices:["Reggie Jackson","Rod Carew","Pete Rose"],diff:4},
+        {clue:"The first Japanese-born player to appear in the Major Leagues was this pitcher, who debuted for the Dodgers in 1964.",answer:"Masanori Murakami",accept:["masanori murakami","murakami"],choices:["Hideo Nomo","Hideki Irabu","Mac Suzuki"],diff:4},
+      ],
+      200: [
+        {clue:"The first player to hit a home run in the first pitch he ever saw in the Major Leagues was Kevin Kouzmanoff in 2006, playing for this team.",answer:"Cleveland Indians",accept:["cleveland indians","indians","cleveland"],choices:["San Diego Padres","Oakland Athletics","Minnesota Twins"],diff:1},
+        {clue:"Babe Ruth was the first player sold for $100,000, traded from the Red Sox to the Yankees in this year.",answer:"1920",accept:["1920"],choices:["1918","1922","1919"],diff:1},
+        {clue:"The first pitcher to throw a perfect game in the modern era (since 1900) was Cy Young, who did so in 1904 for this team.",answer:"Boston Americans",accept:["boston americans","boston","boston red sox"],choices:["Cleveland Naps","Chicago White Sox","Philadelphia Athletics"],diff:2},
+        {clue:"The first Latin American player inducted into the Baseball Hall of Fame was this Hall of Famer, inducted in 1973.",answer:"Roberto Clemente",accept:["roberto clemente","clemente"],choices:["Orlando Cepeda","Juan Marichal","Luis Aparicio"],diff:2},
+        {clue:"Toni Stone became the first woman to play professionally in men's top-level baseball, joining this Negro League team as a second baseman in 1953.",answer:"Indianapolis Clowns",accept:["indianapolis clowns","clowns"],choices:["Kansas City Monarchs","Birmingham Black Barons","Chicago American Giants"],diff:3},
+        {clue:"The first pitcher to strike out 20 batters in a nine-inning game was this Red Sox phenom, who accomplished the feat in 1986.",answer:"Roger Clemens",accept:["roger clemens","clemens"],choices:["Dwight Gooden","Nolan Ryan","Tom Seaver"],diff:3},
+        {clue:"Hideo Nomo was the first Japanese position player in MLB when he debuted in 1995. What team did he pitch for?",answer:"Los Angeles Dodgers",accept:["los angeles dodgers","dodgers","la dodgers"],choices:["New York Yankees","Seattle Mariners","Oakland Athletics"],diff:4},
+        {clue:"The first interleague regular season game in MLB history was played on June 12, 1997 between the Rangers and this team.",answer:"San Francisco Giants",accept:["san francisco giants","giants","sf giants"],choices:["Houston Astros","Seattle Mariners","Los Angeles Dodgers"],diff:4},
+      ],
+      300: [
+        {clue:"Fenway Park, the oldest active ballpark in Major League Baseball, opened in this year.",answer:"1912",accept:["1912"],choices:["1910","1914","1908"],diff:1},
+        {clue:"The first player to steal 100 bases in a single season was this Oakland A's speedster, who did so in 1980.",answer:"Rickey Henderson",accept:["rickey henderson","henderson"],choices:["Lou Brock","Vince Coleman","Tim Raines"],diff:2},
+        {clue:"The first MLB franchise to play in a domed stadium was this team, which opened the Astrodome in 1965.",answer:"Houston Astros",accept:["houston astros","astros","houston colt 45s","houston colts"],choices:["Seattle Mariners","Minnesota Twins","Montreal Expos"],diff:2},
+        {clue:"The first pitcher to win the Cy Young Award unanimously was this Hall of Famer, who did so in 1956 for the Brooklyn Dodgers.",answer:"Don Newcombe",accept:["don newcombe","newcombe"],choices:["Sandy Koufax","Warren Spahn","Robin Roberts"],diff:3},
+        {clue:"Wrigley Field was the last Major League ballpark to install permanent lights for night games, doing so in this year.",answer:"1988",accept:["1988"],choices:["1985","1990","1984"],diff:3},
+        {clue:"The first All-Star Game was played in 1933 at Comiskey Park. The first MVP of the All-Star Game was this legendary player who hit a two-run home run.",answer:"Babe Ruth",accept:["babe ruth","ruth"],choices:["Carl Hubbell","Lefty Gomez","Lou Gehrig"],diff:4},
+        {clue:"The first franchise to draw 3 million fans in a single season was the Los Angeles Dodgers in this year.",answer:"1978",accept:["1978"],choices:["1972","1980","1974"],diff:4},
+      ],
+      400: [
+        {clue:"The American League was founded in 1901 by this man, who served as its first president.",answer:"Ban Johnson",accept:["ban johnson","johnson","byron bancroft johnson"],choices:["Kenesaw Mountain Landis","Albert Spalding","Cap Anson"],diff:1},
+        {clue:"The first MLB commissioner was Judge Kenesaw Mountain Landis, appointed in this year after the Black Sox scandal.",answer:"1920",accept:["1920"],choices:["1919","1921","1918"],diff:2},
+        {clue:"The first Cy Young Award was given in 1956, going to this Brooklyn Dodgers ace. Initially only one award was given for both leagues.",answer:"Don Newcombe",accept:["don newcombe","newcombe"],choices:["Robin Roberts","Warren Spahn","Bob Turley"],diff:3},
+        {clue:"The first expansion teams to join the American League were the Los Angeles Angels and this team, both in 1961.",answer:"Washington Senators",accept:["washington senators","senators","washington"],choices:["Kansas City Athletics","Minnesota Twins","Houston Colt .45s"],diff:4},
+      ],
+    },
+    3: { // RECORD BREAKERS
+      100: [
+        {clue:"Cal Ripken Jr. played in 2,632 consecutive games. His streak ended when he voluntarily sat out on September 20 of this year.",answer:"1998",accept:["1998"],choices:["1995","2000","1996"],diff:1},
+        {clue:"The single-season MLB strikeout record for a pitcher was set by Nolan Ryan in 1973 with this many strikeouts.",answer:"383",accept:["383","three hundred eighty-three"],choices:["370","395","360"],diff:1},
+        {clue:"Ronald Acuña Jr. became the first player in MLB history to hit 40 home runs and steal 70 bases in 2023, playing for this team.",answer:"Atlanta Braves",accept:["atlanta braves","braves"],choices:["Los Angeles Dodgers","New York Mets","San Diego Padres"],diff:2},
+        {clue:"The MLB record for most wins by a pitcher in a single season is 41, set by Jack Chesbro of the New York Highlanders in this year.",answer:"1904",accept:["1904"],choices:["1902","1906","1908"],diff:2},
+        {clue:"Wayne Gretzky... wait wrong sport. The MLB record for most saves in a career is held by this closer with 652.",answer:"Mariano Rivera",accept:["mariano rivera","rivera","mo"],choices:["Trevor Hoffman","Lee Smith","Billy Wagner"],diff:3},
+        {clue:"The record for most strikeouts in a single game for a hitter is 5, achieved by many players. The record for most strikeout games in a career is held by this player.",answer:"Adam Dunn",accept:["adam dunn","dunn"],choices:["Mark Reynolds","Ryan Howard","Jim Thome"],diff:3},
+        {clue:"The record for highest single-season batting average in the modern era is .424, set by this Hall of Famer in 1924.",answer:"Rogers Hornsby",accept:["rogers hornsby","hornsby"],choices:["Ty Cobb","Ted Williams","Joe Jackson"],diff:4},
+        {clue:"The record for most RBIs in a single season is 191, set by this Hall of Famer in 1930 while playing for the Philadelphia Athletics.",answer:"Hack Wilson",accept:["hack wilson","wilson"],choices:["Lou Gehrig","Babe Ruth","Jimmie Foxx"],diff:4},
+      ],
+      200: [
+        {clue:"The career record for most RBIs is held by this player with 2,297.",answer:"Hank Aaron",accept:["hank aaron","aaron","hammerin hank"],choices:["Babe Ruth","Alex Rodriguez","Cap Anson"],diff:1},
+        {clue:"Joe DiMaggio's famous hitting streak of 56 games in 1941 ended against the pitching staff of this team.",answer:"Cleveland Indians",accept:["cleveland indians","indians","cleveland"],choices:["Boston Red Sox","Chicago White Sox","New York Giants"],diff:1},
+        {clue:"The record for most career walks is held by this player with 2,558.",answer:"Barry Bonds",accept:["barry bonds","bonds"],choices:["Rickey Henderson","Babe Ruth","Ted Williams"],diff:2},
+        {clue:"The record for most career stolen bases is held by Rickey Henderson with 1,406. He set the single-season record in 1982 with how many steals?",answer:"130",accept:["130","one hundred thirty"],choices:["118","143","100"],diff:2},
+        {clue:"The record for most strikeouts in a career by a hitter is held by this player with 2,597.",answer:"Reggie Jackson",accept:["reggie jackson","jackson","mr. october"],choices:["Adam Dunn","Sammy Sosa","Jim Thome"],diff:3},
+        {clue:"The highest career ERA+ for a starting pitcher (minimum 1,000 innings) belongs to this 19th century legend.",answer:"Pedro Martinez",accept:["pedro martinez","pedro","martinez"],choices:["Walter Johnson","Lefty Grove","Roger Clemens"],diff:3},
+        {clue:"The record for most career shutouts by a pitcher is 110, held by this Hall of Famer who pitched for the Washington Senators.",answer:"Walter Johnson",accept:["walter johnson","johnson","the big train"],choices:["Grover Cleveland Alexander","Christy Mathewson","Cy Young"],diff:4},
+        {clue:"The record for most career hits by a player born outside the United States is held by this Dominican Hall of Famer with 3,055.",answer:"Adrian Beltre",accept:["adrian beltre","beltre"],choices:["Roberto Clemente","Albert Pujols","David Ortiz"],diff:4},
+      ],
+      300: [
+        {clue:"The record for most career runs scored is held by this player with 2,295.",answer:"Rickey Henderson",accept:["rickey henderson","henderson"],choices:["Babe Ruth","Ty Cobb","Pete Rose"],diff:1},
+        {clue:"The record for most career doubles is held by this Hall of Famer with 792.",answer:"Tris Speaker",accept:["tris speaker","speaker"],choices:["Pete Rose","Stan Musial","Paul Molitor"],diff:2},
+        {clue:"The single-season record for most hits is 262, set by Ichiro Suzuki in 2004. This broke the previous record set in 1930 by this Hall of Famer.",answer:"George Sisler",accept:["george sisler","sisler"],choices:["Ty Cobb","Rogers Hornsby","Paul Waner"],diff:3},
+        {clue:"The record for most consecutive games with a hit is 56, held by Joe DiMaggio. The second longest streak is 44, held by this Hall of Fame outfielder.",answer:"Willie Keeler",accept:["willie keeler","keeler"],choices:["Pete Rose","Ty Cobb","George Sisler"],diff:4},
+      ],
+      400: [
+        {clue:"The record for most triples in a career is held by this Hall of Famer with 309 three-baggers.",answer:"Sam Crawford",accept:["sam crawford","crawford","wahoo sam"],choices:["Ty Cobb","Honus Wagner","Jake Beckley"],diff:1},
+        {clue:"The record for most career wins for a manager is held by this Hall of Famer with 3,731 wins.",answer:"Connie Mack",accept:["connie mack","mack"],choices:["Tony La Russa","Bobby Cox","Joe Torre"],diff:2},
+        {clue:"The record for the longest game in MLB history by innings was set in 1981 between the Pawtucket Red Sox and the Rochester Red Wings at 33 innings. Pawtucket's star catcher in that game later went on to this Hall of Fame career.",answer:"Wade Boggs",accept:["wade boggs","boggs"],choices:["Carlton Fisk","Mike Piazza","Johnny Bench"],diff:3},
+        {clue:"Cy Young won a record 511 career games, but he also holds the record for most career losses with this number.",answer:"316",accept:["316","three hundred sixteen"],choices:["298","271","326"],diff:4},
+      ],
+    },
+    4: { // BASEBALL LINGO
+      100: [
+        {clue:"A 'walk-off' in baseball occurs when the home team scores the winning run in the final inning to end the game. The term 'walk-off' was popularized by which legendary broadcaster?",answer:"Dennis Eckersley",accept:["dennis eckersley","eckersley"],choices:["Vin Scully","Bob Costas","Jon Miller"],diff:1},
+        {clue:"In baseball, a 'can of corn' refers to an easy fly ball catch. This term originated from old-time grocery stores where clerks would catch falling cans from shelves using this technique.",answer:"apron",accept:["apron","their apron","the apron"],choices:["ladder","shelf","hook"],diff:1},
+        {clue:"A 'cheap seat' home run refers to one that barely clears the outfield fence. The opposite, a home run that travels an extremely long distance, is called this.",answer:"moonshot",accept:["moonshot","moon shot","no-doubter"],choices:["laser shot","bomb","bullet"],diff:2},
+        {clue:"The term 'rubber game' refers to the deciding game of a series when each team has won the same number of games. This term comes from which other sport?",answer:"bridge",accept:["bridge","card games","cards"],choices:["tennis","bowling","poker"],diff:2},
+        {clue:"A 'Baltimore chop' is a batted ball that hits the ground near home plate and bounces high, giving the batter time to reach first. It is named for Baltimore Orioles players of the 1890s who mastered this technique. Their manager was this Hall of Famer.",answer:"Ned Hanlon",accept:["ned hanlon","hanlon"],choices:["John McGraw","Cap Anson","Connie Mack"],diff:3},
+        {clue:"The 'infield fly rule' was adopted in 1895 to prevent infielders from intentionally dropping pop-ups to get easy double plays. The batter is automatically out if this condition is met.",answer:"runners on first and second or bases loaded with fewer than two outs",accept:["runners on base","bases loaded","infield fly","automatic out"],choices:["runner on first only","any runners on base","two outs"],diff:3},
+        {clue:"A 'Mendoza Line' is named for shortstop Mario Mendoza. His career batting average was .215, but the Mendoza Line is commonly cited as this average.",answer:".200",accept:[".200","200",".200 batting average","two hundred"],choices:[".215",".250",".175"],diff:4},
+        {clue:"The slang term 'cheese' in baseball refers to a fastball. The term 'Uncle Charlie' refers to this specific pitch.",answer:"curveball",accept:["curveball","curve","curve ball"],choices:["slider","changeup","sinker"],diff:4},
+      ],
+      200: [
+        {clue:"In baseball, 'ERA' stands for Earned Run Average and measures how many earned runs a pitcher allows per this number of innings.",answer:"9",accept:["9","nine","nine innings"],choices:["7","6","27"],diff:1},
+        {clue:"The term 'southpaw' for a left-handed pitcher comes from the fact that in old ballparks built with home plate facing east, a lefty's pitching arm pointed toward this direction.",answer:"south",accept:["south","the south","southern"],choices:["north","west","east"],diff:1},
+        {clue:"A 'WHIP' statistic measures walks and hits per inning pitched. An elite WHIP for a starting pitcher is generally considered to be below this number.",answer:"1.00",accept:["1.00","1","1.0","one"],choices:["1.50","0.75","1.25"],diff:2},
+        {clue:"The 'batter's eye' is a dark background in center field that helps batters see the ball. Most modern parks use a dark green batter's eye, but this park famously has a hedge of live plants.",answer:"Kauffman Stadium",accept:["kauffman stadium","kauffman","royals stadium"],choices:["Wrigley Field","Fenway Park","PNC Park"],diff:2},
+        {clue:"A 'squeeze play' in baseball involves a bunter and a runner on third base. In a 'suicide squeeze,' the runner on third breaks for home as soon as the pitcher begins this action.",answer:"windup",accept:["the windup","wind up","pitching motion","delivery"],choices:["releasing the ball","getting into set position","checking the runner"],diff:3},
+        {clue:"The term 'Pythagorean expectation' in baseball sabermetrics was created by this pioneer of baseball statistics.",answer:"Bill James",accept:["bill james","james"],choices:["Branch Rickey","Sandy Alderson","Billy Beane"],diff:3},
+        {clue:"A 'BABIP' — batting average on balls in play — is used to analyze luck in hitting. The league average BABIP is generally around this figure.",answer:".300",accept:[".300","300",".300"],choices:[".250",".350",".275"],diff:4},
+        {clue:"The defensive metric 'DRS' stands for Defensive Runs Saved. The offensive metric that best measures overall hitting value excluding defense and baserunning is this.",answer:"wOBA",accept:["woba","weighted on base average"],choices:["OPS","ISO","BABIP"],diff:4},
+      ],
+      300: [
+        {clue:"When a batter hits a ball so hard at a fielder that the fielder cannot react in time, it is called 'hitting the ball right at someone.' A well-hit ball caught this way is called this.",answer:"rope",accept:["rope","a rope","roped"],choices:["frozen rope","liner","screamer"],diff:1},
+        {clue:"The phrase 'can't hit what you can't see' is attributed to this Hall of Fame pitcher, referring to his blazing fastball.",answer:"Walter Johnson",accept:["walter johnson","johnson"],choices:["Nolan Ryan","Bob Feller","Randy Johnson"],diff:2},
+        {clue:"In baseball, a 'cycle' means hitting a single, double, triple, and home run in the same game. Which type of hit is considered the most difficult to get in a cycle?",answer:"triple",accept:["triple","the triple"],choices:["home run","single","double"],diff:2},
+        {clue:"The phrase 'tools of ignorance' is a humorous term for the catcher's equipment. Who is credited with coining this phrase?",answer:"Herold Haines",accept:["herold haines","muddy ruel","hank gowdy"],choices:["Bill Dickey","Yogi Berra","Johnny Bench"],diff:3},
+        {clue:"A 'fungo' bat is used during practice to hit balls to fielders. These bats are different from regular bats in that they are this.",answer:"longer and thinner",accept:["longer","thinner","longer and thinner","longer and lighter"],choices:["shorter and heavier","wider and heavier","same size but lighter"],diff:3},
+        {clue:"The term 'moonshot' refers to an extremely long home run. The longest verified home run in MLB history was hit in 1953 by this Hall of Famer, traveling 565 feet.",answer:"Mickey Mantle",accept:["mickey mantle","mantle","the mick"],choices:["Babe Ruth","Harmon Killebrew","Frank Howard"],diff:4},
+      ],
+      400: [
+        {clue:"The phrase 'hot stove league' refers to the baseball offseason when fans discuss trades and free agent signings, staying warm around the figurative hot stove. This phrase has been used since approximately this decade.",answer:"1890s",accept:["1890s","the 1890s","late 1800s"],choices:["1920s","1900s","1910s"],diff:1},
+        {clue:"A 'purpose pitch' is when a pitcher intentionally throws near a batter to intimidate or retaliate. MLB rules allow umpires to eject pitchers for this and may issue warnings to both teams. What is the official term for this in the MLB rulebook?",answer:"intentional beanball",accept:["intentional beanball","beanball","intentional hit by pitch"],choices:["purpose pitch","warning pitch","intimidation pitch"],diff:2},
+        {clue:"The term 'OPS+' normalizes OPS across parks and eras, with 100 being average. An OPS+ of 162 is considered Hall of Fame caliber and was the career mark of this all-time great.",answer:"Babe Ruth",accept:["babe ruth","ruth"],choices:["Ted Williams","Barry Bonds","Lou Gehrig"],diff:3},
+        {clue:"In 'Moneyball' sabermetrics, the statistic that Billy Beane and Paul DePodesta focused on above all others as their market inefficiency in 2002 was this.",answer:"on-base percentage",accept:["on-base percentage","obp","on base percentage"],choices:["slugging percentage","home runs","stolen bases"],diff:4},
+      ],
+    },
+    5: { // HALL OF FAMERS
+      100: [
+        {clue:"This Hall of Famer nicknamed 'The Say Hey Kid' is widely considered one of the greatest baseball players of all time.",answer:"Willie Mays",accept:["willie mays","mays"],choices:["Hank Aaron","Mickey Mantle","Duke Snider"],diff:1},
+        {clue:"This Hall of Famer pitched 23 seasons for the Yankees and was the first player elected unanimously to Cooperstown.",answer:"Mariano Rivera",accept:["mariano rivera","rivera","mo"],choices:["Greg Maddux","Tom Seaver","Randy Johnson"],diff:1},
+        {clue:"This Hall of Famer won 7 Cy Young Awards over his career with the Mets, Blue Jays, Astros, and Yankees.",answer:"Roger Clemens",accept:["roger clemens","clemens","the rocket"],choices:["Greg Maddux","Randy Johnson","Tom Seaver"],diff:2},
+        {clue:"This Hall of Famer and 'Iron Man' played in 2,632 consecutive games for the Baltimore Orioles.",answer:"Cal Ripken Jr.",accept:["cal ripken jr","cal ripken","ripken"],choices:["Lou Gehrig","Joe DiMaggio","Tony Gwynn"],diff:2},
+        {clue:"This Hall of Famer won the batting title in 8 different seasons and is the only player to win batting titles in three different decades.",answer:"Tony Gwynn",accept:["tony gwynn","gwynn","mr. padre"],choices:["Rod Carew","George Brett","Wade Boggs"],diff:3},
+        {clue:"This Hall of Famer won 4 Cy Young Awards in 5 seasons with the Dodgers from 1963-1966 before retiring early due to arthritis.",answer:"Sandy Koufax",accept:["sandy koufax","koufax"],choices:["Don Drysdale","Don Newcombe","Bob Gibson"],diff:3},
+        {clue:"This Hall of Fame second baseman was the first player to hit 500 home runs and collect 3,000 hits.",answer:"Eddie Murray",accept:["eddie murray","murray"],choices:["Roberto Alomar","Ryne Sandberg","Craig Biggio"],diff:4},
+        {clue:"The first player elected to the Hall of Fame was this Cleveland Naps shortstop, elected in the inaugural 1936 class.",answer:"Honus Wagner",accept:["honus wagner","wagner","the flying dutchman"],choices:["Ty Cobb","Babe Ruth","Christy Mathewson"],diff:4},
+      ],
+      200: [
+        {clue:"Ted Williams, 'The Splendid Splinter,' was the last MLB player to hit over .400 in a season. He hit .406 in this year.",answer:"1941",accept:["1941"],choices:["1939","1940","1942"],diff:1},
+        {clue:"This Hall of Famer was known as 'The Big Unit' and stood 6'10\", winning 5 Cy Young Awards.",answer:"Randy Johnson",accept:["randy johnson","johnson","the big unit"],choices:["Nolan Ryan","Roger Clemens","Pedro Martinez"],diff:1},
+        {clue:"Greg Maddux won 4 consecutive Cy Young Awards from 1992-1995. The first was with the Cubs; the following three were with this team.",answer:"Atlanta Braves",accept:["atlanta braves","braves"],choices:["San Diego Padres","Los Angeles Dodgers","Chicago Cubs"],diff:2},
+        {clue:"This Hall of Famer is the only pitcher to win a Cy Young Award and an MVP in the same season, accomplishing this feat in 1968.",answer:"Bob Gibson",accept:["bob gibson","gibson"],choices:["Denny McLain","Sandy Koufax","Juan Marichal"],diff:2},
+        {clue:"Roberto Clemente died in a plane crash on December 31, 1972. He was delivering aid to earthquake victims in this country.",answer:"Nicaragua",accept:["nicaragua"],choices:["Puerto Rico","Dominican Republic","Panama"],diff:3},
+        {clue:"This Hall of Famer hit .388 in 1980, the highest batting average since Ted Williams hit .406 in 1941, and won the batting title for the Royals.",answer:"George Brett",accept:["george brett","brett"],choices:["Rod Carew","Tony Gwynn","Wade Boggs"],diff:3},
+        {clue:"The first African American player inducted into the Hall of Fame in the inaugural class was this Hall of Famer, inducted in 1962.",answer:"Jackie Robinson",accept:["jackie robinson","robinson"],choices:["Roy Campanella","Willie Mays","Larry Doby"],diff:4},
+        {clue:"This Hall of Famer holds the record for most career appearances by a pitcher with 1,252 games for the Rangers, Expos, Mets, and others.",answer:"Jesse Orosco",accept:["jesse orosco","orosco"],choices:["Mike Stanton","Kent Tekulve","Dan Plesac"],diff:4},
+      ],
+      300: [
+        {clue:"Hank Aaron's career with the Milwaukee and Atlanta Braves is legendary. He was named after this U.S. president.",answer:"Henry",accept:["henry","henry aaron","henry louis aaron"],choices:["Hank is short for Henry","It's just Hank","Harold"],diff:1},
+        {clue:"This Hall of Famer played 3,562 games, the most in MLB history, for the Reds and other teams over a 24-year career.",answer:"Pete Rose",accept:["pete rose","rose","charlie hustle"],choices:["Carl Yastrzemski","Ty Cobb","Cal Ripken Jr."],diff:2},
+        {clue:"Ichiro Suzuki won the AL MVP and Rookie of the Year awards in the same season, 2001, playing for this team.",answer:"Seattle Mariners",accept:["seattle mariners","mariners","seattle"],choices:["New York Yankees","Boston Red Sox","Oakland Athletics"],diff:2},
+        {clue:"This Hall of Famer is the only player to win the Rookie of the Year, MVP, and World Series in consecutive seasons.",answer:"Ichiro Suzuki",accept:["ichiro suzuki","ichiro"],choices:["Mike Trout","Kris Bryant","Corey Seager"],diff:3},
+        {clue:"Frank Robinson won the Triple Crown in 1966 for the Orioles, leading the AL in batting average, home runs, and RBIs. His batting average that season was this.",answer:".316",accept:[".316","316"],choices:[".302",".323",".298"],diff:3},
+        {clue:"This Hall of Famer and Cardinals legend 'The Man' holds the Cardinals franchise record for career RBIs with 1,951.",answer:"Stan Musial",accept:["stan musial","musial","stan the man"],choices:["Enos Slaughter","Bob Gibson","Rogers Hornsby"],diff:4},
+      ],
+      400: [
+        {clue:"This Hall of Famer holds the record for most career triples with 309, earning him the nickname 'Wahoo Sam' for his Nebraska hometown.",answer:"Sam Crawford",accept:["sam crawford","crawford","wahoo sam"],choices:["Honus Wagner","Ty Cobb","Tris Speaker"],diff:1},
+        {clue:"Babe Ruth's Hall of Fame plaque in Cooperstown notes his career with the Red Sox, Yankees, and this third team he finished his career with.",answer:"Boston Braves",accept:["boston braves","braves"],choices:["Philadelphia Athletics","Pittsburgh Pirates","Brooklyn Dodgers"],diff:2},
+        {clue:"This Hall of Famer and pitcher for the Giants won 373 career games and holds the NL record for career shutouts.",answer:"Christy Mathewson",accept:["christy mathewson","mathewson","matty","big six"],choices:["Warren Spahn","Cy Young","Grover Cleveland Alexander"],diff:3},
+        {clue:"The last player to win the Triple Crown before Miguel Cabrera in 2012 was this Hall of Famer who did it in 1967 for the Red Sox.",answer:"Carl Yastrzemski",accept:["carl yastrzemski","yastrzemski","yaz"],choices:["Frank Robinson","Mickey Mantle","Roger Maris"],diff:4},
+      ],
+    },
+  }
+};
+
+// Merge extra questions into existing pools
+Object.keys(X).forEach(sport => {
+  const Q = SPORT_ALL_Q[sport];
+  if (!Q) return;
+  Object.keys(X[sport]).forEach(ci => {
+    Object.keys(X[sport][ci]).forEach(pts => {
+      if (Q[ci] && Q[ci][pts]) Q[ci][pts].push(...X[sport][ci][pts]);
+    });
+  });
+});
+})();
+
 // ── GAME STATE VARIABLES ──────────────────────────────────────
 const PTS = [100, 200, 300, 400];
 function getDDPositions(cols) {
@@ -1601,9 +1883,16 @@ function pickQuestions() {
     out[ci] = {};
     PTS.forEach(pts => {
       const pool = Q[ci][pts];
-      let q = pool.find(x => x.diff === selectedDiff);
-      if (!q) q = pool.reduce((best, x) => Math.abs(x.diff - selectedDiff) < Math.abs(best.diff - selectedDiff) ? x : best, pool[0]);
-      out[ci][pts] = q;
+      // Get all questions matching selected difficulty
+      let matches = pool.filter(x => x.diff === selectedDiff);
+      // Fall back to closest difficulty if no exact match
+      if (!matches.length) {
+        const closest = pool.reduce((best, x) =>
+          Math.abs(x.diff - selectedDiff) < Math.abs(best.diff - selectedDiff) ? x : best, pool[0]);
+        matches = pool.filter(x => x.diff === closest.diff);
+      }
+      // Randomly pick one from the matching pool
+      out[ci][pts] = matches[Math.floor(Math.random() * matches.length)];
     });
   }
   return out;
@@ -2228,6 +2517,17 @@ document.addEventListener('touchstart', function unlock() {
     if (toggle) toggle.textContent = '☀️';
   }
 })();
+
+// Register service worker (enables "Add to Home Screen" + offline play once hosted)
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
+
+// ── HOW TO PLAY ───────────────────────────────────────────────
+function openHowTo() { document.getElementById('howto-overlay').classList.add('open'); }
+function closeHowTo() { document.getElementById('howto-overlay').classList.remove('open'); }
 
 // ── SETTINGS ─────────────────────────────────────────────────
 const SETTINGS_INFO = [
