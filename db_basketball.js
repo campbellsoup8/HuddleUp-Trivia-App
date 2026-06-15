@@ -475,6 +475,7 @@ const BASKETBALL_EXTRA = {
   // Category 2: NBA RECORDS
   2: {
     100: [
+      { clue: "In 1962, this legendary center set a record that still stands by scoring 100 points in a single NBA game.", answer: "Wilt Chamberlain", accept: ["wilt chamberlain", "wilt", "chamberlain"], choices: ["Michael Jordan", "Kobe Bryant", "Kareem Abdul-Jabbar"], diff: 1 },
       {
         clue: "Elmore Smith set the NBA single-game blocks record with 17 in 1973. He played for this team at the time.",
         answer: "Los Angeles Lakers",

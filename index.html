@@ -65,6 +65,36 @@ body.sport-soccer .field-bg{
 body.sport-soccer .field-bg::before{content:'';position:absolute;inset:0;
   background:repeating-linear-gradient(90deg,transparent 0,transparent 60px,rgba(0,0,0,.04) 60px,rgba(0,0,0,.04) 120px);}
 
+/* Mixed bg — cosmic nebula, each glow = a sport color */
+body.sport-mixed .field-bg{
+  background:
+    radial-gradient(ellipse 45% 45% at 10% 12%,rgba(212,60,23,.32) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 40% at 88% 14%,rgba(30,100,212,.30) 0%,transparent 60%),
+    radial-gradient(ellipse 38% 38% at 50% 48%,rgba(155,89,182,.26) 0%,transparent 62%),
+    radial-gradient(ellipse 36% 36% at 12% 84%,rgba(46,200,113,.26) 0%,transparent 56%),
+    radial-gradient(ellipse 38% 38% at 88% 82%,rgba(241,196,15,.22) 0%,transparent 56%),
+    radial-gradient(ellipse 32% 32% at 50% 96%,rgba(52,152,219,.20) 0%,transparent 52%),
+    linear-gradient(180deg,#040112 0%,#080320 35%,#0b0528 65%,#060210 100%);}
+body.sport-mixed .field-bg::before{content:'';position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(30deg,transparent 0,transparent 50px,rgba(255,255,255,.011) 50px,rgba(255,255,255,.011) 52px),
+    repeating-linear-gradient(-30deg,transparent 0,transparent 50px,rgba(255,255,255,.011) 50px,rgba(255,255,255,.011) 52px);}
+
+/* Rainbow gradient text for Mixed button */
+@keyframes rainbow-shift{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+.sport-name-rainbow{
+  background:linear-gradient(90deg,#e74c3c,#e67e22,#f1c40f,#2ecc71,#3498db,#9b59b6,#e74c3c);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  background-size:200%;animation:rainbow-shift 3s linear infinite;}
+
+/* F1 bg — dark asphalt / night race */
+body.sport-f1 .field-bg{
+  background:radial-gradient(ellipse 60% 40% at 20% 0%,rgba(255,30,30,.18) 0%,transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 0%,rgba(255,30,30,.18) 0%,transparent 50%),
+    linear-gradient(180deg,#080808 0%,#111111 35%,#1a1a1a 65%,#0d0d0d 100%);}
+body.sport-f1 .field-bg::before{content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(90deg,transparent 0,transparent 80px,rgba(255,255,255,.022) 80px,rgba(255,255,255,.022) 82px);}
+
 /* Night mode */
 @keyframes twinkle{0%{opacity:.55}100%{opacity:1}}
 body.night .field-bg{
@@ -229,6 +259,9 @@ body.night .field-bg::after{content:'';position:absolute;bottom:0;left:0;right:0
 .mc-btn.correct{border-color:#4aee4a!important;background:rgba(74,238,74,.15)!important;color:#fff}
 .mc-btn.wrong{border-color:var(--red)!important;background:rgba(204,34,0,.15)!important}
 .mc-continue-row{display:flex;justify-content:center;margin-top:8px}
+.diff-rate-btn{width:36px;height:36px;border-radius:7px;border:2px solid rgba(212,160,23,.35);background:rgba(255,255,255,.05);color:var(--cream);font-family:'Bebas Neue',Impact,sans-serif;font-size:1.1rem;cursor:pointer;transition:all .15s}
+.diff-rate-btn:hover{border-color:var(--gold);background:rgba(212,160,23,.2);color:var(--gold);transform:scale(1.1)}
+.diff-rate-btn.selected{border-color:var(--gold);background:rgba(212,160,23,.35);color:var(--gold)}
 
 /* ── FINAL ── */
 .final-box{background:rgba(8,3,0,.92);border:4px solid var(--gold);border-radius:14px;padding:40px 36px;max-width:680px;width:100%;text-align:center;box-shadow:0 0 70px rgba(212,160,23,.4)}
@@ -308,6 +341,8 @@ body.night .field-bg::after{content:'';position:absolute;bottom:0;left:0;right:0
     <button class="sport-card" id="sport-hockey" onclick="setSport('hockey')"><span class="sport-icon">🏒</span><span class="sport-name">Hockey</span></button>
     <button class="sport-card" id="sport-golf" onclick="setSport('golf')"><span class="sport-icon">⛳</span><span class="sport-name">Golf</span></button>
     <button class="sport-card" id="sport-soccer" onclick="setSport('soccer')"><span class="sport-icon">⚽</span><span class="sport-name">Soccer</span></button>
+    <button class="sport-card" id="sport-f1" onclick="setSport('f1')"><span class="sport-icon">🏎️</span><span class="sport-name">F1</span></button>
+    <button class="sport-card sport-card-mixed" id="sport-mixed" onclick="setSport('mixed')"><span class="sport-icon">🧠</span><span class="sport-name sport-name-rainbow">ALL SPORTS MIX</span></button>
   </div>
   <div class="divider"><span>✦ ✦ ✦</span></div>
   <div class="section-label">Difficulty Level</div>
@@ -335,11 +370,6 @@ body.night .field-bg::after{content:'';position:absolute;bottom:0;left:0;right:0
   <div class="divider" style="margin-bottom:4px"><span>✦ ✦ ✦</span></div>
   <div class="section-label" style="margin-bottom:10px">Game Mode</div>
   <div class="mode-select">
-    <button class="mode-card" id="mode-inperson" onclick="setMode('inperson')">
-      <span class="mode-icon">🏟️</span>
-      <span class="mode-title">In Person</span>
-      <span class="mode-desc">Host reads clues &amp; scores answers manually</span>
-    </button>
     <button class="mode-card" id="mode-solo" onclick="setMode('solo')">
       <span class="mode-icon">🎮</span>
       <span class="mode-title">Solo</span>
@@ -349,6 +379,11 @@ body.night .field-bg::after{content:'';position:absolute;bottom:0;left:0;right:0
       <span class="mode-icon">📱</span>
       <span class="mode-title">Multiplayer</span>
       <span class="mode-desc">Pass the device — each team answers in turn</span>
+    </button>
+    <button class="mode-card" id="mode-inperson" onclick="setMode('inperson')">
+      <span class="mode-icon">🏟️</span>
+      <span class="mode-title">In Person</span>
+      <span class="mode-desc">Host reads clues &amp; scores answers manually</span>
     </button>
   </div>
   <button class="play-btn" id="play-btn" onclick="startGame()">⚾ PLAY BALL!</button>
@@ -432,6 +467,21 @@ body.night .field-bg::after{content:'';position:absolute;bottom:0;left:0;right:0
   <div class="m-btns" id="m-btns">
     <button class="btn btn-reveal" onclick="revealAns()">Reveal Answer</button>
   </div>
+  <div id="diff-rating" style="display:none;margin-top:14px;text-align:center">
+    <div style="font-family:'Oswald',sans-serif;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,230,200,.6);margin-bottom:8px">Rate this question (optional)</div>
+    <div style="display:flex;gap:5px;justify-content:center;flex-wrap:wrap">
+      <button class="diff-rate-btn" onclick="submitRating(1)">1</button>
+      <button class="diff-rate-btn" onclick="submitRating(2)">2</button>
+      <button class="diff-rate-btn" onclick="submitRating(3)">3</button>
+      <button class="diff-rate-btn" onclick="submitRating(4)">4</button>
+      <button class="diff-rate-btn" onclick="submitRating(5)">5</button>
+      <button class="diff-rate-btn" onclick="submitRating(6)">6</button>
+      <button class="diff-rate-btn" onclick="submitRating(7)">7</button>
+      <button class="diff-rate-btn" onclick="submitRating(8)">8</button>
+      <button class="diff-rate-btn" onclick="submitRating(9)">9</button>
+      <button class="diff-rate-btn" onclick="submitRating(10)">10</button>
+    </div>
+  </div>
 </div>
 </div>
 
@@ -476,9 +526,26 @@ body.night .field-bg::after{content:'';position:absolute;bottom:0;left:0;right:0
     <tbody id="hs-tbody"></tbody>
   </table>
   <button class="hs-clear-btn" onclick="clearScores()">🗑 Clear All Scores</button><br>
-  <button class="hs-back-btn" onclick="show('s-setup')">�? Back</button>
+  <button class="hs-back-btn" onclick="show('s-setup')">&#8592; Back</button>
 </div>
 </div>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyC8gZsT8JRZRsO4-jGvPrI2wGUaNVzYUqg",
+    authDomain: "huddleup-app.firebaseapp.com",
+    databaseURL: "https://huddleup-app-default-rtdb.firebaseio.com",
+    projectId: "huddleup-app",
+    storageBucket: "huddleup-app.firebasestorage.app",
+    messagingSenderId: "706405859879",
+    appId: "1:706405859879:web:44d9639d1bed4dc3f50402"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const fbDb = firebase.database();
+</script>
 
 <script src="db_baseball.js"></script>
 <script src="db_football.js"></script>
@@ -486,6 +553,7 @@ body.night .field-bg::after{content:'';position:absolute;bottom:0;left:0;right:0
 <script src="db_hockey.js"></script>
 <script src="db_golf.js"></script>
 <script src="db_soccer.js"></script>
+<script src="db_f1.js"></script>
 
 <script>
 // ── SPORT CONFIG ─────────────────────────────────────────────
@@ -574,6 +642,34 @@ const SPORT_CONFIG = {
     boardTitle: '⚽ HuddleUp Trivia',
     teamPlaceholders: ['Brazil','France','Argentina','Germany'],
   },
+  mixed: {
+    name: 'Mixed', emoji: '🧠', tagline: 'All Sports Trivia Challenge',
+    bgClass: 'sport-mixed',
+    cats6: ["BASEBALL","FOOTBALL","BASKETBALL","HOCKEY","GOLF","SOCCER & F1"],
+    bases: ["SINGLE","TOUCHDOWN","SLAM DUNK","HAT TRICK"],
+    ddName: '🧠 WILD CARD! 🧠',
+    finalName: 'FINAL SHOWDOWN',
+    finalSkipName: 'Final Showdown →',
+    champLabel: 'All-Sports Champion',
+    playBtn: '🧠 LET\'S PLAY!',
+    againBtn: '🧠 Play Again',
+    boardTitle: '🧠 HuddleUp Trivia',
+    teamPlaceholders: ['Team 1','Team 2','Team 3','Team 4'],
+  },
+  f1: {
+    name: 'F1', emoji: '🏎️', tagline: 'Formula 1 Trivia Challenge',
+    bgClass: 'sport-f1',
+    cats6: ["WORLD CHAMPIONS","ICONIC RACES","TEAMS & CONSTRUCTORS","F1 RECORDS","TRACKS & CIRCUITS","MODERN ERA"],
+    bases: ["SAFETY CAR","PODIUM","POLE POSITION","FASTEST LAP"],
+    ddName: '🏎️ DRS ZONE! 🏎️',
+    finalName: 'FINAL LAP',
+    finalSkipName: 'Final Lap →',
+    champLabel: 'Formula 1 World Champion',
+    playBtn: '🏎️ LIGHTS OUT!',
+    againBtn: '🏎️ Race Again',
+    boardTitle: '🏎️ HuddleUp Trivia',
+    teamPlaceholders: ['Red Bull','Ferrari','Mercedes','McLaren'],
+  },
 };
 
 // ── QUESTION LOOKUPS (loaded from separate question files) ────
@@ -584,6 +680,7 @@ const SPORT_ALL_Q = {
   hockey:     HOCKEY_Q,
   golf:       GOLF_Q,
   soccer:     SOCCER_Q,
+  f1:         F1_Q,
 };
 const SPORT_ALL_FINALS = {
   baseball:   BASEBALL_FINALS,
@@ -592,6 +689,7 @@ const SPORT_ALL_FINALS = {
   hockey:     HOCKEY_FINALS,
   golf:       GOLF_FINALS,
   soccer:     SOCCER_FINALS,
+  f1:         F1_FINALS,
 };
 
 // ── EXTRA QUESTIONS (merged at runtime for variety) ───────────
@@ -838,7 +936,7 @@ function getDDPositions(cols) {
 let selectedSport = 'baseball';
 let selectedDiff  = 1; // 1-4
 let selectedCols  = 4; // 3-6
-let selectedMode  = 'inperson';
+let selectedMode  = 'solo';
 let G             = {};
 let AC            = null;
 let finalTimerRef = null;
@@ -1119,6 +1217,8 @@ function selectChoice(idx) {
   G.cur._autoCorrect = isCorrect;
   const cont = document.getElementById('mc-continue');
   if (cont) cont.style.display = 'inline-block';
+  const rb = document.getElementById('diff-rating');
+  if (rb) { rb.style.display = 'block'; document.querySelectorAll('.diff-rate-btn').forEach(b => b.classList.remove('selected')); }
 }
 
 function timeOutMC() {
@@ -1137,6 +1237,8 @@ function timeOutMC() {
   G.cur._autoCorrect = false;
   const cont = document.getElementById('mc-continue');
   if (cont) cont.style.display = 'inline-block';
+  const rb = document.getElementById('diff-rating');
+  if (rb) { rb.style.display = 'block'; document.querySelectorAll('.diff-rate-btn').forEach(b => b.classList.remove('selected')); }
 }
 
 // ── QUESTION MODAL ────────────────────────────────────────────
@@ -1159,11 +1261,13 @@ function showQuestion() {
   document.getElementById('m-dd').style.display = isDD ? 'block' : 'none';
   const res = document.getElementById('m-result');
   res.style.display = 'none'; res.textContent = ''; res.className = 'm-result';
+  const ratingBox = document.getElementById('diff-rating');
+  if (ratingBox) { ratingBox.style.display = 'none'; document.querySelectorAll('.diff-rate-btn').forEach(b => b.classList.remove('selected')); }
   if (G.mode === 'typeanswer') {
     document.getElementById('m-input-row').style.display = 'none';
     G.cur.choices = buildChoices(q);
     document.getElementById('m-btns').innerHTML = renderMCGrid(G.cur.choices) +
-      '<div class="mc-continue-row"><button class="btn btn-reveal" id="mc-continue" onclick="autoScore()" style="display:none">Continue →</button></div>';
+      '<div class="mc-continue-row"><button class="btn btn-reveal" id="mc-continue" onclick="submitRating(null)" style="display:none">Continue →</button></div>';
   } else {
     document.getElementById('m-input-row').style.display = 'none';
     document.getElementById('m-btns').innerHTML = '<button class="btn btn-reveal" onclick="revealAns()">Reveal Answer</button>';
@@ -1196,6 +1300,40 @@ function score(correct) {
   document.getElementById('q-overlay').classList.remove('open');
   stopTimer(); stopThink(); refreshScores(); refreshBanner();
   if (G.used.size >= PTS.length * G.cols) setTimeout(goFinal, 400);
+}
+
+// ── DIFFICULTY RATING ─────────────────────────────────────────
+function showRating() {
+  const box = document.getElementById('diff-rating');
+  if (box) {
+    box.style.display = 'block';
+    document.querySelectorAll('.diff-rate-btn').forEach(b => b.classList.remove('selected'));
+  }
+}
+
+function submitRating(rating) {
+  if (!G.cur || G.cur._rated) return; // #1 guard: ignore double-taps
+  G.cur._rated = true;
+  const q = G.cur.q;
+  if (rating !== null && q) {
+    try {
+      fbDb.ref('ratings').push({
+        question: q.clue || '',
+        answer: q.answer || '',                         // #2 stable join key (survives a clue reword)
+        category: (G.cats && G.cats[G.cur.ci]) || '',   // #2
+        points: G.cur.pts,                              // #2 board tier
+        sport: selectedSport,
+        set_difficulty: selectedDiff,                   // level the player chose for the game
+        question_difficulty: (typeof q.diff === 'number') ? q.diff : selectedDiff, // #3 question's authored diff
+        user_rating: rating,
+        was_correct: !!G.cur._autoCorrect,              // #4 did they actually get it right?
+        timestamp: new Date().toISOString()
+      });
+    } catch(e) {} // silent fail — don't interrupt gameplay
+  }
+  const box = document.getElementById('diff-rating');
+  if (box) box.style.display = 'none';
+  autoScore();
 }
 
 function autoScore() {
@@ -1636,6 +1774,22 @@ document.addEventListener('touchstart', function unlock() {
   }
 })();
 
+// Set default selections on load
+window.addEventListener('DOMContentLoaded', function() {
+  setSport('baseball');
+  setDiff(1);
+  selectedMode = 'solo';
+  document.querySelectorAll('.mode-card').forEach(card => {
+    card.classList.toggle('selected', card.id === 'mode-solo');
+  });
+  const teamGrid = document.querySelector('.team-grid');
+  if (teamGrid) teamGrid.classList.add('is-solo');
+  ['t2','t3','t4'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { const wrap = el.closest('.team-input-wrap') || el.parentElement; if (wrap) wrap.style.display = 'none'; }
+  });
+});
+
 // Register service worker (enables "Add to Home Screen" + offline play once hosted)
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
@@ -1697,6 +1851,22 @@ const SETTINGS_INFO = [
     ['MODERN ERA',             'Today\'s stars, recent champions, and the current state of world football.'],
     ['CLUB FOOTBALL',          'The greatest clubs, leagues, and competitions from around the globe.'],
   ]},
+  { emoji:'🧠', name:'All Sports Mix', desc:'A mixed board drawing questions from every sport — Baseball, Football, Basketball, Hockey, Golf, Soccer, and F1. One category per sport, one board to rule them all.', cats:[
+    ['BASEBALL',    'Questions from across all Baseball categories — World Series, Home Run Legends, Records, and more.'],
+    ['FOOTBALL',    'Questions from across all Football categories — Super Bowl, QB Legends, Records, and Dynasties.'],
+    ['BASKETBALL',  'Questions from across all Basketball categories — NBA Championships, Scoring Legends, and Modern Era.'],
+    ['HOCKEY',      'Questions from across all Hockey categories — Stanley Cup, Scoring Legends, Records, and Modern Era.'],
+    ['GOLF',        'Questions from across all Golf categories — Major Championships, Legends, Records, and Ryder Cup.'],
+    ['SOCCER & F1', 'A combined mix of Soccer (World Cup, Club Football, Legends) and Formula 1 (Champions, Races, Tracks).'],
+  ]},
+  { emoji:'🏎️', name:'F1', desc:'Formula 1 trivia covering World Champions, iconic races, constructor rivalries, all-time records, legendary circuits, and the modern era from 2018 to today.', cats:[
+    ['WORLD CHAMPIONS',        'Title battles, championship-winning drivers, and the drama behind every F1 World Championship.'],
+    ['ICONIC RACES',           'The most memorable Grands Prix — historic victories, shocking crashes, and last-lap drama.'],
+    ['TEAMS & CONSTRUCTORS',   'The teams that built F1\'s greatest cars, constructor rivalries, and behind-the-scenes stories.'],
+    ['F1 RECORDS',             'All-time records for wins, poles, championships, starts, and single-season dominance.'],
+    ['TRACKS & CIRCUITS',      'The legendary venues, street circuits, and new-era tracks that define the Formula 1 calendar.'],
+    ['MODERN ERA',             'F1 from 2018 to today — Verstappen\'s dominance, Drive to Survive, new venues, and current stars.'],
+  ]},
 ];
 
 function openSettings() {
@@ -1733,6 +1903,7 @@ setMode('inperson');
     { q: HOCKEY_Q,     extra: HOCKEY_EXTRA,     finals: HOCKEY_FINALS,     extraFinals: HOCKEY_EXTRA_FINALS     },
     { q: GOLF_Q,       extra: GOLF_EXTRA,       finals: GOLF_FINALS,       extraFinals: GOLF_EXTRA_FINALS       },
     { q: SOCCER_Q,     extra: SOCCER_EXTRA,     finals: SOCCER_FINALS,     extraFinals: SOCCER_EXTRA_FINALS     },
+    { q: F1_Q,         extra: F1_EXTRA,         finals: F1_FINALS,         extraFinals: F1_EXTRA_FINALS         },
   ];
   merges.forEach(function(m) {
     // Merge questions
@@ -1751,12 +1922,42 @@ setMode('inperson');
 })();
 // ── END MERGE ───────────────────────────────────────────────
 
+// ── MIXED SPORT BUILDER (runs after mergeExtra so extras are included) ──
+(function buildMixed() {
+  const pts_vals = [100, 200, 300, 400];
+  const sportSources = [BASEBALL_Q, FOOTBALL_Q, BASKETBALL_Q, HOCKEY_Q, GOLF_Q];
+  const mixedQ = {};
+  sportSources.forEach(function(sportQ, ci) {
+    mixedQ[ci] = {};
+    pts_vals.forEach(function(pts) {
+      mixedQ[ci][pts] = [];
+      for (var scat in sportQ) {
+        if (sportQ[scat] && sportQ[scat][pts]) mixedQ[ci][pts] = mixedQ[ci][pts].concat(sportQ[scat][pts]);
+      }
+    });
+  });
+  mixedQ[5] = {};
+  pts_vals.forEach(function(pts) {
+    mixedQ[5][pts] = [];
+    [SOCCER_Q, F1_Q].forEach(function(sq) {
+      for (var scat in sq) {
+        if (sq[scat] && sq[scat][pts]) mixedQ[5][pts] = mixedQ[5][pts].concat(sq[scat][pts]);
+      }
+    });
+  });
+  SPORT_ALL_Q.mixed = mixedQ;
+  SPORT_ALL_FINALS.mixed = [].concat(
+    BASEBALL_FINALS, FOOTBALL_FINALS, BASKETBALL_FINALS,
+    HOCKEY_FINALS, GOLF_FINALS, SOCCER_FINALS, F1_FINALS
+  );
+})();
+
 // ── HIGH SCORES ───────────────────────────────────────────────
 const HS_KEY = 'bj-highscores';
 const HS_DIFF_LABELS = { 1: 'Beginner', 2: 'Intermediate', 3: 'Advanced', 4: 'Expert' };
 const HS_SPORT_LABELS = {
   baseball: '⚾ Baseball', football: '🏈 Football', basketball: '🏀 Basketball',
-  hockey: '🏒 Hockey', golf: '⛳ Golf', soccer: '⚽ Soccer'
+  hockey: '🏒 Hockey', golf: '⛳ Golf', soccer: '⚽ Soccer', f1: '🏎️ F1', mixed: '🧠 Mixed'
 };
 let hsActiveSport = 'all', hsActiveDiff = 0;
 
@@ -1793,8 +1994,8 @@ function openScores() {
 }
 
 function buildScoreFilters() {
-  const sports = ['all','baseball','football','basketball','hockey','golf','soccer'];
-  const sportNames = { all:'🌟 All', baseball:'⚾ Baseball', football:'🏈 Football', basketball:'🏀 Basketball', hockey:'🏒 Hockey', golf:'⛳ Golf', soccer:'⚽ Soccer' };
+  const sports = ['all','baseball','football','basketball','hockey','golf','soccer','f1','mixed'];
+  const sportNames = { all:'🌟 All', baseball:'⚾ Baseball', football:'🏈 Football', basketball:'🏀 Basketball', hockey:'🏒 Hockey', golf:'⛳ Golf', soccer:'⚽ Soccer', f1:'🏎️ F1', mixed:'🧠 Mixed' };
   document.getElementById('hs-sport-filters').innerHTML = sports.map(s =>
     `<button class="hs-filter${hsActiveSport===s?' active':''}" onclick="setHsSport('${s}')">${sportNames[s]}</button>`
   ).join('');

@@ -22,7 +22,7 @@ const FOOTBALL_Q = {
     ],
     400: [
       { clue: "Tom Brady won how many Super Bowls during his NFL career?", answer: "7", accept: ["7", "seven"], choices: ["6", "5", "8"], diff: 1 },
-      { clue: "The Green Bay Packers, coached by Vince Lombardi, won the first two Super Bowls. The Super Bowl trophy was named after this coach.", answer: "Vince Lombardi", accept: ["vince lombardi", "lombardi"], choices: ["Chuck Noll", "Bill Walsh", "Don Shula"], diff: 2 },
+      { clue: "The Green Bay Packers won the first two Super Bowls under their legendary head coach. The Super Bowl trophy is named after this man.", answer: "Vince Lombardi", accept: ["vince lombardi", "lombardi"], choices: ["Chuck Noll", "Bill Walsh", "Don Shula"], diff: 2 },
       { clue: "The Kansas City Chiefs won Super Bowl LVIII in February 2024, defeating this team in overtime.", answer: "San Francisco 49ers", accept: ["san francisco 49ers", "49ers", "niners", "san francisco"], choices: ["Baltimore Ravens", "Detroit Lions", "Philadelphia Eagles"], diff: 1 },
       { clue: "In Super Bowl XIII, the Steelers beat the Cowboys 35-31. This was the first Super Bowl rematch. Who was the Steelers' winning quarterback and MVP?", answer: "Terry Bradshaw", accept: ["terry bradshaw", "bradshaw"], choices: ["Roger Staubach", "Joe Gilliam", "Joe Montana"], diff: 3 },
     ],
@@ -337,7 +337,7 @@ const FOOTBALL_EXTRA = {
         diff: 3
       },
       {
-        clue: "Kurt Warner stocked shelves at a grocery store making $5.50/hour before leading the Rams' Greatest Show on Turf offense to a Super Bowl victory.",
+        clue: "This quarterback stocked grocery store shelves for $5.50/hour before leading the Rams' 'Greatest Show on Turf' offense to a Super Bowl victory.",
         answer: "Kurt Warner",
         accept: ["kurt warner", "warner"],
         choices: ["Trent Dilfer", "Brad Johnson", "Mark Brunell"],
@@ -778,8 +778,10 @@ const FOOTBALL_EXTRA = {
   // Category 4: HALL OF FAMERS
   4: {
     100: [
+      { clue: "Nicknamed 'Prime Time,' this two-sport star is the only athlete to play in both a Super Bowl and a World Series.", answer: "Deion Sanders", accept: ["deion sanders", "deion", "prime time", "sanders"], choices: ["Bo Jackson", "Michael Jordan", "Russell Wilson"], diff: 1 },
+      { clue: "Nicknamed 'Mean Joe Greene,' this Hall of Fame defensive tackle anchored the 1970s 'Steel Curtain' defense for which NFL team?", answer: "Pittsburgh Steelers", accept: ["pittsburgh steelers", "steelers", "pittsburgh"], choices: ["Dallas Cowboys", "Oakland Raiders", "Minnesota Vikings"], diff: 1 },
       {
-        clue: "This Pittsburgh Steelers defensive tackle was nicknamed 'Mean Joe Greene' and anchored the famous 'Steel Curtain' defense of the 1970s.",
+        clue: "This Pittsburgh Steelers defensive tackle anchored the famous 'Steel Curtain' defense of the 1970s and later starred in a classic Coca-Cola commercial.",
         answer: "Mean Joe Greene",
         accept: ["mean joe greene", "joe greene", "greene"],
         choices: ["Jack Lambert", "Jack Ham", "Mel Blount"],
@@ -881,7 +883,7 @@ const FOOTBALL_EXTRA = {
         diff: 2
       },
       {
-        clue: "Night Train Lane got his nickname from a fellow player who heard him playing this song on a record player when they first met.",
+        clue: "Hall of Fame cornerback Dick Lane earned his famous nickname from a teammate who kept hearing him play this 1952 R&B instrumental on his record player.",
         answer: "Night Train",
         accept: ["night train", "the song night train"],
         choices: ["Midnight Train to Georgia", "Mystery Train", "Train Kept a-Rollin"],

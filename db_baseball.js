@@ -148,7 +148,7 @@ const BASEBALL_Q = {
       { clue: "Ichiro Suzuki made history in 2001 by winning both the AL MVP and this other award in the same season.", answer: "Rookie of the Year", accept: ["rookie of the year", "al rookie of the year", "american league rookie of the year"], choices: ["Gold Glove", "Silver Slugger", "Batting Title"], diff: 2 },
     ],
     400: [
-      { clue: "Ty Cobb, known as the 'Georgia Peach,' holds the MLB all-time career batting average record at .366.", answer: "Ty Cobb", accept: ["ty cobb", "cobb"], choices: ["Rogers Hornsby", "Ted Williams", "Joe Jackson"], diff: 2 },
+      { clue: "Known as the 'Georgia Peach,' this player holds the MLB all-time career batting average record at .366.", answer: "Ty Cobb", accept: ["ty cobb", "cobb"], choices: ["Rogers Hornsby", "Ted Williams", "Joe Jackson"], diff: 2 },
       { clue: "Sandy Koufax won three Cy Young Awards and abruptly retired at just 30 years old due to this medical condition.", answer: "arthritis", accept: ["arthritis", "elbow arthritis", "traumatic arthritis"], choices: ["torn rotator cuff", "bone spurs", "elbow ligament damage"], diff: 2 },
       { clue: "Roberto Clemente became the first Latin American player inducted into the Baseball Hall of Fame in 1973. He died in a plane crash while delivering aid to this country.", answer: "Nicaragua", accept: ["nicaragua"], choices: ["Puerto Rico", "Dominican Republic", "Panama"], diff: 3 },
       { clue: "Mike Piazza holds the record for most career home runs by a catcher with 427. For which team did he spend most of his career?", answer: "New York Mets", accept: ["new york mets", "mets", "ny mets"], choices: ["Los Angeles Dodgers", "San Diego Padres", "Florida Marlins"], diff: 2 },
@@ -205,7 +205,7 @@ const BASEBALL_EXTRA = {
       { clue: "In 1998, Sammy Sosa hit this many home runs to finish second behind Mark McGwire in the famous home run race.", answer: "66", accept: ["66", "sixty-six", "sixty six"], choices: ["63", "61", "65"], diff: 2 },
       { clue: "Mickey Mantle hit 536 career home runs and is considered the greatest player ever at this position.", answer: "Center Field", accept: ["center field", "centerfield", "cf"], choices: ["First Base", "Left Field", "Right Field"], diff: 1 },
       { clue: "Frank Robinson won the AL Triple Crown in 1966 with 49 home runs for this team.", answer: "Baltimore Orioles", accept: ["baltimore orioles", "orioles", "the orioles"], choices: ["Cincinnati Reds", "New York Yankees", "Minnesota Twins"], diff: 2 },
-      { clue: "Shohei Ohtani led the American League with 44 home runs in 2023 while also pitching for the Los Angeles Angels.", answer: "Los Angeles Angels", accept: ["los angeles angels", "angels", "the angels", "la angels"], choices: ["Houston Astros", "New York Yankees", "Tampa Bay Rays"], diff: 1 },
+      { clue: "Shohei Ohtani led the American League with 44 home runs in 2023 while also serving as the ace pitcher for this Anaheim-based team.", answer: "Los Angeles Angels", accept: ["los angeles angels", "angels", "the angels", "la angels"], choices: ["Houston Astros", "New York Yankees", "Tampa Bay Rays"], diff: 1 },
     ],
     200: [
       { clue: "Mickey Mantle was the only switch-hitter to ever win baseball's Triple Crown, achieving the feat in this year.", answer: "1956", accept: ["1956"], choices: ["1955", "1957", "1961"], diff: 3 },
@@ -237,7 +237,7 @@ const BASEBALL_EXTRA = {
       { clue: "Roberto Clemente became the first Latin American player elected to the Baseball Hall of Fame. He was inducted in this year, the year after his death.", answer: "1973", accept: ["1973"], choices: ["1972", "1975", "1971"], diff: 2 },
       { clue: "Satchel Paige made his MLB debut with the Cleveland Indians in 1948 at age 42, making him the oldest player ever to debut in the major leagues.", answer: "42", accept: ["42", "forty-two", "forty two"], choices: ["38", "44", "40"], diff: 2 },
       { clue: "Ron Blomberg of the New York Yankees became the first designated hitter in MLB history on Opening Day of this year.", answer: "1973", accept: ["1973"], choices: ["1972", "1974", "1975"], diff: 2 },
-      { clue: "Shohei Ohtani won his first AL MVP award unanimously in 2021, becoming the first two-way player ever to win the award.", answer: "Shohei Ohtani", accept: ["shohei ohtani", "ohtani"], choices: ["Babe Ruth", "Bo Jackson", "Dave Winfield"], diff: 1 },
+      { clue: "This player won his first AL MVP award unanimously in 2021, becoming the first modern two-way star — both pitcher and hitter — ever to win it.", answer: "Shohei Ohtani", accept: ["shohei ohtani", "ohtani"], choices: ["Babe Ruth", "Bo Jackson", "Dave Winfield"], diff: 1 },
     ],
     200: [
       { clue: "Roberto Clemente recorded his 3,000th career hit in his final regular-season at-bat on September 30 of this year.", answer: "1972", accept: ["1972"], choices: ["1971", "1973", "1970"], diff: 2 },
@@ -297,6 +297,7 @@ const BASEBALL_EXTRA = {
   // Category 4: BASEBALL LINGO
   4: {
     100: [
+      { clue: "Negro Leagues legend Josh Gibson, nicknamed 'the Black Babe Ruth' for his power, played which position — the one stationed right behind home plate?", answer: "Catcher", accept: ["catcher", "c"], choices: ["First Base", "Shortstop", "Pitcher"], diff: 1 },
       { clue: "This term describes a pitcher who bats in his own spot in the lineup, rather than having a designated hitter bat for him.", answer: "Two-way player", accept: ["two-way player", "two way player"], choices: ["Complete game pitcher", "Spot starter", "Swing man"], diff: 1 },
       { clue: "Winning the batting average, home run, and RBI titles in the same season is called this.", answer: "Triple Crown", accept: ["triple crown", "the triple crown"], choices: ["Grand Slam", "Hat Trick", "Golden Slam"], diff: 1 },
       { clue: "A pitcher who completes all nine innings of a game himself earns this statistical credit.", answer: "Complete Game", accept: ["complete game", "cg"], choices: ["Quality Start", "Shutout", "Save"], diff: 1 },
@@ -306,12 +307,12 @@ const BASEBALL_EXTRA = {
     200: [
       { clue: "A pitcher's ERA+ of 291 — like Pedro Martinez achieved in 2000 — means the pitcher's ERA was this much better than league average.", answer: "191% better", accept: ["191% better", "191 percent better", "191 points above average", "nearly twice as good"], choices: ["291% better", "91% better", "2.91 times better"], diff: 3 },
       { clue: "In baseball lingo, 'The Wizard of Oz' was a nickname for this Cardinals shortstop known for his acrobatic defense.", answer: "Ozzie Smith", accept: ["ozzie smith", "smith", "the wizard"], choices: ["Cal Ripken Jr.", "Alan Trammell", "Barry Larkin"], diff: 1 },
-      { clue: "The term 'Big Red Machine' referred to this dominant 1970s Cincinnati Reds lineup.", answer: "Cincinnati Reds", accept: ["cincinnati reds", "reds", "the reds", "big red machine"], choices: ["Oakland Athletics", "Baltimore Orioles", "Pittsburgh Pirates"], diff: 1 },
+      { clue: "The nickname 'Big Red Machine' referred to this dominant 1970s Ohio lineup featuring Pete Rose and Johnny Bench.", answer: "Cincinnati Reds", accept: ["cincinnati reds", "reds", "the reds", "big red machine"], choices: ["Oakland Athletics", "Baltimore Orioles", "Pittsburgh Pirates"], diff: 1 },
       { clue: "A 'Cy Young' is awarded to the best pitcher in each league. The award is named after a pitcher who amassed a record 511 wins. This is the name given to a pitcher who dominates his era so thoroughly that others joke he deserves the award every season.", answer: "Workhorse", accept: ["workhorse", "ace", "staff ace"], choices: ["Bullpen closer", "Spot starter", "Swing man"], diff: 2 },
       { clue: "This colorful baseball phrase describes a home run that clears the fences with plenty of distance to spare — same as Mantle's famous 565-foot blast.", answer: "Tape measure home run", accept: ["tape measure home run", "tape measure shot", "tape measure homer"], choices: ["Moonshot", "Grand salami", "Walk-off"], diff: 2 },
     ],
     300: [
-      { clue: "In the Negro Leagues, Josh Gibson was known as 'the Black Babe Ruth.' His spectacular power earned him this informal nickname.", answer: "The Black Babe Ruth", accept: ["the black babe ruth", "black babe ruth"], choices: ["The Black Gehrig", "The Black DiMaggio", "Thunder Gibson"], diff: 2 },
+      { clue: "In the Negro Leagues, catcher Josh Gibson's spectacular home-run power earned him this informal nickname.", answer: "The Black Babe Ruth", accept: ["the black babe ruth", "black babe ruth"], choices: ["The Black Gehrig", "The Black DiMaggio", "Thunder Gibson"], diff: 2 },
       { clue: "When a team blows a 3-0 series lead in the playoffs, it is often called 'doing a [team name]' after the 2004 Yankees. The Red Sox comeback is also called 'reversing' this legendary curse.", answer: "The Curse of the Bambino", accept: ["the curse of the bambino", "curse of the bambino", "bambino curse"], choices: ["The Black Sox Curse", "The Billy Goat Curse", "The 86-Year Curse"], diff: 2 },
       { clue: "A pitcher who gives up a home run in the last at-bat of a game that his team loses is said to have given up a 'walk-off.' The pitcher who threw the famous Carlton Fisk walk-off was this Reds pitcher.", answer: "Pat Darcy", accept: ["pat darcy", "darcy"], choices: ["Will McEnaney", "Don Gullett", "Jack Billingham"], diff: 4 },
       { clue: "The phrase 'playing the hot corner' refers to this defensive position, where Brooks Robinson made his legendary 1970 World Series plays.", answer: "Third Base", accept: ["third base", "third", "3b"], choices: ["First Base", "Shortstop", "Catcher"], diff: 1 },
@@ -329,6 +330,7 @@ const BASEBALL_EXTRA = {
   // Category 5: HALL OF FAMERS
   5: {
     100: [
+      { clue: "This Red Sox legend — the last man to bat .400 in a season — was famously cryogenically frozen after his 2002 death, with his head and body preserved separately.", answer: "Ted Williams", accept: ["ted williams", "williams"], choices: ["Babe Ruth", "Joe DiMaggio", "Mickey Mantle"], diff: 1 },
       { clue: "Derek Jeter received 396 of 397 possible Hall of Fame votes in 2020, the highest percentage ever by a player at his position. He was elected to the Hall alongside his Yankees teammate who received 100% of the vote.", answer: "Mariano Rivera", accept: ["mariano rivera", "rivera", "mo"], choices: ["Bernie Williams", "Jorge Posada", "Andy Pettitte"], diff: 1 },
       { clue: "Johnny Bench is widely considered the greatest catcher in baseball history. He spent his entire 17-year career with this franchise.", answer: "Cincinnati Reds", accept: ["cincinnati reds", "reds", "the reds"], choices: ["New York Yankees", "Los Angeles Dodgers", "Pittsburgh Pirates"], diff: 1 },
       { clue: "Tom Seaver won three Cy Young Awards and was known as 'The Franchise' for this team.", answer: "New York Mets", accept: ["new york mets", "mets", "the mets"], choices: ["Cincinnati Reds", "Boston Red Sox", "Chicago White Sox"], diff: 1 },

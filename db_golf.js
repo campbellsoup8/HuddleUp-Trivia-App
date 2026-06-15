@@ -171,6 +171,7 @@ const GOLF_EXTRA = {
   // CATEGORY 0: MAJOR CHAMPIONSHIPS
   0: {
     100: [
+      { clue: "Since 1949, the winner of the Masters Tournament is awarded this iconic green-colored item of clothing.", answer: "Green Jacket", accept: ["green jacket", "the green jacket", "green blazer"], choices: ["Gold Medal", "Silver Cup", "Claret Jug"], diff: 1 },
       {
         clue: "This Englishman blew a 5-shot lead at the 2016 Masters, allowing Danny Willett to slip on the green jacket.",
         answer: "Jordan Spieth",
@@ -345,7 +346,7 @@ const GOLF_EXTRA = {
         diff: 1
       },
       {
-        clue: "Ernie Els is nicknamed 'The Big Easy' for his smooth swing. This South African won 4 majors: 2 US Opens and 2 Open Championships.",
+        clue: "Nicknamed 'The Big Easy' for his smooth, effortless swing, this South African won 4 majors: 2 US Opens and 2 Open Championships.",
         answer: "Ernie Els",
         accept: ["ernie els", "els"],
         choices: ["Retief Goosen", "Trevor Immelman", "Tim Clark"],
@@ -504,7 +505,7 @@ const GOLF_EXTRA = {
         diff: 1
       },
       {
-        clue: "Brooks Koepka became only the second player in history to win back-to-back US Opens, achieving this feat in 2017 and 2018.",
+        clue: "This powerful American won back-to-back US Opens in 2017 and 2018, becoming the first man in 29 years to successfully defend the title.",
         answer: "Brooks Koepka",
         accept: ["brooks koepka", "koepka"],
         choices: ["Dustin Johnson", "Justin Thomas", "Jon Rahm"],

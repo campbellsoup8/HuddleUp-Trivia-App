@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: transparent; padding: 20px; }
+  h2.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+  .title {
+    font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--text-300); margin-bottom: 18px;
+  }
+
+  .week-grid {
+    display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 24px;
+  }
+  .day-col { display: flex; flex-direction: column; gap: 5px; }
+  .day-label {
+    font-size: 11px; font-weight: 600; text-align: center;
+    color: var(--text-300); padding-bottom: 4px;
+    border-bottom: 1px solid var(--border-200); margin-bottom: 2px;
+  }
+  .day-label.today { color: #1a6fa8; }
+
+  .pill {
+    border-radius: 5px; padding: 5px 4px; font-size: 10px;
+    font-weight: 600; line-height: 1.3; text-align: center;
+  }
+  .pill-q   { background: #e8f4fd; color: #1a6fa8; }
+  .pill-fv  { background: #fdf3e8; color: #a8601a; }
+  .pill-bug { background: #f0ede8; color: #6b5a3e; }
+  .pill-f1  { background: #fde8e8; color: #a81a1a; }
+  .pill-asm { background: #ede8f0; color: #5a3e6b; }
+
+  .divider { height: 1px; background: var(--border-200); margin: 18px 0; }
+
+  .legend { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+  .legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-300); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+
+  .agents { display: flex; flex-direction: column; gap: 10px; }
+  .agent-card {
+    border: 1px solid var(--border-200); border-radius: 10px;
+    padding: 12px 14px; display: flex; align-items: flex-start; gap: 12px;
+  }
+  .agent-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; flex-shrink: 0;
+  }
+  .icon-q   { background: #e8f4fd; }
+  .icon-fv  { background: #fdf3e8; }
+  .icon-asm { background: #ede8f0; }
+
+  .agent-info { flex: 1; min-width: 0; }
+  .agent-name { font-size: 13px; font-weight: 700; color: var(--text-100); margin-bottom: 2px; }
+  .agent-desc { font-size: 11.5px; color: var(--text-300); margin-bottom: 7px; line-height: 1.4; }
+  .agent-meta { display: flex; gap: 7px; flex-wrap: wrap; }
+
+  .tag {
+    border-radius: 4px; padding: 2px 7px;
+    font-size: 10px; font-weight: 600; border: 1px solid;
+  }
+  .tag-schedule { border-color: var(--border-200); color: var(--text-300); }
+  .tag-opus    { border-color: #a8601a; color: #a8601a; background: #fdf3e8; }
+  .tag-sonnet  { border-color: #1a6fa8; color: #1a6fa8; background: #e8f4fd; }
+  .tag-onetime { border-color: #5a3e6b; color: #5a3e6b; background: #ede8f0; }
+  .tag-new     { border-color: #a81a1a; color: #a81a1a; background: #fde8e8; }
+</style>
+</head>
+<body>
+<h2 class="sr-only">Big League Trivia scheduled agent dashboard — 7 sports across 7 nights with F1 added on Sundays</h2>
+
+<div class="title">Big League Trivia — Scheduled Agents</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#1a6fa8;opacity:.6"></div> Question Gen</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#a8601a;opacity:.7"></div> Fact Check</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#a81a1a;opacity:.6"></div> F1 + Bug Audit</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#5a3e6b;opacity:.6"></div> Assembly</div>
+</div>
+
+<div class="week-grid">
+  <div class="day-col">
+    <div class="day-label today">MON</div>
+    <div class="pill pill-q">⚾ Baseball<br>2am</div>
+  </div>
+  <div class="day-col">
+    <div class="day-label">TUE</div>
+    <div class="pill pill-q">🏈 Football<br>2am</div>
+  </div>
+  <div class="day-col">
+    <div class="day-label">WED</div>
+    <div class="pill pill-q">🏀 Basketball<br>2am</div>
+  </div>
+  <div class="day-col">
+    <div class="day-label">THU</div>
+    <div class="pill pill-q">🏒 Hockey<br>2am</div>
+  </div>
+  <div class="day-col">
+    <div class="day-label">FRI</div>
+    <div class="pill pill-q">⛳ Golf<br>2am</div>
+    <div class="pill pill-fv">🔍 Fact Check<br>2am</div>
+  </div>
+  <div class="day-col">
+    <div class="day-label">SAT</div>
+    <div class="pill pill-q">⚽ Soccer<br>2am</div>
+  </div>
+  <div class="day-col">
+    <div class="day-label">SUN</div>
+    <div class="pill pill-f1">🏎️ F1<br>2am</div>
+    <div class="pill pill-bug">🐛 Bug Audit<br>2am</div>
+    <div class="pill pill-asm">📦 v3 Jun 22</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="agents">
+
+  <div class="agent-card">
+    <div class="agent-icon icon-q">📝</div>
+    <div class="agent-info">
+      <div class="agent-name">Question Generation Agent</div>
+      <div class="agent-desc">25 new verified questions per sport nightly — Baseball through Soccer Mon–Sat, F1 Racing on Sundays. Includes Sunday bug audit pass.</div>
+      <div class="agent-meta">
+        <span class="tag tag-schedule">🕑 Every night 2am</span>
+        <span class="tag tag-sonnet">Sonnet</span>
+        <span class="tag tag-new">🏎️ F1 Added</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="agent-card">
+    <div class="agent-icon icon-fv">🔍</div>
+    <div class="agent-info">
+      <div class="agent-name">Fact Verification Agent</div>
+      <div class="agent-desc">Spot-checks 48–60 questions across all 7 sports using live web search. Flags incorrect stats, outdated records, and missing accept variants.</div>
+      <div class="agent-meta">
+        <span class="tag tag-schedule">🕑 Fridays 2am</span>
+        <span class="tag tag-opus">Opus 4.8</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="agent-card">
+    <div class="agent-icon icon-asm">📦</div>
+    <div class="agent-info">
+      <div class="agent-name">Version Assembly Agent</div>
+      <div class="agent-desc">One-time on June 22 — merges all weekly question packs into version_three.html with full stats report.</div>
+      <div class="agent-meta">
+        <span class="tag tag-onetime">📅 Jun 22 · One-time</span>
+        <span class="tag tag-sonnet">Sonnet</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

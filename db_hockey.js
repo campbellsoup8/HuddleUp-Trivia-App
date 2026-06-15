@@ -282,7 +282,7 @@ const HOCKEY_EXTRA = {
     ],
     400: [
       {
-        clue: "The first Stanley Cup awarded after NHL formation was won in 1918 by this Toronto franchise, then called the Toronto Arenas.",
+        clue: "The first Stanley Cup awarded after the NHL's formation was won in 1918 by this Toronto franchise, which would later be renamed the Maple Leafs.",
         answer: "Toronto Arenas",
         accept: ["toronto arenas", "arenas"],
         choices: ["Toronto Blueshirts", "Toronto Shamrocks", "Toronto St. Patricks"],
@@ -563,7 +563,7 @@ const HOCKEY_EXTRA = {
         diff: 3
       },
       {
-        clue: "Adam Fox won the 2021 Norris Trophy before his third NHL season — a feat that only one other player had accomplished, making him and Bobby Orr the only two to achieve this.",
+        clue: "Adam Fox won the 2021 Norris Trophy before his third NHL season — matching a feat accomplished only by this Bruins legend who revolutionized defensive play.",
         answer: "Bobby Orr",
         accept: ["bobby orr", "orr"],
         choices: ["Denis Potvin", "Nicklas Lidstrom", "Ray Bourque"],
@@ -778,6 +778,7 @@ const HOCKEY_EXTRA = {
   // CATEGORY 4: HALL OF FAMERS
   4: {
     100: [
+      { clue: "Nicknamed 'The Great One,' this player is the only person in NHL history to have his number, 99, retired league-wide by every team.", answer: "Wayne Gretzky", accept: ["wayne gretzky", "gretzky", "the great one"], choices: ["Bobby Orr", "Gordie Howe", "Mario Lemieux"], diff: 1 },
       {
         clue: "This undrafted player from Burlington, Vermont won the 2004 Hart Trophy, Art Ross Trophy, and Stanley Cup with the Tampa Bay Lightning despite being considered too small by scouts.",
         answer: "Martin St. Louis",
@@ -800,7 +801,7 @@ const HOCKEY_EXTRA = {
         diff: 1
       },
       {
-        clue: "Bryan Trottier set franchise records with the Islanders posting 1,353 points in 1,123 games during his 15 seasons on Long Island.",
+        clue: "This center set franchise records with the Islanders, posting 1,353 points in 1,123 games over 15 seasons and starring on their 1980s dynasty.",
         answer: "Bryan Trottier",
         accept: ["bryan trottier", "trottier"],
         choices: ["Mike Bossy", "Denis Potvin", "Clark Gillies"],

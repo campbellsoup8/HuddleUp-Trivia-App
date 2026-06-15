@@ -173,6 +173,7 @@ const SOCCER_EXTRA = {
   // ─────────────────────────────────────────────
   0: {
     100: [
+      { clue: "This Brazilian legend is the only player in history to win three FIFA World Cups, in 1958, 1962, and 1970.", answer: "Pelé", accept: ["pele", "pelé", "edson arantes"], choices: ["Diego Maradona", "Lionel Messi", "Cristiano Ronaldo"], diff: 1 },
       {
         clue: "Diego Maradona's infamous 1986 World Cup goal vs England, where he punched the ball into the net, is known by this heavenly nickname.",
         answer: "Hand of God",
