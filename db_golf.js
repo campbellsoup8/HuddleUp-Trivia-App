@@ -9,7 +9,7 @@ const GOLF_Q = {
       { clue: "Gene Sarazen's double eagle on the par-5 15th hole at Augusta in 1935 is known as the 'shot heard round the world.' What tournament was he playing?", answer: "The Masters", accept: ["the masters", "masters"], choices: ["US Open", "The Open Championship", "PGA Championship"], diff: 4 }
     ],
     200: [
-      { clue: "Rory McIlroy needs this major to complete his career Grand Slam.", answer: "The Masters", accept: ["the masters", "masters", "masters tournament"], choices: ["US Open", "PGA Championship", "The Open Championship"], diff: 1 },
+      { clue: "Which major did Rory McIlroy win in 2025 to complete his career Grand Slam?", answer: "The Masters", accept: ["the masters", "masters", "masters tournament"], choices: ["US Open", "PGA Championship", "The Open Championship"], diff: 1 },
       { clue: "Scottie Scheffler won this 2024 major for his second time at Augusta.", answer: "The Masters", accept: ["the masters", "masters"], choices: ["US Open", "The Open Championship", "PGA Championship"], diff: 1 },
       { clue: "Xander Schauffele won both the 2024 PGA Championship and this 2024 major held at Royal Troon.", answer: "The Open Championship", accept: ["the open championship", "the open", "british open", "open championship"], choices: ["US Open", "The Masters", "PGA Championship"], diff: 2 },
       { clue: "Phil Mickelson won the 2021 PGA Championship at age 50, making him the oldest major winner in history. How old was he?", answer: "50", accept: ["50", "fifty"], choices: ["48", "51", "47"], diff: 2 }
@@ -108,7 +108,7 @@ const GOLF_Q = {
   4: { // MODERN ERA
     100: [
       { clue: "Scottie Scheffler won this medal at the 2024 Paris Olympics in golf.", answer: "Gold medal", accept: ["gold medal", "gold", "olympic gold"], choices: ["Silver medal", "Bronze medal", "He did not medal"], diff: 1 },
-      { clue: "Rory McIlroy has won 4 major championships. Which major has he NOT won, keeping him from a career Grand Slam?", answer: "The Masters", accept: ["the masters", "masters", "masters tournament"], choices: ["US Open", "PGA Championship", "The Open Championship"], diff: 1 },
+      { clue: "Rory McIlroy completed the career Grand Slam in 2025. Which major was the final one he captured to do so?", answer: "The Masters", accept: ["the masters", "masters", "masters tournament"], choices: ["US Open", "PGA Championship", "The Open Championship"], diff: 1 },
       { clue: "Jon Rahm won the 2023 Masters and then made a controversial move to join which Saudi-backed rival golf tour in 2024?", answer: "LIV Golf", accept: ["liv golf", "liv"], choices: ["Asian Tour", "DP World Tour", "PGA Tour Asia"], diff: 2 },
       { clue: "Collin Morikawa won The Open Championship in 2021 — his second major. What was his first major title, won in 2020?", answer: "PGA Championship", accept: ["pga championship", "pga"], choices: ["US Open", "The Masters", "The Open Championship"], diff: 3 }
     ],

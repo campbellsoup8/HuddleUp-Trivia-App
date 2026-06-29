@@ -7,6 +7,7 @@ const BASEBALL_Q = {
       { clue: "These 'Amazin'' underdogs shocked the baseball world by winning the 1969 World Series.", answer: "New York Mets", accept: ["new york mets", "mets", "ny mets"], choices: ["Chicago Cubs", "Baltimore Orioles", "Cincinnati Reds"], diff: 2 },
       { clue: "This Canadian franchise won back-to-back World Series titles in 1992 and 1993.", answer: "Toronto Blue Jays", accept: ["toronto blue jays", "blue jays"], choices: ["Montreal Expos", "Minnesota Twins", "Oakland Athletics"], diff: 2 },
       { clue: "This team ended a 32-year championship drought by winning the 2020 World Series in a neutral-site bubble format.", answer: "Los Angeles Dodgers", accept: ["los angeles dodgers", "dodgers", "la dodgers"], choices: ["Tampa Bay Rays", "Houston Astros", "Chicago Cubs"], diff: 1 },
+      { clue: "The 2016 World Series champion who ended their 108-year championship drought with a dramatic Game 7 victory.", answer: "Chicago Cubs", accept: ["chicago cubs", "cubs"], choices: ["Cleveland Indians", "Boston Red Sox", "San Francisco Giants"], diff: 1 },
     ],
     200: [
       { clue: "The 2004 World Series champions who overcame an 0-3 ALCS deficit to end their famous 86-year championship drought.", answer: "Boston Red Sox", accept: ["boston red sox", "red sox"], choices: ["New York Yankees", "St. Louis Cardinals", "Chicago Cubs"], diff: 1 },
@@ -15,7 +16,6 @@ const BASEBALL_Q = {
       { clue: "The 2019 World Series champion that had never previously won a championship in their franchise history.", answer: "Washington Nationals", accept: ["washington nationals", "nationals", "nats"], choices: ["Houston Astros", "New York Yankees", "Cleveland Indians"], diff: 2 },
     ],
     300: [
-      { clue: "The 2016 World Series champion who ended their 108-year championship drought with a dramatic Game 7 victory.", answer: "Chicago Cubs", accept: ["chicago cubs", "cubs"], choices: ["Cleveland Indians", "Boston Red Sox", "San Francisco Giants"], diff: 1 },
       { clue: "Kirk Gibson hit his iconic pinch-hit walk-off home run in Game 1 of the World Series for this 1988 champion.", answer: "Los Angeles Dodgers", accept: ["los angeles dodgers", "dodgers", "la dodgers"], choices: ["Oakland Athletics", "New York Mets", "Boston Red Sox"], diff: 2 },
       { clue: "This franchise won three consecutive World Series championships from 1972 to 1974.", answer: "Oakland Athletics", accept: ["oakland athletics", "oakland a's", "a's", "athletics"], choices: ["New York Yankees", "Cincinnati Reds", "Baltimore Orioles"], diff: 3 },
       { clue: "The 2023 World Series was won by this franchise for the first time in their history, defeating the Diamondbacks.", answer: "Texas Rangers", accept: ["texas rangers", "rangers"], choices: ["Arizona Diamondbacks", "Houston Astros", "Atlanta Braves"], diff: 1 },
@@ -33,6 +33,7 @@ const BASEBALL_Q = {
       { clue: "Known as 'The Hammer,' this player held the all-time home run record for decades before it was broken.", answer: "Hank Aaron", accept: ["hank aaron", "aaron", "hammerin hank"], choices: ["Babe Ruth", "Barry Bonds", "Willie Mays"], diff: 1 },
       { clue: "Babe Ruth hit 714 career home runs, a record that stood until 1974 when it was broken by this player.", answer: "Hank Aaron", accept: ["hank aaron", "aaron", "hammerin hank"], choices: ["Barry Bonds", "Willie Mays", "Reggie Jackson"], diff: 2 },
       { clue: "Aaron Judge set the American League single-season home run record in 2022 with this many home runs.", answer: "62", accept: ["62", "sixty-two", "sixty two"], choices: ["61", "60", "64"], diff: 2 },
+      { clue: "After 17 seasons with the Los Angeles Angels, Shohei Ohtani signed a record-breaking $700 million deal with this team before the 2024 season.", answer: "Los Angeles Dodgers", accept: ["los angeles dodgers", "dodgers", "la dodgers"], choices: ["New York Yankees", "San Francisco Giants", "Chicago Cubs"], diff: 1 },
     ],
     200: [
       { clue: "Babe Ruth set the single-season home run record in 1927 by hitting this many home runs.", answer: "60", accept: ["60", "sixty"], choices: ["61", "59", "58"], diff: 3 },
@@ -41,7 +42,6 @@ const BASEBALL_Q = {
       { clue: "Shohei Ohtani made history in 2024 by becoming the first player to hit 50 home runs and steal this many bases in a single season.", answer: "50", accept: ["50", "fifty"], choices: ["40", "45", "55"], diff: 2 },
     ],
     300: [
-      { clue: "Roger Maris broke Babe Ruth's single-season home run record in 1961 by hitting this many home runs.", answer: "61", accept: ["61", "sixty-one", "sixty one"], choices: ["60", "62", "58"], diff: 1 },
       { clue: "Mickey Mantle won the Triple Crown in 1956, leading the AL in batting average, home runs, and this third statistical category.", answer: "RBI", accept: ["rbi", "rbis", "runs batted in"], choices: ["Stolen Bases", "On-Base Percentage", "Slugging Percentage"], diff: 3 },
       { clue: "Sammy Sosa hit 60 or more home runs three different times, all while playing for this team.", answer: "Chicago Cubs", accept: ["chicago cubs", "cubs"], choices: ["Houston Astros", "Baltimore Orioles", "Texas Rangers"], diff: 2 },
       { clue: "Pete Alonso set the MLB rookie home run record in 2019 with 53 home runs playing for this team.", answer: "New York Mets", accept: ["new york mets", "mets", "ny mets"], choices: ["New York Yankees", "Chicago Cubs", "Houston Astros"], diff: 2 },
@@ -50,7 +50,7 @@ const BASEBALL_Q = {
       { clue: "Barry Bonds set the single-season home run record in 2001 with this many home runs.", answer: "73", accept: ["73", "seventy-three", "seventy three"], choices: ["70", "72", "71"], diff: 2 },
       { clue: "Sammy Sosa hit 66 home runs in 1998 for the Cubs, finishing second to Mark McGwire. What was McGwire's total?", answer: "70", accept: ["70", "seventy"], choices: ["68", "72", "69"], diff: 3 },
       { clue: "Ken Griffey Jr. hit a career-high 56 home runs in 1997 and 1998 while playing for this team.", answer: "Seattle Mariners", accept: ["seattle mariners", "mariners"], choices: ["Cincinnati Reds", "New York Yankees", "Atlanta Braves"], diff: 2 },
-      { clue: "After 17 seasons with the Los Angeles Angels, Shohei Ohtani signed a record-breaking $700 million deal with this team before the 2024 season.", answer: "Los Angeles Dodgers", accept: ["los angeles dodgers", "dodgers", "la dodgers"], choices: ["New York Yankees", "San Francisco Giants", "Chicago Cubs"], diff: 1 },
+      { clue: "Roger Maris broke Babe Ruth's single-season home run record in 1961 by hitting this many home runs.", answer: "61", accept: ["61", "sixty-one", "sixty one"], choices: ["60", "62", "58"], diff: 3 },
     ],
   },
   2: {
@@ -67,7 +67,6 @@ const BASEBALL_Q = {
       { clue: "The National League officially adopted the universal designated hitter rule permanently starting in this year.", answer: "2022", accept: ["2022"], choices: ["2020", "2021", "2023"], diff: 2 },
     ],
     300: [
-      { clue: "Fenway Park, the oldest active MLB stadium, was built in this year.", answer: "1912", accept: ["1912"], choices: ["1910", "1914", "1916"], diff: 3 },
       { clue: "Known as the 'Friendly Confines,' Wrigley Field opened in this year.", answer: "1914", accept: ["1914"], choices: ["1912", "1916", "1920"], diff: 3 },
       { clue: "The first MLB All-Star Game was played in 1933 at this Chicago stadium.", answer: "Comiskey Park", accept: ["comiskey park", "comiskey"], choices: ["Wrigley Field", "Forbes Field", "Polo Grounds"], diff: 3 },
       { clue: "MLB banned this fielding strategy in 2023, requiring two infielders on each side of second base.", answer: "defensive shift", accept: ["defensive shift", "shift", "infield shift"], choices: ["four-man outfield", "intentional walk", "defensive positioning"], diff: 2 },
@@ -77,6 +76,7 @@ const BASEBALL_Q = {
       { clue: "The 1994 players' strike resulted in the cancellation of this event for the first time since 1904.", answer: "World Series", accept: ["world series"], choices: ["All-Star Game", "League Championship Series", "MLB Draft"], diff: 2 },
       { clue: "The Astrodome in Houston opened in 1965 and was nicknamed this for being an engineering marvel.", answer: "Eighth Wonder of the World", accept: ["eighth wonder of the world", "eighth wonder"], choices: ["House of Grass", "The Dome", "Space Stadium"], diff: 3 },
       { clue: "Roy Halladay pitched a perfect game in the regular season AND a no-hitter in the NLDS, both in this year.", answer: "2010", accept: ["2010"], choices: ["2011", "2009", "2012"], diff: 3 },
+      { clue: "Fenway Park, the oldest active MLB stadium, was built in this year.", answer: "1912", accept: ["1912"], choices: ["1910", "1914", "1916"], diff: 4 },
     ],
   },
   3: {
@@ -116,7 +116,6 @@ const BASEBALL_Q = {
       { clue: "Since 2023, MLB places a runner on second base at the start of extra innings. This runner is known by this nickname.", answer: "ghost runner", accept: ["ghost runner", "free runner", "automatic runner"], choices: ["bonus runner", "extra runner", "pace runner"], diff: 2 },
     ],
     300: [
-      { clue: "The 'Mendoza Line' refers to a batting average at or below this figure, considered the threshold for a weak hitter.", answer: ".200", accept: [".200", "200", ".200 batting average", "two hundred"], choices: [".250", ".150", ".225"], diff: 2 },
       { clue: "A 'southpaw' in baseball refers to a pitcher who throws with this hand.", answer: "left hand", accept: ["left hand", "left-handed", "left", "left arm"], choices: ["right hand", "both hands", "right arm"], diff: 1 },
       { clue: "OPS is a statistic that combines on-base percentage and this other stat.", answer: "slugging percentage", accept: ["slugging percentage", "slugging", "slg"], choices: ["batting average", "wOBA", "ISO"], diff: 2 },
       { clue: "This team popularized the 'opener' strategy, using a reliever to start the game before a bulk pitcher takes over.", answer: "Tampa Bay Rays", accept: ["tampa bay rays", "rays", "tampa bay"], choices: ["Oakland Athletics", "Houston Astros", "Chicago Cubs"], diff: 4 },
@@ -126,6 +125,7 @@ const BASEBALL_Q = {
       { clue: "A 'quality start' is defined as a starting pitcher going at least 6 innings while allowing this many earned runs or fewer.", answer: "3", accept: ["3", "three"], choices: ["2", "4", "5"], diff: 3 },
       { clue: "A sacrifice fly does not count as an official at-bat. What does it count as in the box score?", answer: "sacrifice fly", accept: ["sacrifice fly", "sac fly", "sf"], choices: ["fielder's choice", "at-bat", "plate appearance only"], diff: 2 },
       { clue: "FIP stands for this advanced pitching metric that removes defense from the equation.", answer: "Fielding Independent Pitching", accept: ["fielding independent pitching", "fip"], choices: ["Fastball Impact Percentage", "Fielder Impact Percentage", "Franchise Impact Pitching"], diff: 3 },
+      { clue: "The 'Mendoza Line' refers to a batting average at or below this figure, considered the threshold for a weak hitter.", answer: ".200", accept: [".200", "200", ".200 batting average", "two hundred"], choices: [".250", ".150", ".225"], diff: 4 },
     ],
   },
   5: {
@@ -174,11 +174,11 @@ const BASEBALL_EXTRA = {
       { clue: "In the 2004 ALCS, the Boston Red Sox became the first team in MLB history to overcome a 3-0 series deficit to beat this opponent.", answer: "New York Yankees", accept: ["new york yankees", "yankees", "the yankees"], choices: ["Oakland Athletics", "Minnesota Twins", "Cleveland Indians"], diff: 1 },
       { clue: "The St. Louis Cardinals won their most recent World Series title in this year, defeating the Texas Rangers in Game 7.", answer: "2011", accept: ["2011"], choices: ["2006", "2004", "2013"], diff: 2 },
       { clue: "The 1994 World Series was never played because of this event that cancelled the postseason.", answer: "Players Strike", accept: ["players strike", "strike", "labor strike", "mlb strike"], choices: ["Hurricane", "Earthquake", "Commissioner's Death", "Lockout"], diff: 2 },
+      { clue: "The 2004 Red Sox ALCS comeback MVP was this 'Big Papi' designated hitter.", answer: "David Ortiz", accept: ["david ortiz", "ortiz", "big papi"], choices: ["Manny Ramirez", "Kevin Millar", "Jason Varitek"], diff: 1 },
     ],
     200: [
       { clue: "The Cardinals' Bob Gibson dominated the 1967 World Series, winning this many games against the Boston Red Sox.", answer: "Three", accept: ["three", "3"], choices: ["Two", "Four", "One"], diff: 2 },
       { clue: "Montreal had the best record in baseball (74-40) when the 1994 strike hit. This was the only year this franchise had a realistic chance at a title before eventually relocating.", answer: "Montreal Expos", accept: ["montreal expos", "expos", "the expos"], choices: ["Pittsburgh Pirates", "San Diego Padres", "Cincinnati Reds"], diff: 2 },
-      { clue: "The 2004 Red Sox ALCS comeback MVP was this 'Big Papi' designated hitter.", answer: "David Ortiz", accept: ["david ortiz", "ortiz", "big papi"], choices: ["Manny Ramirez", "Kevin Millar", "Jason Varitek"], diff: 1 },
       { clue: "Fernando Valenzuela led the Dodgers to win this championship in his legendary 1981 rookie season.", answer: "World Series", accept: ["world series", "the world series", "1981 world series"], choices: ["NLCS", "NL West Division", "Pennant"], diff: 1 },
       { clue: "The Cardinals have won 11 World Series titles. This decade saw them win 3 championships: 1942, 1944, and 1946.", answer: "1940s", accept: ["1940s", "the 1940s", "forties"], choices: ["1930s", "1950s", "1920s"], diff: 3 },
     ],
@@ -215,6 +215,7 @@ const BASEBALL_EXTRA = {
       { clue: "Mickey Mantle is the only player in history to hit 150 or more home runs batting from both sides of the plate. He hit 372 home runs from the left side and this many from the right.", answer: "164", accept: ["164"], choices: ["134", "189", "142"], diff: 4 },
     ],
     300: [
+      { clue: "In 2022 he became just the fourth player in MLB history to reach 700 career home runs, joining Babe Ruth, Hank Aaron, and Barry Bonds.", answer: "Albert Pujols", accept: ["albert pujols", "pujols"], choices: ["Alex Rodriguez", "Ken Griffey Jr.", "Sammy Sosa"], diff: 3 },
       { clue: "Shohei Ohtani became the first player since this Hall of Famer in 1918 to pitch 130+ innings and hit 10+ home runs in the same season.", answer: "Babe Ruth", accept: ["babe ruth", "ruth", "the babe"], choices: ["Cy Young", "Walter Johnson", "Christy Mathewson"], diff: 2 },
       { clue: "Sammy Sosa hit 60 or more home runs in THREE different seasons. The years were 1998, 1999, and this year.", answer: "2001", accept: ["2001"], choices: ["2000", "2002", "2003"], diff: 3 },
       { clue: "Josh Gibson's .466 batting average for the 1943 Homestead Grays became the single-season MLB batting record after this happened in 2024.", answer: "MLB integrated Negro League statistics", accept: ["mlb integrated negro league statistics", "negro league stats added", "negro leagues integrated into record books", "mlb added negro league stats"], choices: ["Hall of Fame induction", "Congressional legislation", "Commissioner's ruling"], diff: 3 },
@@ -280,12 +281,15 @@ const BASEBALL_EXTRA = {
     ],
     300: [
       { clue: "Pedro Martinez won the 1999 pitching 'Triple Crown' — leading the AL in wins (23), ERA (2.07), and this counting stat (313).", answer: "Strikeouts", accept: ["strikeouts", "k's", "ks"], choices: ["Complete Games", "Shutouts", "Innings Pitched"], diff: 2 },
-      { clue: "Ozzie Smith won 13 consecutive Gold Gloves at shortstop and holds the all-time MLB record for career assists at any position with this many.", answer: "8,375", accept: ["8,375", "8375", "eighty-three seventy-five"], choices: ["7,412", "9,102", "6,988"], diff: 4 },
       { clue: "Bob Gibson pitched 28 complete games and this many shutouts in his dominant 1968 season.", answer: "13", accept: ["13", "thirteen"], choices: ["10", "16", "11"], diff: 3 },
       { clue: "Tony Gwynn won 8 batting titles in his career, all with the San Diego Padres. This placed him tied for the NL record with this Hall of Famer.", answer: "Honus Wagner", accept: ["honus wagner", "wagner", "the flying dutchman"], choices: ["Stan Musial", "Rogers Hornsby", "Willie Mays"], diff: 3 },
       { clue: "Roger Clemens was 42 years old when he won his 7th and final Cy Young Award in 2004. He won it pitching for this team.", answer: "Houston Astros", accept: ["houston astros", "astros", "the astros"], choices: ["New York Yankees", "Boston Red Sox", "Toronto Blue Jays"], diff: 2 },
     ],
     400: [
+      { clue: "This 19th-century Chicago star is widely credited as the first MLB player to reach 3,000 career hits.", answer: "Cap Anson", accept: ["cap anson", "anson", "adrian anson"], choices: ["Honus Wagner", "Nap Lajoie", "Ty Cobb"], diff: 4 },
+      { clue: "Ozzie Smith won 13 consecutive Gold Gloves at shortstop and holds the all-time MLB record for career assists at any position with this many.", answer: "8,375", accept: ["8,375", "8375", "eighty-three seventy-five"], choices: ["7,412", "9,102", "6,988"], diff: 4 },
+      { clue: "This Yankees lefty nicknamed 'Boomer' threw a perfect game against the Minnesota Twins in May 1998.", answer: "David Wells", accept: ["david wells", "wells", "boomer"], choices: ["David Cone", "Andy Pettitte", "Don Larsen"], diff: 4 },
+      { clue: "Joe DiMaggio batted this eye-popping average during his record 56-game hitting streak in 1941.", answer: ".408", accept: [".408", "408", "point four oh eight"], choices: [".381", ".357", ".422"], diff: 4 },
       { clue: "Bob Gibson's 47 consecutive scoreless innings in 1968 was, at the time, the fourth-longest scoreless streak in MLB history. He went 23 complete games in his last 25 starts of the season, posting this ERA over that stretch.", answer: "0.50", accept: ["0.50", ".50", "zero point five", "0.5"], choices: ["0.75", "0.88", "0.42"], diff: 4 },
       { clue: "Greg Maddux's 4-year Cy Young run included his 1994 season where his ERA was a remarkable 1.56. His record that year was 16-6 for this team.", answer: "Atlanta Braves", accept: ["atlanta braves", "braves", "the braves"], choices: ["Chicago Cubs", "Los Angeles Dodgers", "San Diego Padres"], diff: 3 },
       { clue: "Pedro Martinez's 2000 WHIP of 0.737 is the second-lowest in MLB history in a single season. His adjusted ERA+ of 291 means he was this much better than league average.", answer: "191% better", accept: ["191% better", "191 percent better", "291 era+", "291"], choices: ["191% worse", "91% better", "291% better"], diff: 4 },
@@ -392,5 +396,117 @@ const BASEBALL_EXTRA_FINALS = [
     answer: "Three times",
     accept: ["three times", "three", "3", "3 times"],
   },
+  {
+    category: "PITCHING LEGENDS",
+    clue: "This fireballer threw a record seven no-hitters during his MLB career, the most in history.",
+    answer: "Nolan Ryan",
+    accept: ["nolan ryan", "ryan"],
+  },
 ];
+
+
+// Added 20260622 — Nightly expansion (18 regular + 2 finals), WebSearch-verified
+const BASEBALL_EXTRA_20260622 = {
+  "Ballparks": {
+    questions: [
+      { clue: "The original version of this Bronx stadium, opened in 1923, was nicknamed 'The House That Ruth Built' in honor of the slugger whose popularity funded it.", answer: "Yankee Stadium", accept: ["yankee stadium", "the house that ruth built", "old yankee stadium"], choices: ["Fenway Park", "Polo Grounds", "Ebbets Field"], diff: 1 },
+      { clue: "Opened in 1962, this stadium is the third-oldest ballpark still in use in MLB, trailing only Fenway Park and Wrigley Field.", answer: "Dodger Stadium", accept: ["dodger stadium", "chavez ravine"], choices: ["Angel Stadium", "Oakland Coliseum", "Kauffman Stadium"], diff: 2 },
+      { clue: "Fenway Park's towering 37-foot left field wall, the tallest in MLB, is known by this colorful nickname.", answer: "The Green Monster", accept: ["the green monster", "green monster", "the wall"], choices: ["The Big Blue Wall", "The Great Wall", "The Monster Seats"], diff: 2 },
+      { clue: "Opened in 1992, this Baltimore Orioles ballpark sparked the 'retro' stadium movement that swept through MLB in the following decades.", answer: "Oriole Park at Camden Yards", accept: ["oriole park at camden yards", "camden yards", "camden", "oriole park"], choices: ["Jacobs Field", "Coors Field", "PNC Park"], diff: 2 },
+      { clue: "This Colorado Rockies ballpark, opened in 1995 at over 5,200 feet of elevation, is famous for inflated offensive numbers caused by its thin mountain air.", answer: "Coors Field", accept: ["coors field", "coors"], choices: ["Chase Field", "Minute Maid Park", "Globe Life Field"], diff: 3 },
+    ]
+  },
+  "Modern World Series": {
+    questions: [
+      { clue: "This franchise won the 2025 World Series, defeating the Toronto Blue Jays in a thrilling seven-game series.", answer: "Los Angeles Dodgers", accept: ["los angeles dodgers", "dodgers", "la dodgers"], choices: ["New York Yankees", "Houston Astros", "Philadelphia Phillies"], diff: 1 },
+      { clue: "The Los Angeles Dodgers defeated this American League team — appearing in their first World Series since 1993 — to win the 2025 championship.", answer: "Toronto Blue Jays", accept: ["toronto blue jays", "blue jays", "toronto"], choices: ["New York Yankees", "Seattle Mariners", "Cleveland Guardians"], diff: 2 },
+      { clue: "By winning the 2025 World Series, the Dodgers became the first team to repeat as champions since this franchise won three straight from 1998 to 2000.", answer: "New York Yankees", accept: ["new york yankees", "yankees", "ny yankees"], choices: ["Boston Red Sox", "San Francisco Giants", "Houston Astros"], diff: 2 },
+      { clue: "This Dodgers catcher hit the go-ahead solo home run in the top of the 11th inning of Game 7 to clinch the 2025 World Series.", answer: "Will Smith", accept: ["will smith", "smith"], choices: ["Mookie Betts", "Freddie Freeman", "Teoscar Hernandez"], diff: 4 },
+    ]
+  },
+  "Perfect Games": {
+    questions: [
+      { clue: "Through the 2025 season, there have been exactly this many official perfect games thrown in modern MLB history.", answer: "24", accept: ["24", "twenty-four", "twenty four"], choices: ["18", "31", "27"], diff: 2 },
+      { clue: "This New York Yankees pitcher threw MLB's most recent perfect game on June 28, 2023, against the Oakland Athletics.", answer: "Domingo German", accept: ["domingo german", "domingo germán", "german", "germán"], choices: ["Gerrit Cole", "Corey Kluber", "Nestor Cortes"], diff: 4 },
+      { clue: "With four in their history, this franchise has thrown more perfect games than any other team in MLB.", answer: "New York Yankees", accept: ["new york yankees", "yankees", "ny yankees"], choices: ["Chicago White Sox", "Los Angeles Dodgers", "Philadelphia Phillies"], diff: 3 },
+    ]
+  },
+  "Rules": {
+    questions: [
+      { clue: "A strikeout is traditionally recorded in a baseball scorebook using this single letter.", answer: "K", accept: ["k", "the letter k"], choices: ["S", "O", "X"], diff: 1 },
+      { clue: "With runners on first and second (or bases loaded) and fewer than two outs, an easily catchable pop-up triggers this rule, automatically calling the batter out.", answer: "Infield fly rule", accept: ["infield fly rule", "infield fly"], choices: ["Dropped third strike", "Ground rule double", "Force out rule"], diff: 2 },
+      { clue: "When a pitcher makes an illegal deceptive motion with runners on base, the umpire calls this, awarding each runner a free base.", answer: "Balk", accept: ["balk", "a balk"], choices: ["Wild pitch", "Dead ball", "Obstruction"], diff: 3 },
+      { clue: "In scorekeeping, a backwards 'K' specifically denotes a strikeout that ends with the batter doing this rather than swinging.", answer: "Called out looking", accept: ["called out looking", "looking", "called strikeout", "strikeout looking", "watching the pitch"], choices: ["Swinging and missing", "Bunting foul", "Checking his swing"], diff: 3 },
+    ]
+  },
+  "Players & History": {
+    questions: [
+      { clue: "The 'Curse of the Bambino' began when the Boston Red Sox sold Babe Ruth before the 1920 season to this team.", answer: "New York Yankees", accept: ["new york yankees", "yankees", "ny yankees"], choices: ["Chicago Cubs", "New York Giants", "Detroit Tigers"], diff: 1 },
+      { clue: "MLB's first official night game under permanent lights was played in 1935 at Crosley Field, home of this team.", answer: "Cincinnati Reds", accept: ["cincinnati reds", "reds", "cincinnati"], choices: ["Chicago Cubs", "St. Louis Cardinals", "Pittsburgh Pirates"], diff: 3 },
+    ]
+  },
+  "Final Round": {
+    questions: [
+      { clue: "This Dodgers left-hander — a three-time Cy Young Award winner and the 2014 NL MVP — has spent his entire career in Los Angeles and is the franchise's all-time strikeout leader.", answer: "Clayton Kershaw", accept: ["clayton kershaw", "kershaw"], diff: 3 },
+      { clue: "Name the Japanese-born starting pitcher who was named 2025 World Series MVP after recording three wins and a 1.02 ERA for the Dodgers.", answer: "Yoshinobu Yamamoto", accept: ["yoshinobu yamamoto", "yamamoto"], diff: 3 },
+    ]
+  }
+};
+
+if (typeof mergeExtra === 'function') mergeExtra(BASEBALL_EXTRA_20260622, 'Baseball');
+
+
+// Added 20260629 — Nightly expansion (18 regular + 2 finals), WebSearch-verified
+const BASEBALL_EXTRA_20260629 = {
+  "Speed & Stolen Bases": {
+    questions: [
+      { clue: "This Cardinals outfielder set the career stolen base record of 938, a mark that stood until Rickey Henderson broke it in 1991.", answer: "Lou Brock", accept: ["lou brock", "brock"], choices: ["Maury Wills", "Tim Raines", "Vince Coleman"], diff: 2 },
+      { clue: "The riskiest steal in baseball, in which a runner dashes home to score while the pitcher delivers, is called a steal of this base.", answer: "Home plate", accept: ["home plate", "home", "home base", "stealing home"], choices: ["Second base", "Third base", "First base"], diff: 1 },
+      { clue: "When Maury Wills stole a then-modern-record 104 bases in 1962, he broke a single-season mark of 96 that this Tigers legend had held since 1915.", answer: "Ty Cobb", accept: ["ty cobb", "cobb"], choices: ["Honus Wagner", "Tris Speaker", "Eddie Collins"], diff: 4 },
+    ]
+  },
+  "No-Hitters": {
+    questions: [
+      { clue: "Thanks in part to Sandy Koufax's four gems, this franchise has thrown more no-hitters than any other in MLB history.", answer: "Los Angeles Dodgers", accept: ["los angeles dodgers", "dodgers", "la dodgers"], choices: ["New York Yankees", "Boston Red Sox", "San Francisco Giants"], diff: 2 },
+      { clue: "When two or more pitchers team up to hold the opponent hitless across a full game, the result is officially recorded as this.", answer: "Combined no-hitter", accept: ["combined no-hitter", "combined no hitter", "combined no-no"], choices: ["Perfect game", "Ground-rule no-no", "Relay no-hitter"], diff: 3 },
+    ]
+  },
+  "Awards & Honors": {
+    questions: [
+      { clue: "Don Newcombe won the very first Cy Young Award in 1956. Until 1967, this many Cy Young Awards were handed out each season.", answer: "One", accept: ["one", "1", "just one", "a single one"], choices: ["Two", "Three", "Four"], diff: 3 },
+      { clue: "No player has won more MVP awards than this slugger, who captured the honor a record seven times.", answer: "Barry Bonds", accept: ["barry bonds", "bonds"], choices: ["Babe Ruth", "Albert Pujols", "Mike Trout"], diff: 2 },
+      { clue: "MLB's Rookie of the Year Award is officially named after this trailblazer who broke the sport's color barrier in 1947.", answer: "Jackie Robinson", accept: ["jackie robinson", "robinson"], choices: ["Hank Aaron", "Roberto Clemente", "Larry Doby"], diff: 1 },
+      { clue: "The award honoring the best defensive player at each position, sponsored by a glove manufacturer, is known as this.", answer: "Gold Glove", accept: ["gold glove", "the gold glove", "gold glove award"], choices: ["Silver Slugger", "Platinum Glove", "Fielding Bible Award"], diff: 1 },
+      { clue: "On the 50th anniversary of his debut, MLB retired Jackie Robinson's number 42 across every team in this year.", answer: "1997", accept: ["1997"], choices: ["1987", "2004", "1972"], diff: 3 },
+    ]
+  },
+  "International Baseball": {
+    questions: [
+      { clue: "Japan won the 2023 World Baseball Classic when Shohei Ohtani struck out this Angels teammate of his for the final out.", answer: "Mike Trout", accept: ["mike trout", "trout"], choices: ["Mookie Betts", "Paul Goldschmidt", "Nolan Arenado"], diff: 2 },
+      { clue: "Named MVP of the 2023 World Baseball Classic, Shohei Ohtani led this nation to the championship.", answer: "Japan", accept: ["japan", "team japan", "samurai japan"], choices: ["United States", "Dominican Republic", "South Korea"], diff: 1 },
+    ]
+  },
+  "Closers & Bullpen": {
+    questions: [
+      { clue: "Before Mariano Rivera, the career saves record of 601 belonged to this longtime closer.", answer: "Trevor Hoffman", accept: ["trevor hoffman", "hoffman"], choices: ["Lee Smith", "Dennis Eckersley", "Billy Wagner"], diff: 3 },
+      { clue: "Mariano Rivera dominated hitters and shattered bats for two decades with this signature pitch.", answer: "Cutter", accept: ["cutter", "cut fastball", "the cutter"], choices: ["Splitter", "Slider", "Curveball"], diff: 2 },
+      { clue: "Trevor Hoffman recorded most of his 601 saves with this team, jogging in from the bullpen to the ominous strains of 'Hells Bells.'", answer: "San Diego Padres", accept: ["san diego padres", "padres", "the padres"], choices: ["Milwaukee Brewers", "Florida Marlins", "Cincinnati Reds"], diff: 4 },
+    ]
+  },
+  "Franchise History": {
+    questions: [
+      { clue: "By reaching the postseason in this year, the Seattle Mariners finally ended MLB's longest active playoff drought, dating back to 2001.", answer: "2022", accept: ["2022"], choices: ["2019", "2021", "2023"], diff: 3 },
+      { clue: "After 36 seasons as the Montreal Expos, this franchise relocated and was renamed beginning with the 2005 season.", answer: "Washington Nationals", accept: ["washington nationals", "nationals", "the nationals", "nats"], choices: ["Texas Rangers", "Tampa Bay Rays", "Miami Marlins"], diff: 2 },
+      { clue: "Beginning with the 2022 season, the Cleveland Indians officially changed their team name to this.", answer: "Cleveland Guardians", accept: ["cleveland guardians", "guardians"], choices: ["Cleveland Spiders", "Cleveland Blues", "Cleveland Rockers"], diff: 2 },
+    ]
+  },
+  "Final Round": {
+    questions: [
+      { clue: "In 1938 this Cincinnati Reds left-hander accomplished something no pitcher has matched before or since: throwing no-hitters in two consecutive starts.", answer: "Johnny Vander Meer", accept: ["johnny vander meer", "vander meer", "johnny vandermeer", "vandermeer"], diff: 4 },
+      { clue: "Name the closer who retired as MLB's all-time saves leader with 652, every one of them recorded for the New York Yankees.", answer: "Mariano Rivera", accept: ["mariano rivera", "rivera", "mo"], diff: 3 },
+    ]
+  }
+};
+
+if (typeof mergeExtra === 'function') mergeExtra(BASEBALL_EXTRA_20260629, 'Baseball');
 

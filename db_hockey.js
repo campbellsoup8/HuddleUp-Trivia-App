@@ -133,7 +133,7 @@ const HOCKEY_Q = {
   },
   5: { // MODERN ERA
     100: [
-      { clue: "Alex Ovechkin surpassed Wayne Gretzky's all-time goals record in 2024. What goal number broke the record?", answer: "895", accept: ["895", "goal 895", "eight hundred ninety five"], choices: ["881", "900", "910"], diff: 2 },
+      { clue: "Alex Ovechkin surpassed Wayne Gretzky's all-time goals record in 2025. What goal number broke the record?", answer: "895", accept: ["895", "goal 895", "eight hundred ninety five"], choices: ["881", "900", "910"], diff: 2 },
       { clue: "Sidney Crosby has won 3 Stanley Cups, all with which team?", answer: "Pittsburgh Penguins", accept: ["pittsburgh penguins", "penguins", "pittsburgh"], choices: ["Washington Capitals", "Boston Bruins", "Tampa Bay Lightning"], diff: 1 },
       { clue: "Connor McDavid is known as the fastest skater in the NHL. He plays for which team?", answer: "Edmonton Oilers", accept: ["edmonton oilers", "oilers", "edmonton"], choices: ["Colorado Avalanche", "Toronto Maple Leafs", "Vegas Golden Knights"], diff: 2 },
       { clue: "Auston Matthews scored 60 goals in 2021-22, the first player to do so since Mario Lemieux in 1995-96. Matthews plays for which team?", answer: "Toronto Maple Leafs", accept: ["toronto maple leafs", "maple leafs", "toronto", "leafs"], choices: ["Montreal Canadiens", "Ottawa Senators", "Buffalo Sabres"], diff: 2 }
@@ -152,7 +152,7 @@ const HOCKEY_Q = {
     ],
     400: [
       { clue: "Connor McDavid led the Edmonton Oilers to the 2024 Stanley Cup Finals. Who did they face?", answer: "Florida Panthers", accept: ["florida panthers", "panthers", "florida"], choices: ["New York Rangers", "Dallas Stars", "Vancouver Canucks"], diff: 1 },
-      { clue: "Alex Ovechkin surpassed Wayne Gretzky's all-time goals record in 2024. In what city did he score goal #895?", answer: "Stockholm, Sweden", accept: ["stockholm", "sweden", "stockholm sweden"], choices: ["Washington D.C.", "Montreal", "Helsinki"], diff: 3 },
+      { clue: "Alex Ovechkin surpassed Wayne Gretzky's all-time goals record in 2025. In what New York metro-area city did he score goal #895?", answer: "Elmont, New York", accept: ["elmont", "elmont new york", "elmont ny", "ubs arena", "new york"], choices: ["Washington D.C.", "Montreal", "Stockholm"], diff: 3 },
       { clue: "Nathan MacKinnon won the Hart Trophy in 2024. He plays on a line with Mikko Rantanen and which other Avalanche forward?", answer: "Gabriel Landeskog", accept: ["gabriel landeskog", "landeskog"], choices: ["J.T. Compher", "Valeri Nichushkin", "Andrew Cogliano"], diff: 3 },
       { clue: "Sidney Crosby has won 3 Hart Trophies (NHL MVP). Name the 3 years he won the award.", answer: "2007, 2014, 2022", accept: ["2007 2014 2022", "2007, 2014, 2022"], choices: ["2007, 2009, 2016", "2009, 2016, 2021", "2007, 2013, 2019"], diff: 3 }
     ]
@@ -163,7 +163,7 @@ const HOCKEY_FINALS = [
   { category: "STANLEY CUP HISTORY", clue: "The Edmonton Oilers won 5 Stanley Cups from 1984 to 1990. Wayne Gretzky was traded away in 1988, yet they won one more Cup in 1990. Who captained that final championship?", answer: "Mark Messier", accept: ["mark messier", "messier"] },
   { category: "SCORING LEGENDS", clue: "Wayne Gretzky's career points total of 2,857 is so far ahead of second place that even removing all his goals, his assists alone would make him the all-time points leader. How many career assists did Gretzky record?", answer: "1,963", accept: ["1963", "1,963"] },
   { category: "HALL OF FAMERS", clue: "Bobby Orr revolutionized the defenseman position by doing something no defenseman had done before — he won this individual award, typically given to forwards, in both 1970 and 1971.", answer: "Art Ross Trophy", accept: ["art ross trophy", "art ross", "scoring title", "points title"] },
-  { category: "MODERN ERA", clue: "Alex Ovechkin broke Wayne Gretzky's all-time goals record of 894 in 2024. In what year did Gretzky originally set that record as a final career milestone?", answer: "1999", accept: ["1999"] }
+  { category: "MODERN ERA", clue: "Alex Ovechkin broke Wayne Gretzky's all-time goals record of 894 in 2025. In what year did Gretzky originally set that record as a final career milestone?", answer: "1999", accept: ["1999"] }
 ];
 
 const HOCKEY_EXTRA = {

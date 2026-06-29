@@ -6,7 +6,7 @@ const F1_Q = {
     100: [
       { clue: "This Dutch driver became the first from his country to win the Formula 1 World Championship, claiming the 2021 title in a dramatic final-lap overtake at Abu Dhabi.", answer: "Max Verstappen", accept: ["max verstappen", "verstappen"], choices: ["Lewis Hamilton", "Nico Rosberg", "Sebastian Vettel"], diff: 1 },
       { clue: "This British driver won a record-tying seventh Formula 1 World Championship in 2020, matching Michael Schumacher's all-time total.", answer: "Lewis Hamilton", accept: ["lewis hamilton", "hamilton"], choices: ["Sebastian Vettel", "Nico Rosberg", "Jenson Button"], diff: 1 },
-      { clue: "A member of the famous Rothschild banking dynasty hid his identity by racing under the pseudonym 'Georges Philippe' in 1928 and 1929 — concealing his involvement from his disapproving family. He finished fourth at the very first Monaco Grand Prix in 1929. What was his real name?", answer: "Baron Philippe de Rothschild", accept: ["philippe de rothschild", "baron philippe", "rothschild", "philippe rothschild", "baron philippe de rothschild"], choices: ["Baron Guy de Rothschild", "Lord Walter Rothschild", "Baron Edouard de Rothschild"], diff: 1 },
+      { clue: "A member of the famous Rothschild banking dynasty hid his identity by racing under the pseudonym 'Georges Philippe' in 1928 and 1929 — concealing his involvement from his disapproving family. He finished fourth at the very first Monaco Grand Prix in 1929. What was his real name?", answer: "Baron Philippe de Rothschild", accept: ["philippe de rothschild", "baron philippe", "rothschild", "philippe rothschild", "baron philippe de rothschild"], choices: ["Baron Guy de Rothschild", "Lord Walter Rothschild", "Baron Edouard de Rothschild"], diff: 4 },
       { clue: "Max Verstappen shattered the Formula 1 record for most wins in a single season during 2023. How many Grands Prix did he win that year?", answer: "19", accept: ["19", "nineteen"], choices: ["17", "15", "21"], diff: 2 },
     ],
     200: [
@@ -262,3 +262,63 @@ const F1_EXTRA_FINALS = [
     accept: ["alpine and mclaren", "mclaren and alpine", "alpine", "mclaren"],
   },
 ];
+
+// ─────────────────────────────────────────────
+// Added 20260628 (Sunday → F1 Racing nightly expansion)
+// 18 regular + 2 Final Round questions, fact-checked via web search.
+// ─────────────────────────────────────────────
+const F1_EXTRA_20260628 = {
+
+  "WORLD CHAMPIONS": {
+    questions: [
+      { clue: "This McLaren driver won his first Formula 1 World Championship in 2025, clinching the title at the season finale in Abu Dhabi.", answer: "Lando Norris", accept: ["lando norris", "norris", "lando"], choices: ["Oscar Piastri", "Max Verstappen", "Charles Leclerc"], diff: 1 },
+      { clue: "This British driver dominated the 1992 Formula 1 season, winning a then-record nine Grands Prix to claim his only World Championship with Williams.", answer: "Nigel Mansell", accept: ["nigel mansell", "mansell"], choices: ["Damon Hill", "Nelson Piquet", "Alain Prost"], diff: 2 },
+      { clue: "Graham and Damon Hill are one of only two father-and-son pairs to have each won the Formula 1 World Championship. Name the other father-son champion pair.", answer: "Keke and Nico Rosberg", accept: ["keke and nico rosberg", "rosberg", "keke rosberg and nico rosberg", "nico and keke rosberg", "the rosbergs"], choices: ["Mario and Michael Andretti", "Jos and Max Verstappen", "Gilles and Jacques Villeneuve"], diff: 3 },
+      { clue: "Lando Norris won the 2025 Formula 1 World Championship by a razor-thin margin over Max Verstappen at the final race. How many points separated them?", answer: "2 points", accept: ["2", "two", "2 points", "two points"], choices: ["12 points", "8 points", "1 point"], diff: 4 },
+      { clue: "Lando Norris's 2025 World Championship brought an end to a streak of four consecutive Drivers' titles (2021–2024) held by one driver. Name the driver whose championship run Norris ended.", answer: "Max Verstappen", accept: ["max verstappen", "verstappen", "max"], diff: 3 },
+      { clue: "Name the Argentine maestro who won five Formula 1 World Championships in the 1950s with four different constructors — Alfa Romeo, Maserati, Mercedes, and Ferrari — a feat unmatched for generations.", answer: "Juan Manuel Fangio", accept: ["juan manuel fangio", "fangio", "juan fangio"], diff: 3 }
+    ]
+  },
+
+  "ICONIC RACES": {
+    questions: [
+      { clue: "At the 1976 German Grand Prix, this driver suffered a horrific fiery crash at the Nürburgring, was given last rites, yet astonishingly returned to racing just six weeks later.", answer: "Niki Lauda", accept: ["niki lauda", "lauda"], choices: ["James Hunt", "Clay Regazzoni", "Jody Scheckter"], diff: 2 },
+      { clue: "Lewis Hamilton made his Ferrari race debut in 2025 after leaving Mercedes. At which season-opening Grand Prix did he line up in red for the first time?", answer: "Australian Grand Prix", accept: ["australian grand prix", "australia", "melbourne", "australian gp"], choices: ["Bahrain Grand Prix", "Chinese Grand Prix", "Saudi Arabian Grand Prix"], diff: 2 }
+    ]
+  },
+
+  "TEAMS & CONSTRUCTORS": {
+    questions: [
+      { clue: "Which team is the only constructor to have competed in every Formula 1 World Championship season since the championship began in 1950?", answer: "Ferrari", accept: ["ferrari", "scuderia ferrari"], choices: ["McLaren", "Williams", "Mercedes"], diff: 1 },
+      { clue: "In 1976, Tyrrell stunned Formula 1 by introducing the radical P34 car, which featured an unusual number of wheels. How many wheels did the P34 have?", answer: "Six", accept: ["six", "6", "6 wheels", "six wheels"], choices: ["Three", "Eight", "Five"], diff: 3 },
+      { clue: "Cadillac joined the Formula 1 grid as the 11th team in 2026. They are the first all-new constructor to enter the sport since which team debuted in 2016?", answer: "Haas", accept: ["haas", "haas f1", "haas f1 team"], choices: ["Aston Martin", "AlphaTauri", "Racing Point"], diff: 2 }
+    ]
+  },
+
+  "F1 RECORDS": {
+    questions: [
+      { clue: "Michael Schumacher won five consecutive Formula 1 World Championships from 2000 to 2004 while driving for which team?", answer: "Ferrari", accept: ["ferrari", "scuderia ferrari"], choices: ["Benetton", "Mercedes", "McLaren"], diff: 1 },
+      { clue: "This Brazilian legend holds the record for the most Monaco Grand Prix victories, winning the prestigious street race six times.", answer: "Ayrton Senna", accept: ["ayrton senna", "senna", "ayrton"], choices: ["Alain Prost", "Graham Hill", "Michael Schumacher"], diff: 3 },
+      { clue: "McLaren set the record for the fastest pit stop in Formula 1 history at the 2023 Qatar Grand Prix, servicing Lando Norris's car in what time?", answer: "1.80 seconds", accept: ["1.80", "1.8", "1.80 seconds", "1.8 seconds", "1.80s"], choices: ["2.31 seconds", "1.92 seconds", "0.98 seconds"], diff: 4 }
+    ]
+  },
+
+  "TRACKS & CIRCUITS": {
+    questions: [
+      { clue: "The original Nürburgring Nordschleife in Germany — a treacherous 14-mile forest circuit — earned what ominous nickname, famously coined by three-time champion Jackie Stewart?", answer: "The Green Hell", accept: ["the green hell", "green hell", "grüne hölle", "grune holle"], choices: ["The Black Forest", "The Devil's Loop", "The Widowmaker"], diff: 3 },
+      { clue: "The slowest corner in modern Formula 1 — taken at barely 30 mph — is the famous hairpin on which glamorous street circuit?", answer: "Monaco", accept: ["monaco", "monte carlo", "monaco grand prix"], choices: ["Singapore", "Baku", "Las Vegas"], diff: 2 }
+    ]
+  },
+
+  "MODERN ERA": {
+    questions: [
+      { clue: "DRS, the driver-activated movable rear wing flap designed to make overtaking easier, was introduced to Formula 1 in which year?", answer: "2011", accept: ["2011"], choices: ["2009", "2014", "2007"], diff: 2 },
+      { clue: "The sweeping 2026 Formula 1 power unit regulations remove one energy-recovery component from the hybrid engine to simplify it. Which component is being deleted?", answer: "The MGU-H", accept: ["mgu-h", "mguh", "the mgu-h", "mgu h", "heat motor generator unit"], choices: ["The MGU-K", "The turbocharger", "The energy store / battery"], diff: 3 },
+      { clue: "Ferrari is the most successful and most famous constructor in Formula 1 history. In which Italian town is the Scuderia Ferrari team based?", answer: "Maranello", accept: ["maranello"], choices: ["Modena", "Monza", "Bologna"], diff: 1 },
+      { clue: "Under the 2026 power unit regulations, the share of total power coming from the electrical (hybrid) system jumps to roughly what level, up from about 20% previously?", answer: "About 50%", accept: ["50", "50%", "about 50%", "fifty percent", "half", "around 50%"], choices: ["About 30%", "About 70%", "About 90%"], diff: 4 }
+    ]
+  }
+
+};
+
+if (typeof mergeExtra === 'function') mergeExtra(F1_EXTRA_20260628, 'F1 Racing');

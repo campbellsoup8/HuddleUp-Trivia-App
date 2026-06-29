@@ -547,6 +547,49 @@ body.night .field-bg::after{content:'';position:absolute;bottom:0;left:0;right:0
   const fbDb = firebase.database();
 </script>
 
+<script>
+// ── NIGHTLY PACK MERGER ──────────────────────────────────────
+// Defined BEFORE the db_*.js files so the date-stamped packs at the bottom of
+// each db file (which call mergeExtra(PACK, 'Sport')) actually register.
+// Packs are shaped { "Category Name": { questions: [ {clue,answer,accept,choices,diff} ] } }.
+// Regular questions are distributed into the numeric board slots Q[ci][diff*100];
+// open-ended "Final Round" items (no choices) are routed to the sport's finals pool.
+function mergeExtra(extraObj, sportName) {
+  var Q, FIN;
+  switch (sportName) {
+    case 'Baseball':   Q = BASEBALL_Q;   FIN = BASEBALL_FINALS;   break;
+    case 'Football':   Q = FOOTBALL_Q;   FIN = FOOTBALL_FINALS;   break;
+    case 'Basketball': Q = BASKETBALL_Q; FIN = BASKETBALL_FINALS; break;
+    case 'Hockey':     Q = HOCKEY_Q;     FIN = HOCKEY_FINALS;     break;
+    case 'Golf':       Q = GOLF_Q;       FIN = GOLF_FINALS;       break;
+    case 'Soccer':     Q = SOCCER_Q;     FIN = SOCCER_FINALS;     break;
+    case 'F1 Racing':  Q = F1_Q;         FIN = F1_FINALS;         break;
+    default: return;
+  }
+  if (!Q || !extraObj) return;
+  var catKeys = Object.keys(Q).filter(function (k) { return /^\d+$/.test(k); })
+                              .map(Number).sort(function (a, b) { return a - b; });
+  if (!catKeys.length) catKeys = [0];
+  var rr = 0;
+  Object.keys(extraObj).forEach(function (catName) {
+    var bucket = extraObj[catName] && extraObj[catName].questions;
+    if (!bucket || !bucket.length) return;
+    bucket.forEach(function (q) {
+      var isFinal = (catName.toLowerCase().indexOf('final') !== -1) || !q.choices;
+      if (isFinal) {
+        if (FIN) FIN.push({ category: catName, clue: q.clue, answer: q.answer, accept: q.accept || [] });
+        return;
+      }
+      var pts = (q.diff || 2) * 100;
+      var ci = catKeys[rr % catKeys.length]; rr++;
+      if (!Q[ci]) Q[ci] = {};
+      if (!Q[ci][pts]) Q[ci][pts] = [];
+      Q[ci][pts].push(q);
+    });
+  });
+}
+</script>
+
 <script src="db_baseball.js"></script>
 <script src="db_football.js"></script>
 <script src="db_basketball.js"></script>

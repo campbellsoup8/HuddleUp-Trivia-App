@@ -90,19 +90,19 @@ const SOCCER_Q = {
       { clue: "When a goalkeeper does not concede a single goal in a match, it is called a what?", answer: "Clean sheet", accept: ["clean sheet", "shutout"], choices: ["Blank slate", "Zero game", "Perfect defense"], diff: 1 },
       { clue: "The VAR system in soccer stands for what?", answer: "Video Assistant Referee", accept: ["video assistant referee", "var", "video assistant review"], choices: ["Virtual Athletic Review", "Video Action Replay", "Verified Automatic Ruling"], diff: 2 },
       { clue: "Scoring two goals in a single match is called a what?", answer: "Brace", accept: ["brace"], choices: ["Double", "Duo", "Twin strike"], diff: 3 },
-      { clue: "In a two-legged cup tie, the 'aggregate' score is what?", answer: "Combined total score over both matches", accept: ["combined total score", "total goals over both legs", "sum of both games", "total from both matches"], choices: ["The score in the second leg only", "The score by the home team only", "The score after extra time"], diff: 4 }
+      { clue: "In a two-legged cup tie, the 'aggregate' score is what?", answer: "Combined total score over both matches", accept: ["combined total score", "total goals over both legs", "sum of both games", "total from both matches"], choices: ["The score in the second leg only", "The score by the home team only", "The score after extra time"], diff: 2 }
     ],
     300: [
       { clue: "When a player is in an offside position, they must be closer to the opponent's goal than both the ball and who else?", answer: "The second-to-last defender", accept: ["second to last defender", "second-to-last defender", "the last outfield defender", "second defender"], choices: ["The goalkeeper", "The last two defenders", "The halfway line"], diff: 2 },
       { clue: "A match between two local rival clubs is called a what?", answer: "Derby", accept: ["derby", "local derby"], choices: ["Showdown", "Grudge match", "Clasico"], diff: 2 },
       { clue: "When a match is tied after 90 minutes in a knockout competition, what happens next?", answer: "Extra time", accept: ["extra time", "overtime"], choices: ["Penalty shootout immediately", "Replay the game", "Away goals rule"], diff: 3 },
-      { clue: "An 'overhead kick' or 'bicycle kick' describes what type of acrobatic shot?", answer: "Kicking the ball backwards over your own head while airborne", accept: ["kicking backwards over head", "overhead kick", "bicycle kick", "kicking ball over own head"], choices: ["Spinning shot hit with the heel", "A diving header", "A volley struck with the chest"], diff: 4 }
+      { clue: "An 'overhead kick' or 'bicycle kick' describes what type of acrobatic shot?", answer: "Kicking the ball backwards over your own head while airborne", accept: ["kicking backwards over head", "overhead kick", "bicycle kick", "kicking ball over own head"], choices: ["Spinning shot hit with the heel", "A diving header", "A volley struck with the chest"], diff: 1 }
     ],
     400: [
       { clue: "A 'red card' in soccer results in what?", answer: "The player is ejected from the game", accept: ["ejection", "player is sent off", "dismissed from the game", "removed from the game"], choices: ["A 10-minute suspension", "A penalty kick for the other team", "Loss of a substitute"], diff: 1 },
       { clue: "What is the 'offside trap' in soccer?", answer: "Defenders step up to catch attackers in an offside position", accept: ["defenders step up to catch attackers offside", "defensive tactic to trigger offside", "stepping up to put attackers offside"], choices: ["Trapping the ball before a goal kick", "A corner kick taken quickly", "Playing with a low defensive line"], diff: 2 },
       { clue: "'Tiki-taka' is a style of play known for short passing and ball possession. Which club and manager made it world-famous?", answer: "Barcelona under Pep Guardiola", accept: ["barcelona", "barca", "pep guardiola", "barcelona and pep guardiola"], choices: ["Real Madrid under Zinedine Zidane", "Liverpool under Jurgen Klopp", "Manchester City under Roberto Mancini"], diff: 3 },
-      { clue: "What does 'pressing high' mean in modern soccer tactics?", answer: "Defending aggressively close to the opponent's goal to win the ball back quickly", accept: ["pressing close to opponent's goal", "high defensive line", "attacking press", "winning ball high up the pitch"], choices: ["Putting many players in the penalty area", "Playing long balls over the defense", "Sitting deep and counter-attacking"], diff: 4 }
+      { clue: "What does 'pressing high' mean in modern soccer tactics?", answer: "Defending aggressively close to the opponent's goal to win the ball back quickly", accept: ["pressing close to opponent's goal", "high defensive line", "attacking press", "winning ball high up the pitch"], choices: ["Putting many players in the penalty area", "Playing long balls over the defense", "Sitting deep and counter-attacking"], diff: 3 }
     ]
   },
   4: { // MODERN ERA
@@ -1126,5 +1126,66 @@ const SOCCER_EXTRA_FINALS = [
     accept: ["samuel eto'o", "eto'o", "etoo"]
   }
 ];
+
+
+// ─────────────────────────────────────────────
+// Added 20260627 (Saturday → Soccer nightly expansion)
+// 18 regular + 2 Final Round questions, fact-checked via web search.
+// ─────────────────────────────────────────────
+const SOCCER_EXTRA_20260627 = {
+
+  "FIFA WORLD CUP": {
+    questions: [
+      { clue: "Argentina beat Colombia 1-0 to win the 2024 Copa América, a record-extending title. How many Copa América titles do they now hold?", answer: "16", accept: ["16", "sixteen"], choices: ["15", "14", "13"], diff: 1 },
+      { clue: "Lautaro Martínez scored the winning goal in the 2024 Copa América final. Which Italian club does he play his club football for?", answer: "Inter Milan", accept: ["inter milan", "inter", "internazionale"], choices: ["AC Milan", "Napoli", "Juventus"], diff: 2 },
+      { clue: "The 2026 FIFA World Cup final will be played at which stadium in East Rutherford, New Jersey?", answer: "MetLife Stadium", accept: ["metlife stadium", "metlife", "met life stadium"], choices: ["SoFi Stadium", "AT&T Stadium", "Mercedes-Benz Stadium"], diff: 3 },
+      { clue: "The 2024 Copa América final, marred by long entry delays, was held at which Miami-area stadium?", answer: "Hard Rock Stadium", accept: ["hard rock stadium", "hard rock"], choices: ["MetLife Stadium", "Mercedes-Benz Stadium", "Rose Bowl"], diff: 3 },
+      { clue: "The 2026 World Cup spans 16 host cities across three nations. How many of those host cities are in the United States?", answer: "11", accept: ["11", "eleven"], choices: ["9", "13", "16"], diff: 4 }
+    ]
+  },
+
+  "GOAL SCORING LEGENDS": {
+    questions: [
+      { clue: "Which Manchester City midfielder won the 2024 Ballon d'Or, becoming the first City player ever to claim the award?", answer: "Rodri", accept: ["rodri", "rodrigo", "rodri hernandez"], choices: ["Vinícius Júnior", "Jude Bellingham", "Erling Haaland"], diff: 1 },
+      { clue: "Harry Kane left Tottenham in 2023 to join which German club, where he immediately shattered Bundesliga scoring records?", answer: "Bayern Munich", accept: ["bayern munich", "bayern", "fc bayern"], choices: ["Borussia Dortmund", "RB Leipzig", "Bayer Leverkusen"], diff: 2 },
+      { clue: "Erling Haaland became the fastest player to reach 100 Premier League goals, beating Alan Shearer's old mark of 124. In how many games did Haaland do it?", answer: "111", accept: ["111", "one hundred eleven"], choices: ["124", "94", "131"], diff: 3 },
+      { clue: "Name the Spanish defensive midfielder who won the 2024 Ballon d'Or after anchoring Manchester City's midfield and being named Player of the Tournament at Euro 2024, which Spain won.", answer: "Rodri", accept: ["rodri", "rodrigo", "rodri hernandez"], diff: 3 }
+    ]
+  },
+
+  "RECORDS & FIRSTS": {
+    questions: [
+      { clue: "Bayer Leverkusen went the entire 2023-24 league season unbeaten to win their first-ever Bundesliga title. Which manager led them?", answer: "Xabi Alonso", accept: ["xabi alonso", "alonso"], choices: ["Thomas Tuchel", "Julian Nagelsmann", "Hansi Flick"], diff: 2 },
+      { clue: "Aitana Bonmatí won the 2024 Women's Ballon d'Or. Which club does the Spanish midfielder play for?", answer: "Barcelona", accept: ["barcelona", "barca", "fc barcelona"], choices: ["Real Madrid", "Atlético Madrid", "Olympique Lyonnais"], diff: 2 }
+    ]
+  },
+
+  "SOCCER LINGO": {
+    questions: [
+      { clue: "When the ball fully crosses the sideline (touchline) and goes out of play, the game restarts with what?", answer: "Throw-in", accept: ["throw-in", "throw in", "throwin"], choices: ["Corner kick", "Goal kick", "Free kick"], diff: 1 },
+      { clue: "Supporters often unveil a huge coordinated visual display across a section of the stands. By what Italian-derived name is this known?", answer: "Tifo", accept: ["tifo"], choices: ["A type of swerving free kick", "A defensive offside trap", "A second yellow-card offense"], diff: 2 }
+    ]
+  },
+
+  "MODERN ERA": {
+    questions: [
+      { clue: "Arsenal won the 2025-26 Premier League title. Who was their manager?", answer: "Mikel Arteta", accept: ["mikel arteta", "arteta"], choices: ["Pep Guardiola", "Unai Emery", "Mauricio Pochettino"], diff: 1 },
+      { clue: "Arsenal's 2025-26 league title ended a top-flight title drought stretching back to which famous unbeaten campaign?", answer: "2003-04 (the Invincibles)", accept: ["2003-04", "2003/04", "the invincibles", "2004", "invincibles season"], choices: ["1997-98", "2001-02", "1990-91"], diff: 2 }
+    ]
+  },
+
+  "CLUB FOOTBALL": {
+    questions: [
+      { clue: "Paris Saint-Germain won their first-ever Champions League in 2025, beating Inter Milan by what record final scoreline?", answer: "5-0", accept: ["5-0", "5 to 0", "five nil"], choices: ["3-0", "2-1", "4-1"], diff: 1 },
+      { clue: "PSG's 2025 Champions League triumph came under which manager, who had previously won the trophy with Barcelona in 2015?", answer: "Luis Enrique", accept: ["luis enrique", "enrique"], choices: ["Mauricio Pochettino", "Christophe Galtier", "Thomas Tuchel"], diff: 2 },
+      { clue: "After years of being mocked as 'Neverkusen' for near-misses, Bayer Leverkusen's 2023-24 unbeaten title flipped the joke into which new nickname?", answer: "Neverlusen", accept: ["neverlusen"], choices: ["Die Unbesiegbaren", "Werkself Wonders", "Black Forest Bolt"], diff: 3 },
+      { clue: "PSG's 5-0 win in the 2025 Champions League final featured two goals from a teenage French forward. How old was Désiré Doué at the time?", answer: "19", accept: ["19", "nineteen"], choices: ["18", "20", "21"], diff: 4 },
+      { clue: "Name the Georgian winger, signed from Napoli earlier that season, who scored in PSG's record 5-0 win over Inter Milan in the 2025 Champions League final.", answer: "Khvicha Kvaratskhelia", accept: ["khvicha kvaratskhelia", "kvaratskhelia", "kvara", "khvicha"], diff: 3 }
+    ]
+  }
+
+};
+
+if (typeof mergeExtra === 'function') mergeExtra(SOCCER_EXTRA_20260627, 'Soccer');
 
 

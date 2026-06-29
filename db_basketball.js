@@ -18,7 +18,7 @@ const BASKETBALL_Q = {
       { clue: "LeBron James made an iconic block on this Golden State Warriors player in Game 7 of the 2016 Finals.", answer: "Andre Iguodala", accept: ["andre iguodala", "iguodala"], choices: ["Klay Thompson", "Draymond Green", "Stephen Curry"], diff: 2 },
       { clue: "The Miami Heat's 'Big Three' of LeBron, Wade, and Bosh won back-to-back titles in what years?", answer: "2012 and 2013", accept: ["2012 and 2013", "2012 & 2013", "2012", "2013"], choices: ["2011 and 2012", "2013 and 2014", "2010 and 2011"], diff: 2 },
       { clue: "The Cleveland Cavaliers came back from a 3-1 deficit to beat which team in the 2016 NBA Finals?", answer: "Golden State Warriors", accept: ["golden state warriors", "warriors", "golden state"], choices: ["San Antonio Spurs", "Oklahoma City Thunder", "Houston Rockets"], diff: 1 },
-      { clue: "Which player won NBA Finals MVP in 2024 when the Boston Celtics beat the Dallas Mavericks?", answer: "Jayson Tatum", accept: ["jayson tatum", "tatum"], choices: ["Jaylen Brown", "Kristaps Porzingis", "Al Horford"], diff: 1 }
+      { clue: "Which player won NBA Finals MVP in 2024 when the Boston Celtics beat the Dallas Mavericks?", answer: "Jaylen Brown", accept: ["jaylen brown", "jaylen", "brown"], choices: ["Jayson Tatum", "Kristaps Porzingis", "Al Horford"], diff: 1 }
     ],
     400: [
       { clue: "How many total NBA titles did the Chicago Bulls win with Michael Jordan?", answer: "6", accept: ["6", "six"], choices: ["4", "5", "7"], diff: 1 },
@@ -147,7 +147,7 @@ const BASKETBALL_Q = {
     300: [
       { clue: "Stephen Curry's revolutionary impact on basketball is primarily associated with which skill?", answer: "Three-point shooting", accept: ["three-point shooting", "3-point shooting", "shooting threes", "long-range shooting"], choices: ["Dribbling", "Defense", "Passing"], diff: 1 },
       { clue: "Kevin Durant won how many regular-season scoring titles during his career?", answer: "4", accept: ["4", "four"], choices: ["2", "3", "5"], diff: 2 },
-      { clue: "Jayson Tatum of the Boston Celtics won the 2024 NBA Finals MVP. Against which team did Boston win the championship?", answer: "Dallas Mavericks", accept: ["dallas mavericks", "mavericks", "dallas"], choices: ["Indiana Pacers", "New York Knicks", "Minnesota Timberwolves"], diff: 1 },
+      { clue: "Jaylen Brown of the Boston Celtics won the 2024 NBA Finals MVP. Against which team did Boston win the championship?", answer: "Dallas Mavericks", accept: ["dallas mavericks", "mavericks", "dallas"], choices: ["Indiana Pacers", "New York Knicks", "Minnesota Timberwolves"], diff: 1 },
       { clue: "Nikola Jokic is known as an unusual MVP because he plays which position, not historically associated with MVP-level scoring?", answer: "Center", accept: ["center", "big man", "c"], choices: ["Point guard", "Small forward", "Power forward"], diff: 2 }
     ],
     400: [
@@ -171,6 +171,7 @@ const BASKETBALL_EXTRA = {
   // Category 0: NBA CHAMPIONSHIPS
   0: {
     100: [
+      { clue: "This point guard won five NBA titles with the Lakers and, as a rookie, started at center in the 1980 Finals clincher to earn Finals MVP with 42 points.", answer: "Magic Johnson", accept: ["magic johnson", "magic", "earvin johnson"], choices: ["Larry Bird", "Isiah Thomas", "Jerry West"], diff: 1 },
       {
         clue: "The 1992 U.S. Olympic 'Dream Team' won gold at the Barcelona Olympics, featuring this many NBA legends on its roster.",
         answer: "12",
@@ -208,6 +209,10 @@ const BASKETBALL_EXTRA = {
       }
     ],
     200: [
+      { clue: "This guard was named 2026 NBA Finals MVP after a Knicks-record 45-point Game 5.", answer: "Jalen Brunson", accept: ["jalen brunson", "brunson"], choices: ["OG Anunoby", "Karl-Anthony Towns", "Mikal Bridges"], diff: 2 },
+      { clue: "The Oklahoma City Thunder defeated this team in seven games to win the 2025 NBA Finals.", answer: "Indiana Pacers", accept: ["indiana pacers", "pacers"], choices: ["Minnesota Timberwolves", "Denver Nuggets", "New York Knicks"], diff: 2 },
+      { clue: "This Serbian center won the 2023 Finals MVP while leading the Denver Nuggets to the first championship in franchise history.", answer: "Nikola Jokic", accept: ["nikola jokic", "jokic", "the joker"], choices: ["Luka Doncic", "Joel Embiid", "Kristaps Porzingis"], diff: 2 },
+      { clue: "Riding his signature one-legged fadeaway, this 7-footer won 2011 Finals MVP as the Mavericks beat the Heat.", answer: "Dirk Nowitzki", accept: ["dirk nowitzki", "dirk", "nowitzki"], choices: ["Pau Gasol", "Jason Kidd", "Shawn Marion"], diff: 2 },
       {
         clue: "Christian Laettner was the only college player on the 1992 Dream Team. He played for this university.",
         answer: "Duke",
@@ -245,6 +250,9 @@ const BASKETBALL_EXTRA = {
       }
     ],
     300: [
+      { clue: "The New York Knicks' championship before their 2026 title came in this year.", answer: "1973", accept: ["1973"], choices: ["1970", "1969", "1994"], diff: 3 },
+      { clue: "This Celtics wing won the 2024 Eastern Conference Finals MVP, the Larry Bird Trophy, en route to the championship.", answer: "Jaylen Brown", accept: ["jaylen brown", "jaylen"], choices: ["Jrue Holiday", "Derrick White", "Kristaps Porzingis"], diff: 3 },
+      { clue: "Nicknamed 'The Truth,' this forward won the 2008 NBA Finals MVP with the Boston Celtics.", answer: "Paul Pierce", accept: ["paul pierce", "pierce"], choices: ["Kevin McHale", "Antoine Walker", "Rajon Rondo"], diff: 3 },
       {
         clue: "In the 1992 Dream Team, this player was controversially left off the roster largely due to the animosity between him and Michael Jordan, despite being a two-time champion.",
         answer: "Isiah Thomas",
@@ -323,6 +331,8 @@ const BASKETBALL_EXTRA = {
   // Category 1: SCORING LEGENDS
   1: {
     100: [
+      { clue: "This Golden State guard is the NBA's all-time leader in career three-pointers made.", answer: "Stephen Curry", accept: ["stephen curry", "steph curry", "steph", "curry"], choices: ["Klay Thompson", "James Harden", "Damian Lillard"], diff: 1 },
+      { clue: "This forward won four NBA scoring titles and back-to-back Finals MVPs with the Warriors in 2017 and 2018.", answer: "Kevin Durant", accept: ["kevin durant", "durant", "kd"], choices: ["Russell Westbrook", "James Harden", "Paul George"], diff: 1 },
       {
         clue: "Allen Iverson, nicknamed 'The Answer,' won four NBA scoring titles during his career, all while standing only this tall.",
         answer: "6 feet",
@@ -397,6 +407,7 @@ const BASKETBALL_EXTRA = {
       }
     ],
     300: [
+      { clue: "On January 23, 2015, this Warrior set the record for most points in a single quarter, with 37 against the Kings.", answer: "Klay Thompson", accept: ["klay thompson", "klay"], choices: ["Stephen Curry", "Devin Booker", "Kobe Bryant"], diff: 3 },
       {
         clue: "Isaiah Thomas (modern era) averaged 28.9 PPG for the Boston Celtics in 2016-17 while dealing with a hip injury. He finished this place in MVP voting.",
         answer: "5th",
@@ -434,6 +445,8 @@ const BASKETBALL_EXTRA = {
       }
     ],
     400: [
+      { clue: "On the final day of the 1977-78 season this Nuggets star scored 73 points, then the third-highest total in NBA history, in a duel for the scoring title.", answer: "David Thompson", accept: ["david thompson", "skywalker"], choices: ["George Gervin", "Pete Maravich", "Bob McAdoo"], diff: 4 },
+      { clue: "Nicknamed 'The Iceman,' this Spur answered a 73-point game by scoring 63 to win the 1977-78 scoring title by the closest margin in NBA history.", answer: "George Gervin", accept: ["george gervin", "gervin", "iceman", "the iceman"], choices: ["David Thompson", "Julius Erving", "World B. Free"], diff: 4 },
       {
         clue: "In Pete Maravich's three LSU seasons, he scored a total of this many points — still the all-time NCAA Division I record.",
         answer: "3,667",
@@ -513,6 +526,7 @@ const BASKETBALL_EXTRA = {
       }
     ],
     200: [
+      { clue: "This forward won 2008 Defensive Player of the Year after a blockbuster trade to the Celtics, having earlier won the 2004 MVP with Minnesota.", answer: "Kevin Garnett", accept: ["kevin garnett", "garnett", "kg", "the big ticket"], choices: ["Rasheed Wallace", "Ben Wallace", "Dwight Howard"], diff: 2 },
       {
         clue: "Elmore Smith's record 17-block game came on October 28, 1973, against this opponent.",
         answer: "Portland Trail Blazers",
@@ -550,6 +564,10 @@ const BASKETBALL_EXTRA = {
       }
     ],
     300: [
+      { clue: "Wilt Chamberlain set the single-game rebounding record with this many boards in 1960.", answer: "55", accept: ["55", "55 rebounds"], choices: ["50", "45", "60"], diff: 3 },
+      { clue: "In 1990 this Orlando Magic guard dished out an NBA-record 30 assists in a single game.", answer: "Scott Skiles", accept: ["scott skiles", "skiles"], choices: ["Kevin Porter", "Mark Jackson", "Kevin Johnson"], diff: 3 },
+      { clue: "This Hall of Fame forward led the NBA in rebounding for a record seven consecutive seasons in the 1990s.", answer: "Dennis Rodman", accept: ["dennis rodman", "rodman", "the worm"], choices: ["Charles Barkley", "Ben Wallace", "Moses Malone"], diff: 3 },
+      { clue: "Nicknamed 'The Glove,' this Seattle guard became the first point guard to win Defensive Player of the Year, in 1996.", answer: "Gary Payton", accept: ["gary payton", "payton", "the glove"], choices: ["John Stockton", "Mookie Blaylock", "Jason Kidd"], diff: 3 },
       {
         clue: "The first 3-point field goal in NBA history was made by Chris Ford on October 12, 1979. Ford played for this team.",
         answer: "Boston Celtics",
@@ -587,6 +605,7 @@ const BASKETBALL_EXTRA = {
       }
     ],
     400: [
+      { clue: "Scott Skiles broke the single-game assist record previously held by this player, who had 29 assists in 1978.", answer: "Kevin Porter", accept: ["kevin porter"], choices: ["Guy Rodgers", "Bob Cousy", "Nate Archibald"], diff: 4 },
       {
         clue: "Danny Biasone, who invented the shot clock, owned this NBA franchise that would later move to another city.",
         answer: "Syracuse Nationals",
@@ -780,6 +799,8 @@ const BASKETBALL_EXTRA = {
   // Category 4: HALL OF FAMERS
   4: {
     100: [
+      { clue: "Nicknamed for his dominance, this 7'1\" center won four titles and three straight Finals MVPs from 2000-2002.", answer: "Shaquille O'Neal", accept: ["shaquille o'neal", "shaq", "shaquille oneal", "o'neal"], choices: ["Hakeem Olajuwon", "Patrick Ewing", "Alonzo Mourning"], diff: 1 },
+      { clue: "Known as 'The Big Fundamental,' this forward won five championships with the San Antonio Spurs.", answer: "Tim Duncan", accept: ["tim duncan", "duncan", "the big fundamental"], choices: ["Kevin McHale", "Pau Gasol", "Chris Webber"], diff: 1 },
       {
         clue: "Magic Johnson announced his HIV diagnosis and retirement from the NBA on this date in 1991.",
         answer: "November 7, 1991",
@@ -817,6 +838,8 @@ const BASKETBALL_EXTRA = {
       }
     ],
     200: [
+      { clue: "Listed at six feet tall and nicknamed 'The Answer,' this guard was the 1996 No. 1 overall pick and the 2001 MVP.", answer: "Allen Iverson", accept: ["allen iverson", "iverson", "the answer"], choices: ["Stephon Marbury", "Steve Francis", "Baron Davis"], diff: 2 },
+      { clue: "Nicknamed 'The Admiral' for his Navy service, this Spurs center won the 1995 NBA MVP.", answer: "David Robinson", accept: ["david robinson", "robinson", "the admiral"], choices: ["Hakeem Olajuwon", "Patrick Ewing", "Dikembe Mutombo"], diff: 2 },
       {
         clue: "Paul Pierce earned his nickname 'The Truth' when Shaquille O'Neal said this after a game where Pierce went off on him.",
         answer: "He's the truth",
@@ -969,6 +992,7 @@ const BASKETBALL_EXTRA = {
       }
     ],
     200: [
+      { clue: "This Thunder guard won the 2025-26 regular-season MVP, his second straight MVP award.", answer: "Shai Gilgeous-Alexander", accept: ["shai gilgeous-alexander", "shai", "sga", "gilgeous-alexander"], choices: ["Anthony Edwards", "Luka Doncic", "Tyrese Haliburton"], diff: 2 },
       {
         clue: "Caitlin Clark broke the WNBA single-season assist record in 2024, finishing with this many total assists.",
         answer: "317",
@@ -1043,6 +1067,7 @@ const BASKETBALL_EXTRA = {
       }
     ],
     400: [
+      { clue: "This Spurs center was a 2026 NBA MVP finalist alongside Shai Gilgeous-Alexander and Nikola Jokic.", answer: "Victor Wembanyama", accept: ["victor wembanyama", "wembanyama", "wemby"], choices: ["Chet Holmgren", "Paolo Banchero", "Anthony Davis"], diff: 4 },
       {
         clue: "Caitlin Clark's arrival with the Fever broke the previous WNBA home attendance record. The Fever averaged this many fans per home game in 2024.",
         answer: "17,035",
@@ -1083,6 +1108,18 @@ const BASKETBALL_EXTRA = {
 };
 
 const BASKETBALL_EXTRA_FINALS = [
+  {
+    category: "NBA ALL-TIME LEADERS",
+    clue: "This Utah Jazz power forward is the NBA's all-time leader in free throws made.",
+    answer: "Karl Malone",
+    accept: ["karl malone", "malone", "the mailman"]
+  },
+  {
+    category: "NBA FINALS HISTORY",
+    clue: "The 2025 champion Thunder franchise won its only previous NBA title in 1979 under this city's name.",
+    answer: "Seattle SuperSonics",
+    accept: ["seattle supersonics", "seattle", "supersonics", "sonics"]
+  },
   {
     category: "NBA CHAMPIONSHIPS",
     clue: "The 1992 Dream Team's only non-NBA player was Christian Laettner, included as a nod to the tradition of college-only Olympic teams. Of the other 11, all eventually earned this honor.",
