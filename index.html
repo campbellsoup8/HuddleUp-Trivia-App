@@ -1381,6 +1381,31 @@ function submitRating(rating) {
   autoScore();
 }
 
+function submitFinalRating(rating) {
+  if (G.finalRated) return;
+  G.finalRated = true;
+  const F = G.final;
+  if (rating !== null && F) {
+    try {
+      fbDb.ref('ratings').push({
+        question: F.clue || '',
+        answer: F.answer || '',
+        category: F.category || '',
+        points: 'final',
+        sport: selectedSport,
+        set_difficulty: selectedDiff,
+        question_difficulty: (typeof F.diff === 'number') ? F.diff : null,
+        user_rating: rating,
+        was_correct: null,
+        timestamp: new Date().toISOString()
+      });
+    } catch(e) {}
+  }
+  document.querySelectorAll('.final-rate-btn').forEach(b => {
+    b.classList.toggle('selected', parseInt(b.dataset.r) === rating);
+  });
+}
+
 function autoScore() {
   const { key } = G.cur, pts = G.cur.effectivePts, team = G.teams[G.turn];
   if (G.cur._autoCorrect) G.scores[team] += pts; else G.scores[team] -= pts;
@@ -1455,6 +1480,7 @@ function goFinal() {
   stopTimer(); stopThink();
   document.getElementById('q-overlay').classList.remove('open');
   sndFanfare();
+  G.finalRated = false;
   show('s-final');
   renderWagerPhase();
 }
@@ -1594,6 +1620,12 @@ function showAllFinalResults() {
           </div>
         </div>`).join('')}
     </div>
+    <div style="margin:16px 0;text-align:center">
+      <div style="font-family:'Oswald',sans-serif;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,230,200,.6);margin-bottom:8px">Rate this question (optional)</div>
+      <div style="display:flex;gap:5px;justify-content:center;flex-wrap:wrap">
+        ${[1,2,3,4,5,6,7,8,9,10].map(n=>`<button class="diff-rate-btn final-rate-btn" data-r="${n}" onclick="submitFinalRating(${n})">${n}</button>`).join('')}
+      </div>
+    </div>
     <button class="play-btn" onclick="showWinner()" style="font-size:1.3rem;padding:10px 40px">See Final Scores 🏆</button>`;
 }
 
@@ -1606,6 +1638,12 @@ function showFinalAns() {
     <div class="m-answer" style="display:block;margin:12px 0">✓ ${F.answer}</div>
     <p style="font-family:'Oswald',sans-serif;color:var(--cream);font-size:.78rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:10px">Score each team's answer:</p>
     <div id="final-score-rows"></div>
+    <div style="margin:16px 0;text-align:center">
+      <div style="font-family:'Oswald',sans-serif;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,230,200,.6);margin-bottom:8px">Rate this question (optional)</div>
+      <div style="display:flex;gap:5px;justify-content:center;flex-wrap:wrap">
+        ${[1,2,3,4,5,6,7,8,9,10].map(n=>`<button class="diff-rate-btn final-rate-btn" data-r="${n}" onclick="submitFinalRating(${n})">${n}</button>`).join('')}
+      </div>
+    </div>
     <button class="play-btn" onclick="showWinner()" style="margin-top:20px;font-size:1.3rem;padding:10px 40px">See Final Scores 🏆</button>`;
   const wrap = document.getElementById('final-score-rows');
   G.teams.forEach((t, i) => {
